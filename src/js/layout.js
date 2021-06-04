@@ -6,7 +6,7 @@ import SideBar from "./component/sideBar";
 
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
-import Experience from "./pages/experience"
+import Experience from "./pages/experience";
 import About from "./pages/about";
 import injectContext from "./store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,27 +28,26 @@ const Layout = () => {
               <SideBar />
             </div>
             <div className="col-12 col-sm-8">
-                <Switch>
-                  <Route exact path="/">
-                    <About />
-                  </Route>
-                </Switch>
-                <Switch>
-                  <Route exact path="/Contact">
-                    <Contact />
-                  </Route>
-                </Switch>
-                <Switch>
-                  <Route exact path="/experience">
-                    <Experience />
-                  </Route>
-                </Switch>
-                <Switch>
-                  <Route exact path="/projects">
-                    <Projects />
-                  </Route>
-                </Switch>
-
+              <Switch>
+                <Route exact path="/">
+                  <About />
+                </Route>
+              </Switch>
+              <Switch>
+                <Route exact path="/Contact">
+                  <Contact />
+                </Route>
+              </Switch>
+              <Switch>
+                <Route exact path="/experience">
+                  <Experience />
+                </Route>
+              </Switch>
+              <Switch>
+                <Route exact path="/projects">
+                  <Projects />
+                </Route>
+              </Switch>
             </div>
           </div>
         </div>
