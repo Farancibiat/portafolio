@@ -1,5 +1,7 @@
 # Go visit the deployed site: [www.farancibiat.cl](http://www.farancibiat.cl).
-Everthing it's up to date.
+Everthing it's up to date, i've used the following stack:
+
+-HTMl5, CSS3
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
