@@ -1,13 +1,13 @@
 # Go visit the deployed site: [www.farancibiat.cl](http://www.farancibiat.cl).
 Everthing it's up to date, i've used the following stack:
 
-##Languages/Frameworks
+## Languages/Frameworks
 - HTMl5, CSS3, Bootstrap, ReactJs, Nodejs.
 
-##Libraries:
+## Libraries:
 - React-router-dom, Formkik, Yup, Emailjs-com.
 
-##Host
+## Host
 - Heroku
 
 
