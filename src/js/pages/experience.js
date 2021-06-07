@@ -237,7 +237,7 @@ export const Experience = () => {
                 <div className="col-0 col-sm-4"></div>
                 <div className="col-12 col-sm-2">
                   <a
-                    href="https://drive.google.com/file/d/1xnn89woj-6h8xrdZeIHeGsgfYnWE7FNO/view?usp=sharing"
+                    href="https://drive.google.com/file/d/10Ar2INlDPyjfeghdNyfNVKbuccOPvm_1/view?usp=sharing"
                     download
                   >
                     <div className="cv mx-auto" />
@@ -246,7 +246,7 @@ export const Experience = () => {
                 </div>
                 <div className="col-12 text-center col-sm-2">
                   <a
-                    href="https://drive.google.com/file/d/1-QLFFzI1iu8sqvCjILiuyMXYqFtrv2ly/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1fDSBJZO4O_dIQde8agTZ7J_o91ik1R_1/view?usp=sharing"
                     download
                   >
                     <div className="cv mx-auto" />

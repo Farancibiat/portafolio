@@ -8,7 +8,7 @@ import python from "../../img/python.png";
 import postgresql from "../../img/postgresql.png";
 import flask from "../../img/Flask.png";
 import sqlAlchemy from "../../img/sqlAlchemy.png";
-import sql from "../../img/sql.png"
+import sql from "../../img/sql.png";
 
 import { Link } from "react-router-dom";
 // import { Context } from "../store/appContext";
@@ -127,6 +127,10 @@ export const SideBar = () => {
                 </p>
                 <p className="sbli">
                   <Check className="text-warning mr-2" />
+                  Heroku
+                </p>
+                <p className="sbli">
+                  <Check className="text-warning mr-2" />
                   Administración Google Workspace
                 </p>
               </div>
@@ -138,7 +142,7 @@ export const SideBar = () => {
             <div className="row">
               <div className="col-12 col-sm-6">
                 <a
-                  href="https://drive.google.com/file/d/1xnn89woj-6h8xrdZeIHeGsgfYnWE7FNO/view?usp=sharing"
+                  href="https://drive.google.com/file/d/10Ar2INlDPyjfeghdNyfNVKbuccOPvm_1/view?usp=sharing"
                   download
                 >
                   <div className="cv mx-auto" />
@@ -147,7 +151,7 @@ export const SideBar = () => {
               </div>
               <div className="col-12 text-center col-sm-6">
                 <a
-                  href="https://drive.google.com/file/d/1-QLFFzI1iu8sqvCjILiuyMXYqFtrv2ly/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1fDSBJZO4O_dIQde8agTZ7J_o91ik1R_1/view?usp=sharing"
                   download
                 >
                   <div className="cv mx-auto" />
@@ -160,12 +164,12 @@ export const SideBar = () => {
         <div className="botSideBar">
           <div className="row px-5 py-3 text-center">
             <div className="col-3 ">
-              <a href="https://www.linkedin.com/in/felipe-arancibia-torres/">
+              <a href="https://www.linkedin.com/in/farancibiat/">
                 <Linkedin />
               </a>
             </div>
             <div className="col-3 ">
-              <a href="https://www.linkedin.com/in/felipe-arancibia-torres/">
+              <a href="https://github.com/Farancibiat">
                 <Github />
               </a>
             </div>
@@ -177,7 +181,7 @@ export const SideBar = () => {
             <div className="col-3 ">
               <Link to="/contact">
                 <EnvelopeFill />
-                </Link>
+              </Link>
             </div>
           </div>
         </div>
