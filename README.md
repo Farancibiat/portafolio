@@ -1,14 +1,19 @@
 # Go visit the deployed site: [www.farancibiat.cl](http://www.farancibiat.cl).
 Everthing it's up to date, i've used the following stack:
 
--HTMl5, CSS3
+##Languages/Frameworks
+- HTMl5, CSS3, Bootstrap, ReactJs, Nodejs.
 
+##Libraries:
+- React-router-dom, Formkik, Yup, Emailjs-com.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Host
+- Heroku
+
 
 ## Check my code
 
-If you want to check my code in your localhost, you can run the following code in th eproject directory:
+If you want to check my code in your localhost, you can run the following code in the project directory:
 
 
 ### `npm start`
