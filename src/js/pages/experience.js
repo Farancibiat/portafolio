@@ -1,6 +1,6 @@
 import React from "react";
 import BodyFooter from "../component/bodyFooter";
-import { Link } from "react-router-dom";;
+import { Link } from "react-router-dom";
 
 export const Experience = () => {
   return (
@@ -13,8 +13,7 @@ export const Experience = () => {
             </h1>
 
             <div className="accordion" id="accordionExample">
-
-            <div className="card ">
+              <div className="card ">
                 <div className="card-header p-0" id="headingOne">
                   <h2 className="mb-0">
                     <button
@@ -29,7 +28,7 @@ export const Experience = () => {
                     </button>
                   </h2>
                 </div>
-                 
+
                 <div
                   id="collapseOne"
                   className="collapse show"
@@ -37,37 +36,30 @@ export const Experience = () => {
                   data-parent="#accordionExample"
                 >
                   <div className="card-body">
-                Soy un profesional con interés en aprender herramientas de
-                trabajo que mejoren la eficiencia de los recursos a través de
-                herramientas digitales.
-                <br />
-                <br />
-                Me gusta trabajar en equipo, generar lazos de confianza que
-                faciliten el trabajo colaborativo y trabajar en ambientes
-                distendidos.
-                <br />
-                <br />
-                Me acomoda trabajar enfocado en metas y analizo constantemente
-                mi entorno en busca de oportunidades que me ayuden a obtener
-                mayor bienestar y mejores resultados, me gusta enseñar y valoro
-                el consejo de mis colegas.
-                <br />
-                <br />
-                Mis fortalezas están en el desarrollo lógico de aplicaciones y
-                front-end. Ya sea back-end, front-end o full-stack, siempre
-                prefiero los ambientes desafiantes con trabajo colectivo. <br />
-                <br />
-                <Link
-                  to="/experience"
-                  className="btn btn-sm btn-warning text-dark"
-                >
-                  Ver Experiencia
-                </Link>
+                    Soy un profesional con interés en aprender herramientas de
+                    trabajo que mejoren la eficiencia de los recursos a través
+                    de herramientas digitales.
+                    <br />
+                    <br />
+                    Me gusta trabajar en equipo, generar lazos de confianza que
+                    faciliten el trabajo colaborativo y trabajar en ambientes
+                    distendidos.
+                    <br />
+                    <br />
+                    Me acomoda trabajar enfocado en metas y analizo
+                    constantemente mi entorno en busca de oportunidades que me
+                    ayuden a obtener mayor bienestar y mejores resultados, me
+                    gusta enseñar y valoro el consejo de mis colegas.
+                    <br />
+                    <br />
+                    Mis fortalezas están en el desarrollo lógico de aplicaciones
+                    y front-end. Ya sea back-end, front-end o full-stack,
+                    siempre prefiero los ambientes desafiantes con trabajo
+                    colectivo. <br />
+                    <br />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-
               <div className="card ">
                 <div className="card-header p-0" id="headingTwo">
                   <h2 className="mb-0">
@@ -76,17 +68,16 @@ export const Experience = () => {
                       type="button"
                       data-toggle="collapse"
                       data-target="#collapseTwo"
-                      aria-expanded="true"
+                      aria-expanded="false"
                       aria-controls="collapseTwo"
                     >
                       <b>Educación</b>
                     </button>
                   </h2>
                 </div>
-
                 <div
                   id="collapseTwo"
-                  className="collapse show"
+                  className="collapse "
                   aria-labelledby="headingTwo"
                   data-parent="#accordionExample"
                 >
@@ -97,14 +88,19 @@ export const Experience = () => {
                     </p>
 
                     <p>
-                      <b>ADMINISTRACIÓN DE EMPRESAS - LICENCIATURA EN TURISMO</b>
+                      <b>
+                        ADMINISTRACIÓN DE EMPRESAS - LICENCIATURA EN TURISMO
+                      </b>
                       <p>Universidad Austral de Chile | 2013 - 2016</p>
                     </p>
 
                     <p>
                       <b>INGENIERÍA COMERCIAL</b>
                       <p>
-                        Universidad Técnica Federico Santa María | 2009 - 2013<p><em>Incompleta </em></p>
+                        Universidad Técnica Federico Santa María | 2009 - 2013
+                        <p>
+                          <em>Incompleta </em>
+                        </p>
                       </p>
                     </p>
                   </div>
@@ -141,9 +137,12 @@ export const Experience = () => {
                     antes de que ya no esté disponible.
                     <br /> Si quieres ver mis códigos antes, revisalos{" "}
                     <b>
-                      <Link to="/contact" className="text-danger">
+                      <a
+                        href="https://github.com/Farancibiat"
+                        className="text-danger"
+                      >
                         aquí.
-                      </Link>
+                      </a>
                     </b>
                   </div>
                 </div>
