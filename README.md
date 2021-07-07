@@ -15,8 +15,8 @@ Everthing it's up to date, i've used the following stack:
 
 If you want to check my code in your localhost, you can run the following code in the project directory:
 
-
-### `npm start`
+### 1. `npm 1`
+### 2. `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
