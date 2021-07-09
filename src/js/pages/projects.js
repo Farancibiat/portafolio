@@ -13,11 +13,7 @@ export const Projects = () => {
             </h1>
             <p className="text-light">
               Esta es una selección de proyectos, pero puedes verlos todos en mi{" "}
-<<<<<<< HEAD
               <a href="https://github.com/Farancibiat" className="text-danger" target="_blank">
-=======
-              <a href="https://github.com/Farancibiat" className="text-danger">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                 Github <Github />
               </a>
             </p>
@@ -29,17 +25,10 @@ export const Projects = () => {
                     Aplicación Web en desarrollo para arrendar canchas de futbol
                     en Chile, implementada con url .cl y hosting de Heroku.
                   </p>
-<<<<<<< HEAD
                   <a href="http://www.pichangapp.cl" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
                   <a href="https://github.com/farancibiat/pichangapp" target="_blank">
-=======
-                  <a href="http://www.pichangapp.cl">
-                    <button>Visitar Proyecto &gt;&gt;</button>
-                  </a>
-                  <a href="https://github.com/farancibiat/pichangapp">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -53,15 +42,8 @@ export const Projects = () => {
                     Blog de ejercicio para practicar manipulación de datos
                     utilizando fetch, react y flux/context.
                   </p>
-<<<<<<< HEAD
                   
                   <a href="https://github.com/Farancibiat/exercise-starwars-blog-reading-list" target="_blank">
-=======
-                  {/* <a href="http://www.pichangapp.cl">
-                  <button>Visitar Proyecto &gt;&gt;</button>
-                  </a> */}
-                  <a href="https://github.com/Farancibiat/exercise-starwars-blog-reading-list">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -77,17 +59,10 @@ export const Projects = () => {
                     "pokepi.co", tiene un buscador y guarda favoritos, implementada en
                     Heroku
                   </p>
-<<<<<<< HEAD
                   <a href="https://pokemon-houm-test.herokuapp.com/" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
                   <a href="https://github.com/Farancibiat/pokemon-site" target="_blank">
-=======
-                  <a href="https://pokemon-houm-test.herokuapp.com/">
-                    <button>Visitar Proyecto &gt;&gt;</button>
-                  </a>
-                  <a href="https://github.com/Farancibiat/pokemon-site">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -105,17 +80,10 @@ export const Projects = () => {
                     un test laboral. El juego es básico y está implementado
                     Heroku.
                   </p>
-<<<<<<< HEAD
                   <a href="http://farancibiat-battleship.herokuapp.com" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
                   <a href="https://github.com/farancibiat/battlefield-game" target="_blank">
-=======
-                  <a href="http://farancibiat-battleship.herokuapp.com">
-                    <button>Visitar Proyecto &gt;&gt;</button>
-                  </a>
-                  <a href="https://github.com/farancibiat/battlefield-game">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -129,7 +97,6 @@ export const Projects = () => {
                     Applicación Web para ejercitar manipulación de datos en
                     React y la modificación de datos en una Api externa (CRUD).
                   </p>
-<<<<<<< HEAD
                   <a href="https://github.com/farancibiat/todolist-fetch" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
@@ -150,12 +117,6 @@ export const Projects = () => {
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
                   <a href="https://github.com/Farancibiat/user-dashboard" target="_blank">
-=======
-                  {/* <a href="http://www.pichangapp.cl">
-                  <button>Visitar Proyecto &gt;&gt;</button>
-                  </a> */}
-                  <a href="https://github.com/farancibiat/todolist-fetch">
->>>>>>> 16cd61bec4747dc6f06ccc707b18083e958ec406
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
