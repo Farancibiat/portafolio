@@ -13,7 +13,7 @@ export const Projects = () => {
             </h1>
             <p className="text-light">
               Esta es una selección de proyectos, pero puedes verlos todos en mi{" "}
-              <a href="https://github.com/Farancibiat" className="text-danger">
+              <a href="https://github.com/Farancibiat" className="text-danger" target="_blank">
                 Github <Github />
               </a>
             </p>
@@ -25,10 +25,10 @@ export const Projects = () => {
                     Aplicación Web en desarrollo para arrendar canchas de futbol
                     en Chile, implementada con url .cl y hosting de Heroku.
                   </p>
-                  <a href="http://www.pichangapp.cl">
+                  <a href="http://www.pichangapp.cl" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
-                  <a href="https://github.com/farancibiat/pichangapp">
+                  <a href="https://github.com/farancibiat/pichangapp" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -42,10 +42,8 @@ export const Projects = () => {
                     Blog de ejercicio para practicar manipulación de datos
                     utilizando fetch, react y flux/context.
                   </p>
-                  {/* <a href="http://www.pichangapp.cl">
-                  <button>Visitar Proyecto &gt;&gt;</button>
-                  </a> */}
-                  <a href="https://github.com/Farancibiat/exercise-starwars-blog-reading-list">
+                  
+                  <a href="https://github.com/Farancibiat/exercise-starwars-blog-reading-list" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -61,10 +59,10 @@ export const Projects = () => {
                     "pokepi.co", tiene un buscador y guarda favoritos, implementada en
                     Heroku
                   </p>
-                  <a href="https://pokemon-houm-test.herokuapp.com/">
+                  <a href="https://pokemon-houm-test.herokuapp.com/" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
-                  <a href="https://github.com/Farancibiat/pokemon-site">
+                  <a href="https://github.com/Farancibiat/pokemon-site" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -82,10 +80,10 @@ export const Projects = () => {
                     un test laboral. El juego es básico y está implementado
                     Heroku.
                   </p>
-                  <a href="http://farancibiat-battleship.herokuapp.com">
+                  <a href="http://farancibiat-battleship.herokuapp.com" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
-                  <a href="https://github.com/farancibiat/battlefield-game">
+                  <a href="https://github.com/farancibiat/battlefield-game" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -99,10 +97,7 @@ export const Projects = () => {
                     Applicación Web para ejercitar manipulación de datos en
                     React y la modificación de datos en una Api externa (CRUD).
                   </p>
-                  {/* <a href="http://www.pichangapp.cl">
-                  <button>Visitar Proyecto &gt;&gt;</button>
-                  </a> */}
-                  <a href="https://github.com/farancibiat/todolist-fetch">
+                  <a href="https://github.com/farancibiat/todolist-fetch" target="_blank">
                     <button className="btn2">
                       Repositorio <Github />
                     </button>
@@ -111,7 +106,23 @@ export const Projects = () => {
               </div>
               
 
-              <div className="col-12 col-sm-4 px-0"></div>
+              <div className="col-12 col-sm-4 px-0">
+                <div className="styledCard">
+                  <h4>Agenda Dashboard</h4>
+                  <p>
+                   Este es un dashboard básico realizado con ANT DESIGN, que tiene informacion
+                   de contactos desde una Api falsa gratuita. Implementado en Heroku.
+                  </p>
+                  <a href="https://moveapp-dashboard.herokuapp.com/contactList" target="_blank">
+                    <button>Visitar Proyecto &gt;&gt;</button>
+                  </a>
+                  <a href="https://github.com/Farancibiat/user-dashboard" target="_blank">
+                    <button className="btn2">
+                      Repositorio <Github />
+                    </button>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
