@@ -113,7 +113,7 @@ export const Projects = () => {
                    Este es un dashboard básico realizado con ANT DESIGN, que tiene informacion
                    de contactos desde una Api falsa gratuita. Implementado en Heroku.
                   </p>
-                  <a href="https://moveapp-dashboard.herokuapp.com/contactList" target="_blank">
+                  <a href="https://moveapp-dashboard.herokuapp.com/" target="_blank">
                     <button>Visitar Proyecto &gt;&gt;</button>
                   </a>
                   <a href="https://github.com/Farancibiat/user-dashboard" target="_blank">
