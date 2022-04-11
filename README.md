@@ -1,4 +1,4 @@
-# Go visit the deployed site: [www.farancibiat.cl](http://www.farancibiat.cl).
+# Go visit the deployed site: [farancibiat.cl](https://farancibiat.cl).
 Everthing it's up to date, i've used the following stack:
 
 ## Languages/Frameworks
