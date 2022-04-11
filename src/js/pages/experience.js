@@ -1,6 +1,5 @@
 import React from "react";
 import BodyFooter from "../component/bodyFooter";
-import { Link } from "react-router-dom";
 
 export const Experience = () => {
   return (
