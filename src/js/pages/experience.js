@@ -36,26 +36,15 @@ export const Experience = () => {
                   data-parent="#accordionExample"
                 >
                   <div className="card-body">
-                    Soy un profesional con interés en aprender herramientas de
-                    trabajo que mejoren la eficiencia de los recursos a través
-                    de herramientas digitales.
-                    <br />
-                    <br />
                     Me gusta trabajar en equipo, generar lazos de confianza que
-                    faciliten el trabajo colaborativo y trabajar en ambientes
+                    facilitenel trabajo colaborativo y trabajar en ambientes
                     distendidos.
                     <br />
                     <br />
-                    Me acomoda trabajar enfocado en metas y analizo
-                    constantemente mi entorno en busca de oportunidades que me
-                    ayuden a obtener mayor bienestar y mejores resultados, me
-                    gusta enseñar y valoro el consejo de mis colegas.
-                    <br />
-                    <br />
-                    Mis fortalezas están en el desarrollo lógico de aplicaciones
-                    y front-end. Ya sea back-end, front-end o full-stack,
-                    siempre prefiero los ambientes desafiantes con trabajo
-                    colectivo. <br />
+                    Me acomoda t rabajar enfocado en metas y analizo
+                    constantemente mientorno en busca de oportunidades que me
+                    ayuden a obtener mayorbienestar y mejores resultados, me
+                    gusta enseñar y valoro el consejode mis colegas.
                     <br />
                   </div>
                 </div>
@@ -97,7 +86,7 @@ export const Experience = () => {
                     <p>
                       <b>INGENIERÍA COMERCIAL</b>
                       <p>
-                        Universidad Técnica Federico Santa María | 2009 - 2013
+                        Universidad Técnica Federico Santa María | 2009 - 2012
                         <p>
                           <em>Incompleta </em>
                         </p>
@@ -128,22 +117,38 @@ export const Experience = () => {
                   data-parent="#accordionExample"
                 >
                   <div className="card-body ">
-                    Si quieres invertir en tu empresa,{" "}
-                    <b>
-                      <Link to="/contact" className="text-danger">
-                        escribeme{" "}
-                      </Link>
-                    </b>
-                    antes de que ya no esté disponible.
-                    <br /> Si quieres ver mis códigos antes, revisalos{" "}
-                    <b>
-                      <a
-                        href="https://github.com/Farancibiat"
-                        className="text-danger"
-                      >
-                        aquí.
-                      </a>
-                    </b>
+                    <p>
+                      <b>DESARROLLADOR WEB FULL STACK</b>
+                      <p>MoveApps | Agosto 2021 - Actualidad</p>
+                    </p>
+                    <p>
+                      Trabajo con metodología scrum agile, uso de Bitbucket y
+                      Azure.
+                    </p>
+                    <ul>
+                      <li>
+                        Desarrollo de features para API, sitio de administración
+                        y website para{" "}
+                        <a
+                          className="text-danger"
+                          href="https://plataforma.chileconverge.cl/"
+                        >
+                          Chile Converge
+                        </a>
+                        .
+                      </li>
+                      <li>
+                        Desarrollo de features para website de{" "}
+                        <a className="text-danger" href="https://uno.cl/">
+                          AFP Uno
+                        </a>
+                        .
+                      </li>
+                      <li>
+                        Desarrollo front para proyecto de atención de clientes
+                        de MOVICARE.
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -236,7 +241,7 @@ export const Experience = () => {
                 <div className="col-0 col-sm-4"></div>
                 <div className="col-12 col-sm-2">
                   <a
-                    href="https://drive.google.com/file/d/10Ar2INlDPyjfeghdNyfNVKbuccOPvm_1/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1hZq3nHyhrF1wWlby3E2_2TOvNNOskdte/view?usp=sharing"
                     download
                   >
                     <div className="cv mx-auto" />
@@ -245,7 +250,7 @@ export const Experience = () => {
                 </div>
                 <div className="col-12 text-center col-sm-2">
                   <a
-                    href="https://drive.google.com/file/d/1fDSBJZO4O_dIQde8agTZ7J_o91ik1R_1/view?usp=sharing"
+                    href="https://drive.google.com/file/d/17bB6WH9tQWb7nE_hIALjIVZDAYZ6hSF_/view?usp=sharing"
                     download
                   >
                     <div className="cv mx-auto" />

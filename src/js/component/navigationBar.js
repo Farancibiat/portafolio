@@ -1,5 +1,5 @@
 import React from "react";
-import brand from "../../img/brand.jpg";
+import brand from "../../img/profile.jpg";
 import { Link } from "react-router-dom";
 import "../styles/navigationBar.css";
 
@@ -9,7 +9,10 @@ export const NavigationBar = () => {
       <nav className="navbar navbar-expand-lg navbar-light navigationBar">
         <Link className="navbar-brand d-flex" to="/">
           <img className="brandImage" src={brand} alt="" width="60" />
-          <h3 className="brandText my-auto">Portafolio</h3>
+          <h3 className="brandText my-auto">
+            Felipe Arancibia <br />
+            <h6 className="text-left">Portafolio</h6>{" "}
+          </h3>
         </Link>
         <button
           className="navbar-toggler "
@@ -30,10 +33,10 @@ export const NavigationBar = () => {
             <Link className="nav-link navigationText" to="/experience">
               Experiencia
             </Link>
-			<Link className="nav-link navigationText" to="/projects">
+            <Link className="nav-link navigationText" to="/projects">
               Proyectos
             </Link>
-			<Link className="nav-link navigationText" to="/contact">
+            <Link className="nav-link navigationText" to="/contact">
               Contacto
             </Link>
           </div>

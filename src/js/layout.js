@@ -24,10 +24,10 @@ const Layout = () => {
         <NavigationBar />
         <div className="container">
           <div className="row">
-            <div className="col-12 col-sm-4">
+            <div className="col-12 col-lg-4">
               <SideBar />
             </div>
-            <div className="col-12 col-sm-8">
+            <div className="col-12 col-lg-8">
               <Switch>
                 <Route exact path="/">
                   <About />
@@ -57,3 +57,4 @@ const Layout = () => {
 };
 
 export default injectContext(Layout);
+

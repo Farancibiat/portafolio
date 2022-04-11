@@ -1,15 +1,5 @@
 import React from "react";
 import "../styles/sideBar.css";
-import html5 from "../../img/html5.png";
-import css3 from "../../img/css3.png";
-import jscript from "../../img/js.png";
-import reactjs from "../../img/Reactjs.png";
-import python from "../../img/python.png";
-import postgresql from "../../img/postgresql.png";
-import flask from "../../img/Flask.png";
-import sqlAlchemy from "../../img/sqlAlchemy.png";
-import sql from "../../img/sql.png";
-
 import { Link } from "react-router-dom";
 // import { Context } from "../store/appContext";
 import {
@@ -60,79 +50,68 @@ export const SideBar = () => {
           </div>
           <hr className="bg-light mx-4" />
           <div className="codeblock text-center px-4">
-            <h5 className="text-light text-center">Herramientas</h5>
-            <div className="row mt-3">
-              <div className="col-12 col-sm-4">
-                <img src={html5} alt="HTML5" width="40" />
-                <p className="text-light mb-1">HTML5</p>
+            <h5 className="text-light text-center">Stack</h5>
+            <div className="container">
+              <div className="row text-light">
+                <div className="col-12 col-md-6">
+                  <ul className="pl-0 text-left">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>SCSS</li>
+                    <li>Javascript</li>
+                    <li>React JS</li>
+                    <li>Next Js</li>
+                    <li>Tailwind</li>
+                    <li>Ant Design</li>
+                    <li>Bootstrap</li>
+                    <li>Material UI</li>
+                    <li></li>
+                  </ul>
+                </div>
+                <div className="col-12 col-md-6">
+                  <ul className="pl-0 text-left">
+                    <li>REST API's</li>
+                    <li>Sails JS</li>
+                    <li>FLASK</li>
+                    <li>SQLAlchemy</li>
+                    <li>MYSQL</li>
+                    <li>Python</li>
+                    <li>Heroku</li>
+                    <li>Netifly</li>
+                    <li>Vercel</li>
+                    <li>Jenkins</li>
+                    <li>PostgreSQL</li>
+                  </ul>
+                </div>
               </div>
-              <div className="col-12 col-sm-4">
-                <img src={css3} alt="CSS3" width="40" />
-                <p className="text-light">CSS3</p>
-              </div>
-              <div className="col-12 col-sm-4">
-                <img src={jscript} alt="JS" width="37" />
-                <p className="text-light">Javascript</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 col-sm-4">
-                <img src={reactjs} alt="reactjs" width="40" />
-                <p className="text-light pt-3">React.js</p>
-              </div>
-              <div className="col-12 col-sm-4 pt-2">
-                <img src={python} alt="Python" width="40" />
-                <p className="text-light pt-1">Python</p>
-              </div>
-              <div className="col-12 col-sm-4">
-                <img src={flask} alt="Flask" width="50" />
-                <p className="text-light">Flask</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12 col-sm-4 pt-1">
-                <img src={postgresql} alt="postgreSQL" width="40" />
-                <p className="text-light">PostgreSql</p>
-              </div>
-              <div className="col-12 col-sm-4 pt-1">
-                <img src={sql} alt="SQL" width="70" />
-                <p className="text-light pt-1">SQL</p>
-              </div>
-              <div className="col-12 col-sm-4 pt-2">
-                <img src={sqlAlchemy} alt="sqlAlchemy" width="100" />
-                <p className="text-light text-center pt-2">SqlAlchemy</p>
+              <div className="row">
+                <div className="col-12 col-md-6"></div>
               </div>
             </div>
           </div>
           <hr className="bg-light mx-4" />
           <div className="knoledgeblock text-light px-4">
-            <div className="row">
+            <div className="row text-light">
               <div className="col-12">
-                <h5 className="text-center">Conocimientos</h5>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  GIT - Github
-                </p>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  Bootstrap
-                </p>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  Flux/Context
-                </p>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  Metodología Scrum Agile
-                </p>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  Heroku
-                </p>
-                <p className="sbli">
-                  <Check className="text-warning mr-2" />
-                  Administración Google Workspace
-                </p>
+                <h5 className="text-center">Stack adicional</h5>
+                <ul className="pl-0 text-left">
+                  <li>
+                    <Check className="text-warning mr-2" />
+                    GIT - Github - Bitbucket
+                  </li>
+                  <li>
+                    <Check className="text-warning mr-2" />
+                    Azure
+                  </li>
+                  <li>
+                    <Check className="text-warning mr-2" />
+                    Metodología Scrum Agile
+                  </li>
+                  <li>
+                    <Check className="text-warning mr-2" />
+                    Administración Google Workspace
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -142,7 +121,7 @@ export const SideBar = () => {
             <div className="row">
               <div className="col-12 col-sm-6">
                 <a
-                  href="https://drive.google.com/file/d/10Ar2INlDPyjfeghdNyfNVKbuccOPvm_1/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1hZq3nHyhrF1wWlby3E2_2TOvNNOskdte/view?usp=sharing"
                   download
                 >
                   <div className="cv mx-auto" />
@@ -151,7 +130,7 @@ export const SideBar = () => {
               </div>
               <div className="col-12 text-center col-sm-6">
                 <a
-                  href="https://drive.google.com/file/d/1fDSBJZO4O_dIQde8agTZ7J_o91ik1R_1/view?usp=sharing"
+                  href="https://drive.google.com/file/d/17bB6WH9tQWb7nE_hIALjIVZDAYZ6hSF_/view?usp=sharing"
                   download
                 >
                   <div className="cv mx-auto" />
