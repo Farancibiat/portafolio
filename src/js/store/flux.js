@@ -1,15 +1,12 @@
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
-    store: {
-      redirect: false,
-    },
+    store: {},
     actions: {
-      setRedirect: (value) => setStore({ redirect: value }),
       sendMsg: (mailInfo) => {
         emailjs.send(
-          "service_327kjia",
+          "service_yhcp95e",
           "template_9eywuhh",
           {
             name: mailInfo["full_name"],
@@ -17,8 +14,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             sendermail: mailInfo["email"],
           },
           "user_YA75D2LJZ1zDtDECKXzWB"
-        );
-        setStore({ redirect: false });
+        )
+        .then((result) => {
+          console.log("Mensaje enviado con éxito:", result.text);
+        })
+        .catch((error) => {
+          console.error("Error al enviar mensaje:", error.text);
+        });
       },
     },
   };

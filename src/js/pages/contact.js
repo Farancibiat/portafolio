@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import { useFormik } from "formik";
-import { Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import {EnvelopeFill} from "react-bootstrap-icons";
+import { EnvelopeFill } from "react-bootstrap-icons";
 import { Context } from "../store/appContext";
 
 import BodyFooter from "../component/bodyFooter";
 
-export function Contact() {
-  const { store, actions } = useContext(Context);
+const Contact = () => {
+  const { actions } = useContext(Context);
+  const navigate = useNavigate();
+  
   const formik = useFormik({
     initialValues: {
       full_name: "",
@@ -23,18 +25,17 @@ export function Contact() {
       msg: Yup.string().required("No olvides agregar tu mensaje."),
     }),
     onSubmit: (values) => {
-      actions.setRedirect(true);
       actions.sendMsg(values);
+      navigate('/');
     },
   });
 
   return (
     <>
-      <div className=" bodyFrame">
+      <div className="bodyFrame">
         <div className="container contentScroller">
-          {store.redirect ? <Redirect to="/" /> : ""}
-          <div className="container mt-4 px-5 pb-5 pt-3 bg-dark card">
-            <div className="display-4 fw-bold text-center text-warning my-4">
+          <div className="container mt-4 px-5 pb-5 pt-3 bg-dark card" style={{ border: "none" }}>
+            <div className="text-center text-warning my-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
               <EnvelopeFill/> Contacto
             </div>
             <p className="text-light">
@@ -44,15 +45,8 @@ export function Contact() {
             </p>
             <form onSubmit={formik.handleSubmit}>
               {/* Full Name input and error msg alternative*/}
-              <div className="form-group">
+              <div className="mb-3">
                 <div className="row">
-                  {/* <label
-                className="form-label fw-bold mt-2"
-                id="full_name"
-                htmlfor="full_name"
-              >
-                Nombre
-              </label> */}
                   <input
                     placeholder="Nombre"
                     className="form-control"
@@ -72,7 +66,7 @@ export function Contact() {
               </div>
 
               {/* Email input and error msg alternative */}
-              <div className="form-group">
+              <div className="mb-3">
                 <div className="row">
                   <input
                     placeholder="Email"
@@ -93,18 +87,16 @@ export function Contact() {
               </div>
 
               {/* Message input and error msg alternative */}
-              <div className="form-group">
+              <div className="mb-3">
                 <div className="row">
-                  {/* <label className="form-label fw-bold mt-2" id="msg" htmlFor="msg">
-                Address
-              </label> */}
                   <textarea
                     placeholder="Mensaje"
                     className="form-control"
                     id="msg"
                     name="msg"
-                    type="4"
+                    rows="4"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.msg}
                   />
                   {formik.errors.msg && formik.touched.msg ? (

@@ -1,18 +1,47 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Layout from './js/layout';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from 'react-dom/client';
+import { routes } from './js/layout';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import injectContext from './js/store/appContext';
 
+// Definir las futuras opciones que queremos habilitar
+const futureOptions = {
+  v7_startTransition: true,
+  v7_relativeSplatPath: true
+};
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Layout />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// Crear el router con las rutas definidas en layout.js
+const router = createBrowserRouter(routes, {
+  basename: process.env.BASENAME || "",
+  future: futureOptions
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Crear un componente contenedor para el RouterProvider y aplicarle el contexto
+const AppWithRouter = () => {
+  return (
+    <RouterProvider 
+      router={router} 
+      future={futureOptions}
+    />
+  );
+};
+
+// Aplicar el contexto al componente contenedor
+const AppWithContext = injectContext(AppWithRouter);
+
+const renderApp = () => {
+  // Usar el nuevo método createRoot de React 18
+  const root = createRoot(document.getElementById('root'));
+  
+  // Renderizar con el contexto aplicado
+  root.render(
+    <React.StrictMode>
+      <AppWithContext />
+    </React.StrictMode>
+  );
+};
+
+// Iniciar la aplicación
+renderApp();
+
 

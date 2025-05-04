@@ -1,6 +1,6 @@
 import React from "react";
-import CvCard from "../../img/cv-card.png";
-import PichCard from "../../img/pichangapp-card.png";
+import CvCard from "../../assets/img/cv-card.png";
+import PichCard from "../../assets/img/pichangapp-card.png";
 import BodyFooter from "../component/bodyFooter";
 import { PersonLinesFill} from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ export const About = () => {
     <>
       <div className=" bodyFrame">
         <div className="container contentScroller">
-          <div className="container my-4 px-5 pb-5  bg-dark card">
+          <div className="container my-4 px-5 pb-5  bg-dark card" style={{ border: "none" }}>
             <h1 className="display-4 fw-bold text-center text-warning my-4">
              ¡Bienvenid@!
             </h1>

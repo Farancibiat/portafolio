@@ -2,13 +2,13 @@
 Everthing it's up to date, i've used the following stack:
 
 ## Languages/Frameworks
-- HTMl5, CSS3, Bootstrap, ReactJs, Nodejs.
+- HTMl5, CSS3, Bootstrap, ReactJs.
 
 ## Libraries:
 - React-router-dom, Formkik, Yup, Emailjs-com.
 
 ## Host
-- Heroku
+- Netlify
 
 
 ## Check my code

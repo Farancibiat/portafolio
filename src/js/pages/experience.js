@@ -1,40 +1,39 @@
 import React from "react";
 import BodyFooter from "../component/bodyFooter";
-
+import cvEsp from "../../assets/Felipe Arancibia Esp.pdf";
+import cvEng from "../../assets/Felipe Arancibia Eng.pdf";
 export const Experience = () => {
   return (
     <>
-      <div className=" bodyFrame">
+      <div className="bodyFrame">
         <div className="container contentScroller">
-          <div className="container my-4 px-5 pb-5  bg-dark card">
-            <h1 className="display-4 fw-bold text-center text-warning my-4">
+          <div className="container my-4 px-5 pb-5 bg-dark card" style={{ border: "none" }}>
+            <h1 className="text-center text-warning my-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
               Experiencia
             </h1>
 
-            <div className="accordion" id="accordionExample">
-              <div className="card ">
-                <div className="card-header p-0" id="headingOne">
-                  <h2 className="mb-0">
-                    <button
-                      className="btn btn-block text-left p-3 alert-warning  bg-light"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseOne"
-                      aria-expanded="true"
-                      aria-controls="collapseOne"
-                    >
-                      <b> Perfil</b>
-                    </button>
-                  </h2>
-                </div>
-
+            <div className="accordion" id="accordionExperience">
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingOne">
+                  <button
+                    className="accordion-button bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
+                  >
+                    Perfil
+                  </button>
+                </h2>
                 <div
                   id="collapseOne"
-                  className="collapse show"
+                  className="accordion-collapse collapse show"
                   aria-labelledby="headingOne"
-                  data-parent="#accordionExample"
+                  data-bs-parent="#accordionExperience"
                 >
-                  <div className="card-body">
+                  <div className="accordion-body">
                     Me gusta trabajar en equipo, generar lazos de confianza que
                     facilitenel trabajo colaborativo y trabajar en ambientes
                     distendidos.
@@ -48,30 +47,29 @@ export const Experience = () => {
                   </div>
                 </div>
               </div>
-              <div className="card ">
-                <div className="card-header p-0" id="headingTwo">
-                  <h2 className="mb-0">
-                    <button
-                      className="btn btn-block text-left p-3 alert-warning  bg-light"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseTwo"
-                      aria-expanded="false"
-                      aria-controls="collapseTwo"
-                    >
-                      <b>Educación</b>
-                    </button>
-                  </h2>
-                </div>
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingTwo">
+                  <button
+                    className="accordion-button collapsed bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
+                  >
+                    Educación
+                  </button>
+                </h2>
                 <div
                   id="collapseTwo"
-                  className="collapse "
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingTwo"
-                  data-parent="#accordionExample"
+                  data-bs-parent="#accordionExperience"
                 >
-                  <div className="card-body">
+                  <div className="accordion-body">
                     <p>
-                      <b>FULL STACK WEB DEVELOPER</b>{" "}
+                      <b>FULL STACK WEB DEVELOPER</b>
                       <p>4Geeks Academy | Diciembre 2020 - Mayo 2021</p>
                     </p>
 
@@ -94,28 +92,27 @@ export const Experience = () => {
                   </div>
                 </div>
               </div>
-              <div className="card">
-                <div className="card-header p-0" id="headingThree">
-                  <h2 className="mb-0">
-                    <button
-                      className="btn btn-block text-left collapsed p-3 alert-warning bg-light"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseThree"
-                      aria-expanded="false"
-                      aria-controls="collapseThree"
-                    >
-                      <b>Desarrollador Web Full Stack</b>
-                    </button>
-                  </h2>
-                </div>
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingThree">
+                  <button
+                    className="accordion-button collapsed bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
+                  >
+                    Desarrollador Web Full Stack
+                  </button>
+                </h2>
                 <div
                   id="collapseThree"
-                  className="collapse"
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingThree"
-                  data-parent="#accordionExample"
+                  data-bs-parent="#accordionExperience"
                 >
-                  <div className="card-body ">
+                  <div className="accordion-body">
                     <p>
                       <b>DESARROLLADOR WEB FULL STACK</b>
                       <p>MoveApps | Agosto 2021 - Actualidad</p>
@@ -151,28 +148,27 @@ export const Experience = () => {
                   </div>
                 </div>
               </div>
-              <div className="card">
-                <div className="card-header p-0" id="headingFour">
-                  <h2 className="mb-0">
-                    <button
-                      className="btn btn-block text-left collapsed p-3 alert-warning bg-light"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseFour"
-                      aria-expanded="false"
-                      aria-controls="collapseFour"
-                    >
-                      <b>Administrador de Empresas / Licenciado en Turismo</b>
-                    </button>
-                  </h2>
-                </div>
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingFour">
+                  <button
+                    className="accordion-button collapsed bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseFour"
+                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
+                  >
+                    Administrador de Empresas / Licenciado en Turismo
+                  </button>
+                </h2>
                 <div
                   id="collapseFour"
-                  className="collapse"
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingFour"
-                  data-parent="#accordionExample"
+                  data-bs-parent="#accordionExperience"
                 >
-                  <div className="card-body">
+                  <div className="accordion-body">
                     <p>
                       <b>ADMINISTRADOR</b>
                       <p>Pesquera Wendtfish | Junio 2020 - Marzo 2021</p>
@@ -237,27 +233,27 @@ export const Experience = () => {
             <div className="text-center text-warning py-4">
               <h4 className="pb-4">Descargar CV</h4>
               <div className="row">
-                <div className="col-0 col-sm-4"></div>
-                <div className="col-12 col-sm-2">
-                  <a
-                    href="https://drive.google.com/file/d/1hZq3nHyhrF1wWlby3E2_2TOvNNOskdte/view?usp=sharing"
-                    download
-                  >
-                    <div className="cv mx-auto" />
-                    Español
-                  </a>
-                </div>
-                <div className="col-12 text-center col-sm-2">
-                  <a
-                    href="https://drive.google.com/file/d/17bB6WH9tQWb7nE_hIALjIVZDAYZ6hSF_/view?usp=sharing"
-                    download
-                  >
-                    <div className="cv mx-auto" />
-                    English
-                  </a>
-                </div>
-                <div className="col-0 col-sm-4"></div>
+              <div className="col-12 col-sm-6">
+                <a
+                  href={cvEsp}
+                  download="Felipe_Arancibia_CV_Esp.pdf"
+                  className="text-decoration-none"
+                >
+                  <div className="cv mx-auto" />
+                  Español
+                </a>
               </div>
+              <div className="col-12 text-center col-sm-6">
+                <a
+                  href={cvEng}
+                  download="Felipe_Arancibia_CV_Eng.pdf"
+                  className="text-decoration-none"
+                >
+                  <div className="cv mx-auto" />
+                  English
+                </a>
+              </div>
+            </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import { 
+  Outlet,
+  useLocation
+} from "react-router-dom";
 import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
 
@@ -10,51 +12,48 @@ import Experience from "./pages/experience";
 import About from "./pages/about";
 import injectContext from "./store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-//create your first component
-const Layout = () => {
-  //the basename is used when your project is published in a subdirectory and not in the root of the domain
-  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-  const basename = process.env.BASENAME || "";
+// Componente de layout que se utilizará en las rutas
+const AppLayout = () => {
+  const location = useLocation();
+  
+  // Desplazarse al inicio al cambiar de ruta
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
-    <BrowserRouter basename={basename}>
-      <ScrollToTop>
-        <NavigationBar />
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-4">
-              <SideBar />
-            </div>
-            <div className="col-12 col-lg-8">
-              <Switch>
-                <Route exact path="/">
-                  <About />
-                </Route>
-              </Switch>
-              <Switch>
-                <Route exact path="/Contact">
-                  <Contact />
-                </Route>
-              </Switch>
-              <Switch>
-                <Route exact path="/experience">
-                  <Experience />
-                </Route>
-              </Switch>
-              <Switch>
-                <Route exact path="/projects">
-                  <Projects />
-                </Route>
-              </Switch>
-            </div>
+    <>
+      <NavigationBar />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-lg-4">
+            <SideBar />
+          </div>
+          <div className="col-12 col-lg-8">
+            <Outlet />
           </div>
         </div>
-      </ScrollToTop>
-    </BrowserRouter>
+      </div>
+    </>
   );
-};
+}
 
-export default injectContext(Layout);
+// Exportar componentes y rutas para que se usen en index.js
+export const routes = [
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      { index: true, element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/experience", element: <Experience /> },
+      { path: "/projects", element: <Projects /> }
+    ]
+  }
+];
+
+// Exportar el componente principal con contexto inyectado
+export default injectContext(AppLayout);
 

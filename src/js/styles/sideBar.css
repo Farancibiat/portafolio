@@ -7,6 +7,7 @@
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   /* border: 1px solid #ffc107; */
+  overflow: hidden;
 }
 
 .topSideBar {
@@ -18,13 +19,15 @@
 }
 
 .prof-foto {
-  background-color: rgba(88, 86, 86, 0.932);
-  background-image: url(../../img/imagen-perfil-sm2.png);
-  background-position: 50% 110%;
-  background-repeat: no-repeat;
   border-radius: 50%;
-  width: 125px;
-  height: 125px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #ffc107;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .circle {
@@ -44,7 +47,7 @@
 }
 .cv {
   background-color: #d9534f;
-  background-image: url(../../img/cv-icon.png);
+  background-image: url(../../assets/img/cv-icon.png);
   background-position: 50% 40%;
   background-repeat: no-repeat;
   border-radius: 50%;
