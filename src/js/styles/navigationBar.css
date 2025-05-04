@@ -149,18 +149,42 @@ a:hover {
   }
   
   .brand-wrapper {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
+    text-align: left;
     margin-left: 0;
   }
 
+  .brand-container {
+    flex-direction: column;
+  }
+
+  .brand-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .brandText {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .brand-highlight {
+    font-size: 1.5rem;
+  }
+
   .brand-separator {
-    display: none;
+    height: 25px;
+    margin: 0 10px;
   }
   
   .social-brand-icons {
-    margin-top: 8px;
+    margin-top: 0;
     justify-content: center;
+  }
+
+  /* Reduce overall navbar height */
+  .container-fluid.py-2 {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
   }
 }

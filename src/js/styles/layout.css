@@ -1,0 +1,100 @@
+/* Layout Styles for Portfolio Site */
+
+/* Navbar container - fixed at the top */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+/* Spacer to prevent content from being hidden under fixed navbar */
+.navbar-spacer {
+  height: 80px;
+}
+
+/* Main layout container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+/* Row for sidebar and content */
+.app-layout-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+  min-height: 90vh;
+  margin-top: 10px;
+}
+
+/* Sidebar column */
+.sidebar-column {
+  flex: 0 0 auto;
+  max-width: 350px;
+  min-width: 300px;
+  height: 100%;
+}
+
+/* Content column */
+.content-column {
+  flex: 1;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* Full width content when no sidebar */
+.content-column.full-width {
+  max-width: 100%;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 992px) {
+  .app-layout-row {
+    flex-direction: column;
+  }
+  
+  .sidebar-column {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .content-column {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Increase spacer height for mobile */
+  .navbar-spacer {
+    height: 100px;
+  }
+}
+
+/* Make sure navigation bar is always at the top */
+nav.navbar {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Larger screens */
+@media (min-width: 1800px) {
+  .navbar-container {
+    padding: 10px 5%;
+  }
+  
+  .container {
+    padding: 10px 5%;
+  }
+  
+  .app-layout-row {
+    gap: 40px;
+  }
+} 

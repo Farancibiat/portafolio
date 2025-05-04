@@ -1,7 +1,8 @@
 import React from "react";
 import BodyFooter from "../component/bodyFooter";
-import { Github } from "react-bootstrap-icons";
+import { Github, Folder } from "react-bootstrap-icons";
 import "../styles/projects.css";
+import "../styles/common.css"; // Import common styles
 import projects from "../store/projectsData";
 
 export const Projects = () => {
@@ -48,15 +49,15 @@ export const Projects = () => {
     <>
       <div className="bodyFrame">
         <div className="container contentScroller">
-          <div className="container my-4 px-5 pb-5 bg-dark card" style={{ border: "none" }}>
-            <h1 className="text-center text-warning my-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
-              Proyectos
+          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+            <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
+              <Folder className="me-2" /> Proyectos
             </h1>
             <p className="text-light mb-4">
               Selección de proyectos desarrollados utilizando distintas tecnologías y frameworks.
               <br /><br />
               Todos los proyectos están disponibles en{" "}
-              <a href="https://github.com/Farancibiat" className="text-danger" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Farancibiat" className="text-warning" target="_blank" rel="noreferrer">
                 Github <Github />
               </a>
             </p>

@@ -8,9 +8,12 @@ import {
   ArrowRightCircle,
   Database,
   Tools,
-  Kanban
+  Kanban,
+  Folder
 } from "react-bootstrap-icons";
 import BodyFooter from "../component/bodyFooter";
+import profile from "../../assets/img/profile.jpg";
+import "../styles/common.css"; // Import common styles
 
 export const About = () => {
   const location = useLocation();
@@ -20,17 +23,26 @@ export const About = () => {
     <>
       <div className="bodyFrame" style={{ maxWidth: isHomePage ? "100%" : "" }}>
         <div className="container contentScroller">
-          <div className="container my-4 px-4 py-5 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
             {/* Hero Section */}
-            <div className="row align-items-center mb-5">
-              <div className="col-lg-10 mx-auto text-center">
+            <div className="row align-items-center mb-4">
+              <div className="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">
+                <div className="profile-container">
+                  <img 
+                    src={profile} 
+                    alt="Felipe Arancibia" 
+                    className="img-fluid"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-9 col-md-8 text-center text-md-start">
                 <h1 className="display-4 fw-bold text-warning mb-3">
                   Felipe Arancibia Torres
                 </h1>
                 <p className="lead text-light mb-4">
                   Desarrollador Full Stack enfocado en transformar las necesidades del negocio en soluciones web modernas y multiplataforma.
                 </p>
-                <div className="d-flex justify-content-center gap-3">
+                <div className="d-flex justify-content-center justify-content-md-start gap-3">
                   <Link to="/projects" className="btn btn-warning px-4 py-2 text-dark">
                     Ver Proyectos <ArrowRightCircle className="ms-2" />
                   </Link>
@@ -110,7 +122,7 @@ export const About = () => {
                       </div>
                       <h3 className="card-title mb-0">Experiencia</h3>
                     </div>
-                    <p className="text-muted">
+                    <p className="card-text text-dark">
                       Amplia experiencia en desarrollo de aplicaciones web, metodologías ágiles y trabajo en equipo. Revisa mi CV completo en inglés y español.
                     </p>
                     <div className="mt-auto pt-3">
@@ -127,11 +139,11 @@ export const About = () => {
                   <div className="card-body d-flex flex-column p-4">
                     <div className="d-flex align-items-center mb-3">
                       <div className="bg-warning p-2 rounded me-3">
-                        <Github size={24} className="text-dark" />
+                        <Folder size={24} className="text-dark" />
                       </div>
                       <h3 className="card-title mb-0">Proyectos</h3>
                     </div>
-                    <p className="text-muted">
+                    <p className="card-text text-dark">
                       Portfolio de proyectos desarrollados con diversas tecnologías. Incluye creación de APIs, implementación de soluciones y herramientas de código abierto.
                     </p>
                     <div className="mt-auto pt-3">
@@ -152,7 +164,7 @@ export const About = () => {
                       </div>
                       <h3 className="card-title mb-0">Contacto</h3>
                     </div>
-                    <p className="text-muted">
+                    <p className="card-text text-dark">
                       ¿Interesado en trabajar juntos? Estoy disponible para proyectos freelance y nuevas oportunidades laborales.
                     </p>
                     <div className="mt-auto pt-3">

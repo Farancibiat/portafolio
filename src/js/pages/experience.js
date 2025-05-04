@@ -2,14 +2,17 @@ import React from "react";
 import BodyFooter from "../component/bodyFooter";
 import cvEsp from "../../assets/Felipe Arancibia Esp.pdf";
 import cvEng from "../../assets/Felipe Arancibia Eng.pdf";
+import "../styles/common.css";
+import { Briefcase } from "react-bootstrap-icons";
+
 export const Experience = () => {
   return (
     <>
       <div className="bodyFrame">
         <div className="container contentScroller">
-          <div className="container my-4 px-5 pb-5 bg-dark card" style={{ border: "none" }}>
-            <h1 className="text-center text-warning my-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
-              Experiencia
+          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+            <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
+              <Briefcase className="me-2" /> Experiencia
             </h1>
 
             <div className="accordion" id="accordionExperience">
@@ -262,4 +265,5 @@ export const Experience = () => {
     </>
   );
 };
+
 export default Experience;

@@ -16,6 +16,7 @@ import About from "./pages/about";
 import injectContext from "./store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./styles/layout.css"; // Importamos un nuevo CSS específico para el layout
 
 // Componente de transición para cada página individual
 const AnimatedPage = ({ children }) => {
@@ -25,7 +26,7 @@ const AnimatedPage = ({ children }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      style={{ width: '100%', height: '100%', position: 'relative' }}
+      style={{ width: '100%', height: '100%' }}
     >
       {children}
     </motion.div>
@@ -79,14 +80,17 @@ const AppLayout = () => {
 
   return (
     <>
-      <NavigationBar />
+      <div className="navbar-container">
+        <NavigationBar />
+      </div>
+      <div className="navbar-spacer"></div>
       <div className="container">
-        <div className="row">
+        <div className="app-layout-row">
           {/* Sidebar con animación de expansión/contracción */}
           <AnimatePresence mode="wait">
             {!isHomePage && (
               <motion.div 
-                className="col-12 col-lg-4"
+                className="sidebar-column"
                 key="sidebar"
                 variants={sidebarVariants}
                 initial="hidden"
@@ -101,13 +105,12 @@ const AppLayout = () => {
           
           {/* Contenido principal con transición mejorada */}
           <motion.div 
-            className={`col-12 ${isHomePage ? 'col-lg-12' : 'col-lg-8'}`}
+            className={`content-column ${isHomePage ? 'full-width' : ''}`}
             layout="position"
             transition={{ 
               type: "tween",
               duration: 0.3
             }}
-            style={{ display: 'flex', flexDirection: 'column' }}
           >
             <AnimatePresence mode="wait" initial={false}>
               <Routes location={location} key={location.pathname}>
