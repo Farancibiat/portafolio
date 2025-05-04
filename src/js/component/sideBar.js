@@ -24,7 +24,7 @@ export const SideBar = () => {
           </div>
           <div className="text-center text-light">
             <h3>Felipe Arancibia</h3>
-            <p className="mb-1">Desarrollador Web Full Stack Jr.</p>
+            <p className="mb-1">Desarrollador Full Stack</p>
             <p>
               <em>Administrador de Empresas de turismo</em>
             </p>
@@ -47,45 +47,35 @@ export const SideBar = () => {
                 <p>Inglés - C2</p>
               </div>
             </div>
-            {/* <div className="row mt-2">
-              <div className="col-12">
-                <p className="small fst-italic">Experiencia en entornos laborales internacionales y comunicación técnica fluida en ambos idiomas.</p>
-              </div>
-            </div> */}
           </div>
           <hr className="bg-light mx-4" />
           <div className="codeblock text-center px-4">
-            <h5 className="text-light text-center">Stack</h5>
+            <h5 className="text-light text-center">Stack Tecnológico</h5>
             <div className="container">
               <div className="row text-light">
                 <div className="col-12 col-md-6">
+                  <h6 className="text-warning mb-2">Frontend</h6>
                   <ul className="ps-0 text-start">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>SCSS</li>
-                    <li>Javascript</li>
-                    <li>TypeScript</li>
                     <li>React JS</li>
+                    <li>Next JS</li>
+                    <li>TypeScript</li>
                     <li>Redux</li>
-                    <li>Next Js</li>
                     <li>Tailwind</li>
                     <li>Ant Design</li>
                     <li>Bootstrap</li>
                     <li>Material UI</li>
+                    <li>Shadcn UI</li>                    
                   </ul>
                 </div>
                 <div className="col-12 col-md-6">
+                  <h6 className="text-warning mb-2">Backend</h6>
                   <ul className="ps-0 text-start">
-                    <li>Java</li>
-                    <li>Spring Framework</li>
-                    <li>REST API's</li>
-                    <li>Express</li>
-                    <li>Sails JS</li>
-                    <li>FLASK</li>
-                    <li>SQLAlchemy</li>
+                    <li>Java / Spring</li>
+                    <li>Express / Node.js</li>
+                    <li>Flask / Python</li>
+                    <li>REST APIs</li>
                     <li>PostgreSQL</li>
-                    <li>Python</li>
-                    <li>CI/CD</li>
+                    <li>SQLAlchemy</li>
                   </ul>
                 </div>
               </div>
@@ -93,14 +83,14 @@ export const SideBar = () => {
           </div>
           <hr className="bg-light mx-4" />
           <div className="deployblock text-center px-4 text-light mb-3">
-            <h5 className="text-center">Deployments</h5>
+            <h5 className="text-center">Cloud & DevOps</h5>
             <div className="row">
               <div className="col-12">
                 <ul className="ps-0 text-start">
+                  <li>Azure</li>
+                  <li>CI/CD Pipelines</li>
+                  <li>Vercel / Netlify</li>
                   <li>Heroku</li>
-                  <li>Netifly</li>
-                  <li>Vercel</li>
-                  <li>Jenkins</li>
                 </ul>
               </div>
             </div>
@@ -109,31 +99,27 @@ export const SideBar = () => {
           <div className="knoledgeblock text-light px-4">
             <div className="row text-light">
               <div className="col-12">
-                <h5 className="text-center">Stack adicional</h5>
+                <h5 className="text-center">Metodologías y Herramientas</h5>
                 <ul className="ps-0 text-start">
                   <li>
                     <Check className="text-warning me-2" />
-                    Git - Github - Bitbucket - GitLab
+                    Git - Github - Bitbucket
                   </li>
                   <li>
                     <Check className="text-warning me-2" />
-                    Azure
+                    Agile - Scrum
                   </li>
                   <li>
                     <Check className="text-warning me-2" />
-                    Metodología Scrum Agile
-                  </li>
-                  <li>
-                    <Check className="text-warning me-2" />
-                    Administración Google Workspace
-                  </li>
-                  <li>
-                    <Check className="text-warning me-2" />
-                    Jira 
+                    Jira - Project Management 
                   </li>
                   <li>
                     <Check className="text-warning me-2" />
                     Testing (Jest, React Testing Library)
+                  </li>
+                  <li>
+                    <Check className="text-warning me-2" />
+                    Google Workspace Admin
                   </li>
                 </ul>
               </div>
@@ -169,12 +155,12 @@ export const SideBar = () => {
         <div className="botSideBar">
           <div className="row px-5 py-3 text-center">
             <div className="col-4 ">
-              <a href="https://www.linkedin.com/in/farancibiat/">
+              <a href="https://www.linkedin.com/in/farancibiat/" target="_blank" rel="noreferrer">
                 <Linkedin />
               </a>
             </div>
             <div className="col-4 ">
-              <a href="https://github.com/Farancibiat">
+              <a href="https://github.com/Farancibiat" target="_blank" rel="noreferrer">
                 <Github />
               </a>
             </div>

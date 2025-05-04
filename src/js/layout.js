@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { 
-  Outlet,
-  useLocation
+  useLocation,
+  Routes,
+  Route,
+  BrowserRouter
 } from "react-router-dom";
 import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
@@ -14,46 +17,132 @@ import injectContext from "./store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+// Componente de transición para cada página individual
+const AnimatedPage = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ width: '100%', height: '100%', position: 'relative' }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 // Componente de layout que se utilizará en las rutas
 const AppLayout = () => {
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
+  const [mounted, setMounted] = useState(false);
   
-  // Desplazarse al inicio al cambiar de ruta
-  React.useEffect(() => {
+  // Aseguramos que los componentes se monten correctamente
+  useEffect(() => {
+    setMounted(true);
+    // Scroll to top on route change
     window.scrollTo(0, 0);
-  }, [location]);
+    return () => setMounted(false);
+  }, [location.pathname]);
+  
+  // Variante para la animación del sidebar
+  const sidebarVariants = {
+    hidden: { 
+      width: 0,
+      opacity: 0,
+      scaleX: 0,
+      originX: 0,
+    },
+    visible: { 
+      width: "auto",
+      opacity: 1,
+      scaleX: 1,
+      transition: { 
+        duration: 0.3,
+        ease: "easeOut",
+      }
+    },
+    exit: { 
+      width: 0,
+      opacity: 0,
+      scaleX: 0,
+      originX: 0,
+      transition: { 
+        duration: 0.2,
+        ease: "easeIn",
+      }
+    }
+  };
+
+  if (!mounted) return null; // Evita renderizados antes de que el componente esté listo
 
   return (
     <>
       <NavigationBar />
       <div className="container">
         <div className="row">
-          <div className="col-12 col-lg-4">
-            <SideBar />
-          </div>
-          <div className="col-12 col-lg-8">
-            <Outlet />
-          </div>
+          {/* Sidebar con animación de expansión/contracción */}
+          <AnimatePresence mode="wait">
+            {!isHomePage && (
+              <motion.div 
+                className="col-12 col-lg-4"
+                key="sidebar"
+                variants={sidebarVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                style={{ overflow: 'hidden' }}
+              >
+                <SideBar />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
+          {/* Contenido principal con transición mejorada */}
+          <motion.div 
+            className={`col-12 ${isHomePage ? 'col-lg-12' : 'col-lg-8'}`}
+            layout="position"
+            transition={{ 
+              type: "tween",
+              duration: 0.3
+            }}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <Routes location={location} key={location.pathname}>
+                <Route index element={<AnimatedPage><About /></AnimatedPage>} />
+                <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+                <Route path="/experience" element={<AnimatedPage><Experience /></AnimatedPage>} />
+                <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
+              </Routes>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </>
   );
-}
+};
+
+// Componente principal con contexto inyectado
+const AppWithContext = injectContext(AppLayout);
+
+// Componente App con BrowserRouter que contiene el contexto
+const App = () => {
+  return (
+    <BrowserRouter basename={process.env.BASENAME || ""}>
+      <AppWithContext />
+    </BrowserRouter>
+  );
+};
 
 // Exportar componentes y rutas para que se usen en index.js
 export const routes = [
   {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      { index: true, element: <About /> },
-      { path: "/contact", element: <Contact /> },
-      { path: "/experience", element: <Experience /> },
-      { path: "/projects", element: <Projects /> }
-    ]
+    path: "*",
+    element: <App />
   }
 ];
 
-// Exportar el componente principal con contexto inyectado
-export default injectContext(AppLayout);
+export default App;
 
