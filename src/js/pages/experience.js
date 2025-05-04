@@ -1,262 +1,593 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BodyFooter from "../component/bodyFooter";
 import cvEsp from "../../assets/Felipe Arancibia Esp.pdf";
 import cvEng from "../../assets/Felipe Arancibia Eng.pdf";
 import "../styles/common.css";
-import { Briefcase } from "react-bootstrap-icons";
+import "../styles/experience.css";
+import { 
+  Briefcase, 
+  PersonBadge, 
+  BuildingFill, 
+  Calendar, 
+  Download, 
+  GeoAlt, 
+  Translate, 
+  Award, 
+  Mortarboard, 
+  Tools,
+  CodeSquare,
+  Building,
+  ChevronRight
+} from "react-bootstrap-icons";
 
 export const Experience = () => {
+  // References for each section for smooth scrolling
+  const profileRef = useRef(null);
+  const careerDevRef = useRef(null);
+  const careerAdminRef = useRef(null);
+  const educationRef = useRef(null);
+  const skillsRef = useRef(null);
+  const downloadRef = useRef(null);
+  
+  // State for sticky subnav
+  const [activeSection, setActiveSection] = useState('profile');
+  const [isSticky, setIsSticky] = useState(false);
+  const subnavRef = useRef(null);
+  const subnavContainerRef = useRef(null);
+  
+  // Handle scroll for sticky subnav and active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      
+      // Handle sticky subnav
+      if (subnavContainerRef.current) {
+        const { top } = subnavContainerRef.current.getBoundingClientRect();
+        setIsSticky(top <= 100);
+      }
+      
+      // Handle active section based on scroll position
+      if (profileRef.current && scrollPosition < profileRef.current.offsetTop + profileRef.current.offsetHeight - 200) {
+        setActiveSection('profile');
+      } else if (careerDevRef.current && scrollPosition < careerDevRef.current.offsetTop + careerDevRef.current.offsetHeight - 200) {
+        setActiveSection('careerDev');
+      } else if (careerAdminRef.current && scrollPosition < careerAdminRef.current.offsetTop + careerAdminRef.current.offsetHeight - 200) {
+        setActiveSection('careerAdmin');
+      } else if (educationRef.current && scrollPosition < educationRef.current.offsetTop + educationRef.current.offsetHeight - 200) {
+        setActiveSection('education');
+      } else if (skillsRef.current && scrollPosition < skillsRef.current.offsetTop + skillsRef.current.offsetHeight - 200) {
+        setActiveSection('skills');
+      } else {
+        setActiveSection('download');
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Function for smooth scrolling to sections
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <div className="bodyFrame">
         <div className="container contentScroller">
           <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
-            <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
-              <Briefcase className="me-2" /> Experiencia
-            </h1>
-
-            <div className="accordion" id="accordionExperience">
-              <div className="accordion-item">
-                <h2 className="accordion-header" id="headingOne">
-                  <button
-                    className="accordion-button bg-light"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
-                  >
-                    Perfil
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse show"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExperience"
-                >
-                  <div className="accordion-body">
-                    Me gusta trabajar en equipo, generar lazos de confianza que
-                    facilitenel trabajo colaborativo y trabajar en ambientes
-                    distendidos.
-                    <br />
-                    <br />
-                    Me acomoda t rabajar enfocado en metas y analizo
-                    constantemente mientorno en busca de oportunidades que me
-                    ayuden a obtener mayorbienestar y mejores resultados, me
-                    gusta enseñar y valoro el consejode mis colegas.
-                    <br />
-                  </div>
-                </div>
+            {/* Header Section */}
+            <div className="row mb-3">
+              <div className="col-12 text-center">
+                <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
+                  <Briefcase className="me-2" /> Experiencia
+                </h1>
+                <p className="lead text-light">
+                  Un recorrido por mi trayectoria profesional en desarrollo y administración.
+                </p>
               </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header" id="headingTwo">
-                  <button
-                    className="accordion-button collapsed bg-light"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
-                  >
-                    Educación
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingTwo"
-                  data-bs-parent="#accordionExperience"
+            </div>
+            
+            {/* Subnav Menu */}
+            <div className="subnav-container" ref={subnavContainerRef}>
+              <div className={`subnav ${isSticky ? 'sticky' : ''}`} ref={subnavRef}>
+                <a 
+                  className={`subnav-link ${activeSection === 'profile' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(profileRef)}
                 >
-                  <div className="accordion-body">
-                    <p>
-                      <b>FULL STACK WEB DEVELOPER</b>
-                      <p>4Geeks Academy | Diciembre 2020 - Mayo 2021</p>
-                    </p>
+                  Perfil
+                </a>
+                <a 
+                  className={`subnav-link ${activeSection === 'careerDev' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(careerDevRef)}
+                >
+                  Desarrollo TI
+                </a>
+                <a 
+                  className={`subnav-link ${activeSection === 'careerAdmin' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(careerAdminRef)}
+                >
+                  Administración
+                </a>
+                <a 
+                  className={`subnav-link ${activeSection === 'education' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(educationRef)}
+                >
+                  Educación
+                </a>
+                <a 
+                  className={`subnav-link ${activeSection === 'skills' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(skillsRef)}
+                >
+                  Habilidades
+                </a>
+                <a 
+                  className={`subnav-link ${activeSection === 'download' ? 'active' : ''}`}
+                  onClick={() => scrollToSection(downloadRef)}
+                >
+                  CV
+                </a>
+              </div>
+            </div>
 
-                    <p>
-                      <b>
-                        ADMINISTRACIÓN DE EMPRESAS - LICENCIATURA EN TURISMO
-                      </b>
-                      <p>Universidad Austral de Chile | 2013 - 2016</p>
-                    </p>
+            {/* Profile Section */}
+            <div 
+              className="p-4 mb-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={profileRef}
+              id="profile"
+            >
+              <div className="d-flex align-items-center mb-3">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <PersonBadge size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Perfil</h2>
+              </div>
+              <p className="text-light">
+                Me gusta trabajar en equipo, generar lazos de confianza que faciliten el trabajo colaborativo 
+                y trabajar en ambientes distendidos.
+              </p>
+              <p className="text-light">
+                Me acomoda trabajar enfocado en metas y analizo constantemente mi entorno en busca de 
+                oportunidades que me ayuden a obtener mayor bienestar y mejores resultados. 
+                Me gusta enseñar y valoro el consejo de mis colegas.
+              </p>
+            </div>
 
-                    <p>
-                      <b>INGENIERÍA COMERCIAL</b>
-                      <p>
-                        Universidad Técnica Federico Santa María | 2009 - 2012
-                        <p>
-                          <em>Incompleta </em>
-                        </p>
+            {/* IT Career Section */}
+            <div 
+              className="p-4 mb-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={careerDevRef}
+              id="careerDev"
+            >
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <CodeSquare size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Trayectoria en Desarrollo TI</h2>
+              </div>
+
+              {/* Timeline format for IT work experience */}
+              <div className="timeline">
+                {/* Siigroup-Scotiabank */}
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> Ene 2023 - Actualidad</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Remoto</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Desarrollador Full-Stack Senior</h4>
+                      <h5 className="text-light mb-3">Siigroup - Scotiabank</h5>
+                      <p className="text-light mb-2">
+                        Desarrollador Senior en equipo Agile SCRUM. Proyecto principal: aplicación de atención al cliente para Scotiabank.
                       </p>
-                    </p>
+                      <ul className="text-light">
+                        <li>Desarrollo y mantenimiento de plataforma de servicio al cliente usando Angular y .NET.</li>
+                        <li>Implementación de nuevas funcionalidades y mejoras en la interfaz de usuario.</li>
+                        <li>Colaboración en equipo multidisciplinario siguiendo metodología Agile SCRUM.</li>
+                        <li>Resolución de incidencias y optimización de rendimiento en aplicaciones existentes.</li>
+                        <li>Trabajo con bases de datos SQL Server y servicios REST.</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header" id="headingThree">
-                  <button
-                    className="accordion-button collapsed bg-light"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
-                  >
-                    Desarrollador Web Full Stack
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingThree"
-                  data-bs-parent="#accordionExperience"
-                >
-                  <div className="accordion-body">
-                    <p>
-                      <b>DESARROLLADOR WEB FULL STACK</b>
-                      <p>MoveApps | Agosto 2021 - Actualidad</p>
-                    </p>
-                    <p>
-                      Trabajo con metodología scrum agile, uso de Bitbucket y
-                      Azure.
-                    </p>
-                    <ul>
-                      <li>
-                        Desarrollo de features para API, sitio de administración
-                        y website para{" "}
-                        <a
-                          className="text-danger"
-                          href="https://plataforma.chileconverge.cl/"
-                        >
-                          Chile Converge
-                        </a>
-                        .
-                      </li>
-                      <li>
-                        Desarrollo de features para website de{" "}
-                        <a className="text-danger" href="https://uno.cl/">
-                          AFP Uno
-                        </a>
-                        .
-                      </li>
-                      <li>
-                        Desarrollo front para proyecto de atención de clientes
-                        de MOVICARE.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header" id="headingFour">
-                  <button
-                    className="accordion-button collapsed bg-light"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseFour"
-                    style={{ color: "rgb(133, 100, 4)", fontWeight: "bold" }}
-                  >
-                    Administrador de Empresas / Licenciado en Turismo
-                  </button>
-                </h2>
-                <div
-                  id="collapseFour"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingFour"
-                  data-bs-parent="#accordionExperience"
-                >
-                  <div className="accordion-body">
-                    <p>
-                      <b>ADMINISTRADOR</b>
-                      <p>Pesquera Wendtfish | Junio 2020 - Marzo 2021</p>
-                    </p>
-                    <ul>
-                      <li>
-                        Desarrollo y operación de sistema de control financiero.
-                      </li>
-                      <li>Análisis y gestión de brechas administrativas.</li>
-                      <li>Implementación de sistema G-suite.</li>
-                      <li>Negociación y gestión de proveedores.</li>
-                    </ul>
-                    <p>
-                      <b>DIRECTOR EJECUTIVO</b>
-                      <p>
-                        Corporación Chiloé Convention Bureau | Agosto 2019 -
-                        Noviembre 2019
-                      </p>
-                    </p>
-                    <ul>
-                      <li>Evaluación de desempeño del proyecto.</li>
-                      <li>
-                        Regularización de brechas para rendición de PROFO.
-                      </li>
-                      <li>Rendición anual de fondos.</li>
-                    </ul>
-                    <p>
-                      <b>JEFE DE DESARROLLO Y FINANZAS</b>
-                      <p>Turismo Pehuén | octubre 2016 - Octubre 2018 </p>
-                    </p>
-                    <ul>
-                      <li>
-                        Desarrollo, proyección y control de la gestión
-                        financiera y contable.
-                      </li>
-                      <li>Rediseño de sistema de gestión administrativa.</li>
-                      <li>Gestor de proyecto web.</li>
-                      <li>
-                        Desarrollo y mantención de Manual de operación
-                        institucional.
-                      </li>
-                      <li>Estructuración departamental de la empresa.</li>
-                      <li>Responsable de gestión de Recursos Humanos. </li>
-                    </ul>
 
-                    <p>
-                      <b>GERENTE DE OPERACIONES</b>
-                      <p>Grupo Prioridad | Enero 2015 - Octubre 2016 </p>
-                    </p>
-                    <ul>
-                      <li>Negociación y gestión de proveedores.</li>
-                      <li>
-                        Responsable de implementación de pantallas informativas
-                        TERVAL.
-                      </li>
-                    </ul>
+                {/* AFP UNO */}
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> May 2022 - Dic 2022</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Remoto</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Desarrollador Frontend</h4>
+                      <h5 className="text-light mb-3">AFP UNO</h5>
+                      <p className="text-light mb-2">
+                        Desarrollador Frontend en el equipo de web pública y plataformas internas.
+                      </p>
+                      <ul className="text-light">
+                        <li>Desarrollo y mantenimiento del sitio web corporativo usando React y NextJS.</li>
+                        <li>Implementación de landing pages y micrositios para campañas específicas.</li>
+                        <li>Optimización de rendimiento y experiencia de usuario en plataformas digitales.</li>
+                        <li>Colaboración con equipos de diseño y marketing para implementar nuevas funcionalidades.</li>
+                        <li>Desarrollo de componentes reutilizables y mantenimiento de la biblioteca de UI.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* MoveApps */}
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> Ago 2021 - Abr 2022</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Remoto</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Desarrollador Full-Stack</h4>
+                      <h5 className="text-light mb-3">MoveApps</h5>
+                      <p className="text-light mb-2">
+                        Programador en equipo ágil SCRUM. Trabajo con Azure DevOps y Bitbucket.
+                      </p>
+                      <ul className="text-light">
+                        <li>Desarrollo de proyectos/microservicios de apps web y API REST diversos con equipos multidisciplinarios.</li>
+                        <li>Desarrollo y mantención de proyectos de mediana complejidad.</li>
+                        <li>Cooperación y seguimiento de sprint junto a equipo de diseñadores, QA, product owner y scrum master.</li>
+                        <li>Desarrollo de features para API (Node.js/Java), sitio de administración (React) y website (PHP) para proyecto Chile Converge.</li>
+                        <li>Desarrollo de features y mantenimiento de sitio web de AFP UNO.</li>
+                        <li>Participación en proyecto MOVICARE, desarrollo frontend con React-Typescript.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+             
+
+
+              </div>
+            </div>
+
+            {/* Administrative Career Section */}
+            <div 
+              className="p-4 mb-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={careerAdminRef}
+              id="careerAdmin"
+            >
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <Building size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Trayectoria en Administración</h2>
+              </div>
+
+              {/* Timeline format for administrative work experience */}
+              <div className="timeline">
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> Jun 2020 - Mar 2021</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Chile</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Administrador</h4>
+                      <h5 className="text-light mb-3">Pesquera Wendtfish</h5>
+                      <ul className="text-light">
+                        <li>Desarrollo y operación de sistema de control financiero.</li>
+                        <li>Análisis y gestión de brechas administrativas.</li>
+                        <li>Implementación de sistema G-suite para mejora de procesos.</li>
+                        <li>Negociación y gestión de proveedores.</li>
+                        <li>Supervisión de equipos operativos y administrativos.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> Ago 2019 - Nov 2019</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Chiloé, Chile</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Director Ejecutivo</h4>
+                      <h5 className="text-light mb-3">Corporación Chiloé Convention Bureau</h5>
+                      <ul className="text-light">
+                        <li>Evaluación de desempeño del proyecto.</li>
+                        <li>Regularización de brechas para rendición de PROFO.</li>
+                        <li>Rendición anual de fondos.</li>
+                        <li>Coordinación de actividades de promoción turística.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="timeline-item mb-4">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <div className="bg-warning timeline-marker"></div>
+                        <div>
+                          <p className="text-light mb-1"><Calendar className="me-2" /> Oct 2016 - Oct 2018</p>
+                          <p className="text-light mb-0"><GeoAlt className="me-2" /> Chile</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-9">
+                      <h4 className="text-warning">Jefe de Desarrollo y Finanzas</h4>
+                      <h5 className="text-light mb-3">Turismo Pehuén</h5>
+                      <ul className="text-light">
+                        <li>Desarrollo, proyección y control de la gestión financiera y contable.</li>
+                        <li>Rediseño de sistema de gestión administrativa.</li>
+                        <li>Gestor de proyecto web y digitalización de procesos.</li>
+                        <li>Desarrollo y mantención de Manual de operación institucional.</li>
+                        <li>Estructuración departamental de la empresa.</li>
+                        <li>Responsable de gestión de Recursos Humanos.</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="text-center text-warning py-4">
-              <h4 className="pb-4">Descargar CV</h4>
+            {/* Education Section */}
+            <div 
+              className="p-4 mb-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={educationRef}
+              id="education"
+            >
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <Mortarboard size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Educación</h2>
+              </div>
+
+              <div className="row mb-4">
+                <div className="col-md-3">
+                  <div className="d-flex align-items-center mb-2">
+                    <Calendar className="text-warning me-2" />
+                    <p className="text-light mb-0">Feb 2020 - Dic 2020</p>
+                  </div>
+                </div>
+                <div className="col-md-9">
+                  <h4 className="text-warning">Full Stack Web Developer</h4>
+                  <p className="text-light">4Geeks Academy</p>
+                  <ul className="text-light">
+                    <li>Desarrollo frontend con HTML, CSS, JavaScript y React</li>
+                    <li>Desarrollo backend con Python, Flask y SQL</li>
+                    <li>Control de versiones con Git y GitHub</li>
+                    <li>Metodologías ágiles y gestión de proyectos</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="row mb-4">
+                <div className="col-md-3">
+                  <div className="d-flex align-items-center mb-2">
+                    <Calendar className="text-warning me-2" />
+                    <p className="text-light mb-0">2013 - 2016</p>
+                  </div>
+                </div>
+                <div className="col-md-9">
+                  <h4 className="text-warning">Administración de Empresas - Licenciatura en Turismo</h4>
+                  <p className="text-light">Universidad Austral de Chile</p>
+                </div>
+              </div>
+
               <div className="row">
-              <div className="col-12 col-sm-6">
-                <a
-                  href={cvEsp}
-                  download="Felipe_Arancibia_CV_Esp.pdf"
-                  className="text-decoration-none"
-                >
-                  <div className="cv mx-auto" />
-                  Español
-                </a>
-              </div>
-              <div className="col-12 text-center col-sm-6">
-                <a
-                  href={cvEng}
-                  download="Felipe_Arancibia_CV_Eng.pdf"
-                  className="text-decoration-none"
-                >
-                  <div className="cv mx-auto" />
-                  English
-                </a>
+                <div className="col-md-3">
+                  <div className="d-flex align-items-center mb-2">
+                    <Calendar className="text-warning me-2" />
+                    <p className="text-light mb-0">2009 - 2012</p>
+                  </div>
+                </div>
+                <div className="col-md-9">
+                  <h4 className="text-warning">Ingeniería Comercial</h4>
+                  <p className="text-light">Universidad Técnica Federico Santa María <span className="text-warning">(Incompleta)</span></p>
+                </div>
               </div>
             </div>
+
+            {/* Skills Section */}
+            <div 
+              className="p-4 mb-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={skillsRef}
+              id="skills"
+            >
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <Tools size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Habilidades Técnicas</h2>
+              </div>
+
+              <div className="row g-3">
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-laptop-code me-2"></i> Frontend
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">React</span>
+                      <span className="badge skill-badge">JavaScript</span>
+                      <span className="badge skill-badge">TypeScript</span>
+                      <span className="badge skill-badge">HTML5</span>
+                      <span className="badge skill-badge">CSS3</span>
+                      <span className="badge skill-badge">SCSS</span>
+                      <span className="badge skill-badge">Bootstrap</span>
+                      <span className="badge skill-badge">Material UI</span>
+                      <span className="badge skill-badge">Angular</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-server me-2"></i> Backend
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">Node.js</span>
+                      <span className="badge skill-badge">Express</span>
+                      <span className="badge skill-badge">Python</span>
+                      <span className="badge skill-badge">Flask</span>
+                      <span className="badge skill-badge">Spring Boot</span>
+                      <span className="badge skill-badge">Java</span>
+                      <span className="badge skill-badge">RESTful APIs</span>
+                      <span className="badge skill-badge">SQL</span>
+                      <span className="badge skill-badge">.NET</span>
+                      <span className="badge skill-badge">C#</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-database me-2"></i> Base de Datos
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">PostgreSQL</span>
+                      <span className="badge skill-badge">MySQL</span>
+                      <span className="badge skill-badge">MongoDB</span>
+                      <span className="badge skill-badge">SQLite</span>
+                      <span className="badge skill-badge">Firebase</span>
+                      <span className="badge skill-badge">SQL Server</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-tools me-2"></i> DevOps & Herramientas
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">Git</span>
+                      <span className="badge skill-badge">Azure DevOps</span>
+                      <span className="badge skill-badge">CI/CD</span>
+                      <span className="badge skill-badge">Docker</span>
+                      <span className="badge skill-badge">Bitbucket</span>
+                      <span className="badge skill-badge">Jira</span>
+                      <span className="badge skill-badge">GitHub</span>
+                      <span className="badge skill-badge">Jest</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-sitemap me-2"></i> Metodologías
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">Agile</span>
+                      <span className="badge skill-badge">Scrum</span>
+                      <span className="badge skill-badge">Kanban</span>
+                      <span className="badge skill-badge">CI/CD</span>
+                      <span className="badge skill-badge">TDD</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="skill-container">
+                    <h4 className="text-warning mb-3">
+                      <i className="fas fa-language me-2"></i> Idiomas
+                    </h4>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge skill-badge">Español (Nativo)</span>
+                      <span className="badge skill-badge">Inglés (Avanzado)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Download CV Section */}
+            <div 
+              className="p-4 rounded experience-section" 
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+              ref={downloadRef}
+              id="download"
+            >
+              <div className="d-flex align-items-center justify-content-center mb-4">
+                <div className="bg-warning p-2 rounded-circle me-3">
+                  <Download size={20} className="text-dark" />
+                </div>
+                <h2 className="text-warning mb-0">Curriculum Vitae</h2>
+              </div>
+              
+              <div className="card bg-dark p-3 mb-3 border-0 rounded">
+                <div className="row g-0">
+                  <div className="col-md-2 col-sm-3 text-center d-flex align-items-center justify-content-center">
+                    <Award className="text-warning" size={44} />
+                  </div>
+                  <div className="col-md-7 col-sm-9">
+                    <div className="card-body ps-md-0 py-md-1">
+                      <h4 className="card-title text-warning mb-2">Español</h4>
+                      <p className="card-text text-light mb-2">Versión completa en español de mi currículum vitae</p>
+                    </div>
+                  </div>
+                  <div className="col-md-3 col-12 d-flex align-items-center justify-content-md-end justify-content-center mt-3 mt-md-0">
+                    <a
+                      href={cvEsp}
+                      download="Felipe_Arancibia_CV_Esp.pdf"
+                      className="btn btn-warning px-4 text-dark"
+                    >
+                      Descargar <Download className="ms-2" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card bg-dark p-3 border-0 rounded">
+                <div className="row g-0">
+                  <div className="col-md-2 col-sm-3 text-center d-flex align-items-center justify-content-center">
+                    <Translate className="text-warning" size={44} />
+                  </div>
+                  <div className="col-md-7 col-sm-9">
+                    <div className="card-body ps-md-0 py-md-1">
+                      <h4 className="card-title text-warning mb-2">English</h4>
+                      <p className="card-text text-light mb-2">Full English version of my curriculum vitae</p>
+                    </div>
+                  </div>
+                  <div className="col-md-3 col-12 d-flex align-items-center justify-content-md-end justify-content-center mt-3 mt-md-0">
+                    <a
+                      href={cvEng}
+                      download="Felipe_Arancibia_CV_Eng.pdf"
+                      className="btn btn-warning px-4 text-dark"
+                    >
+                      Download <Download className="ms-2" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

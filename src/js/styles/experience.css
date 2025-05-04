@@ -1,0 +1,215 @@
+/* Experience component styles */
+
+/* Sticky subnav */
+.subnav-container {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 25px;
+}
+
+.subnav {
+  background-color: rgba(33, 37, 41, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.subnav.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+/* Agregar clase específica para el submenu dentro del componente */
+.contentScroller .subnav.sticky {
+  width: calc(100% - 50px); /* Ajustar al ancho del contenedor de experience menos el padding */
+  left: 25px;
+  right: 25px;
+  margin: 0 auto;
+  max-width: 1110px; /* Coincidir con el ancho del contenedor */
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.subnav-link {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 15px;
+  padding: 5px 0;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  position: relative;
+  cursor: pointer;
+}
+
+.subnav-link:hover,
+.subnav-link.active {
+  color: #ffc107;
+}
+
+.subnav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffc107;
+  transition: width 0.3s ease;
+}
+
+.subnav-link:hover::after,
+.subnav-link.active::after {
+  width: 100%;
+}
+
+/* Timeline styling */
+.timeline-item {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid rgba(255, 193, 7, 0.5);
+  margin-left: 10px;
+}
+
+.timeline-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: -7px;
+  top: 5px;
+}
+
+/* Card styling for download section */
+.download-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px !important;
+  background-color: rgba(255, 255, 255, 0.97) !important;
+}
+
+.download-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* CV card styling to match sidebar */
+.cv-download-card {
+  background-color: #212529 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+}
+
+.cv-download-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cv-button {
+  background-color: #212529;
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cv-button:hover {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border-color: rgba(255, 193, 7, 0.5);
+  text-decoration: none;
+}
+
+/* Skill badges */
+.skill-container {
+  background-color: rgba(52, 58, 64, 0.4);
+  border-radius: 8px;
+  padding: 15px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.skill-container:hover {
+  background-color: rgba(52, 58, 64, 0.6);
+  transform: translateY(-3px);
+}
+
+.skill-badge {
+  background-color: transparent !important;
+  color: rgba(255, 193, 7, 0.9) !important;
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  margin: 3px;
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background-color: rgba(255, 193, 7, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+/* Section styling */
+.experience-section {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  scroll-margin-top: 80px; /* Ajustado para tener en cuenta el submenú fijo */
+}
+
+.experience-section:hover {
+  transform: scale(1.01);
+}
+
+/* Timeline date styling */
+.timeline-date {
+  color: rgba(255, 193, 7, 0.9);
+  font-weight: 500;
+}
+
+/* For small screens */
+@media (max-width: 767px) {
+  .timeline-item {
+    padding-left: 15px;
+    margin-left: 0;
+  }
+  
+  .subnav-link {
+    margin: 0 8px;
+    font-size: 0.8rem;
+  }
+  
+  .subnav.sticky {
+    max-width: 100%;
+    width: 100%;
+    top: 0;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .contentScroller .subnav.sticky {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+} 
