@@ -11,7 +11,7 @@ export const projects = [
     id: 2,
     title: "Swim App MVP",
     description: "WebApp para natación, ambiente de desarrollo, API en Spring Boot aún no tiene deploy.",
-    projectUrl: "https://swim.farancibiat.com/",
+    projectUrl: "https://swim.farancibiat.cl/",
     repoUrl: "https://github.com/farancibiat/swimmate-app",
     hasLiveDemo: true
   },
