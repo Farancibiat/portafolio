@@ -1,0 +1,9 @@
+# Reglas de redirección para Netlify
+
+# Redirección para Single Page Application (SPA)
+# Esto asegura que todas las rutas sean manejadas por index.html
+# permitiendo que React Router funcione correctamente en rutas directas.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
