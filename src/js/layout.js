@@ -88,7 +88,8 @@ const AppLayout = () => {
         <div className="app-layout-row">
           {/* Sidebar con animación de expansión/contracción */}
           <AnimatePresence mode="wait">
-            {!isHomePage && (
+            {/* Hide sidebar on home AND experience page */}
+            {!isHomePage && location.pathname !== "/experience" && (
               <motion.div 
                 className="sidebar-column"
                 key="sidebar"

@@ -77,7 +77,7 @@ export const About = () => {
                         </div>
                         <div>
                           <h5 className="text-light mb-1">Backend</h5>
-                          <p className="text-light opacity-75 mb-0">Spring, Express, Flask</p>
+                          <p className="text-light opacity-75 mb-0">Java, Spring, Flask</p>
                         </div>
                       </div>
                     </div>

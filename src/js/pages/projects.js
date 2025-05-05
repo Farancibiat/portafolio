@@ -14,7 +14,7 @@ export const Projects = () => {
       rows.push(
         <div className="row project-row" key={`row-${i}`}>
           {rowProjects.map((project) => (
-            <div className="col-12 col-sm-4 px-0 project-col" key={project.id}>
+            <div className="col-12 col-sm-4 project-col" key={project.id}>
               <div className="styledCard">
                 <h4>{project.title}</h4>
                 <p>{project.description}</p>
@@ -36,7 +36,7 @@ export const Projects = () => {
           {/* Fill empty spots in the last row if needed */}
           {rowProjects.length < 3 && 
             Array(3 - rowProjects.length).fill().map((_, index) => (
-              <div className="col-12 col-sm-4 px-0" key={`empty-${index}`}></div>
+              <div className="col-12 col-sm-4" key={`empty-${index}`}></div>
             ))
           }
         </div>

@@ -19,7 +19,7 @@ export const projects = [
     id: 3,
     title: "Club Aguas Abiertas Chiloé",
     description: "Proyecto de sitio web para el club de aguas abiertas de Chiloé. Solución express para acceso a imágenes de Google Drive.",
-    projectUrl: "https://aguasabiertaschile.cl/",
+    projectUrl: "https://www.aguasabiertaschiloe.cl/",
     repoUrl: "https://github.com/farancibiat/desafio-quinched",
     hasLiveDemo: true
   },
