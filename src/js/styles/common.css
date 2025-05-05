@@ -1,5 +1,12 @@
 /* Common styles for all main components */
 
+/* Reset default padding/margin if necessary */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 /* Reduce spacing at the top of content containers */
 .bodyFrame {
   padding-top: 0;
@@ -53,4 +60,113 @@
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
+}
+
+/* Body */
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #212529;
+    color: #f8f9fa;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Main content frame */
+.bodyFrame {
+    display: flex; /* Utilizar flexbox */
+    flex-direction: column; /* Apilar contenido y footer */
+    flex-grow: 1; /* Hacer que ocupe el espacio disponible en content-column */
+    width: 100%;
+    overflow: hidden; /* Ocultar overflow general */
+    background-color: #212529;
+    border-radius: 10px;
+}
+
+.contentScroller {
+    flex-grow: 1; /* Permitir que crezca para llenar el espacio antes del footer */
+    overflow-y: auto; /* Habilitar scroll vertical solo aquí */
+    overflow-x: hidden;
+    padding: 2rem 1rem;
+    position: relative; /* Necesario para el posicionamiento sticky del subnav */
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+.contentScroller::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.contentScroller::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.contentScroller::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 10px;
+}
+
+.contentScroller::-webkit-scrollbar-thumb:hover {
+    background: #e4ac06;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+/* Background colors */
+.bg-dark-subtle {
+    background-color: rgba(33, 37, 41, 0.85) !important;
+}
+
+/* Button styles */
+.btn-outline-warning {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Card styles */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Links */
+a {
+    transition: color 0.3s ease;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bootstrap adjustments */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
 } 

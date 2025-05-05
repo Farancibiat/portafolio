@@ -1,102 +1,119 @@
 /* Experience component styles */
 
-/* Sticky subnav */
-.subnav-container {
-  position: relative;
-  z-index: 100;
-  margin-bottom: 25px;
-}
-
-.subnav {
-  background-color: rgba(33, 37, 41, 0.95);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.subnav.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 95%;
-  margin: 0 auto;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  animation: slideDown 0.3s ease;
-}
-
-/* Agregar clase específica para el submenu dentro del componente */
-.contentScroller .subnav.sticky {
-  width: calc(100% - 50px); /* Ajustar al ancho del contenedor de experience menos el padding */
-  left: 25px;
-  right: 25px;
-  margin: 0 auto;
-  max-width: 1110px; /* Coincidir con el ancho del contenedor */
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.subnav-link {
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 15px;
-  padding: 5px 0;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  text-decoration: none !important;
-  position: relative;
-  cursor: pointer;
-}
-
-.subnav-link:hover,
-.subnav-link.active {
-  color: #ffc107;
-}
-
-.subnav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #ffc107;
-  transition: width 0.3s ease;
-}
-
-.subnav-link:hover::after,
-.subnav-link.active::after {
-  width: 100%;
-}
-
-/* Timeline styling */
-.timeline-item {
-  position: relative;
-  padding-left: 20px;
-  border-left: 2px solid rgba(255, 193, 7, 0.5);
-  margin-left: 10px;
-}
-
+/* Timeline styles */
 .timeline-marker {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
   position: absolute;
-  left: -7px;
-  top: 5px;
+  top: 17px;
+  left: 6px;
+  width: 2px;
+  height: calc(100% + 15px);
+  background-color: rgba(255, 193, 7, 0.5);
+}
+
+/* Styles for the main content card within experience page */
+.inner-content-card {
+  border: none !important;
+  border-radius: 15px !important;
+}
+
+/* Title styling */
+.experience-title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Subnav styles */
+.subnav-container {
+  /* Estilos base, antes de ser sticky */
+  margin-bottom: 2rem; /* Aumentado margen inferior */
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 12px; /* Bordes más redondeados */
+  padding: 12px 15px; /* Aumentado padding */
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.subnav-container.sticky {
+  /* Estilos cuando el subnav es sticky */
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: rgba(33, 37, 41, 0.98); /* Fondo casi opaco */
+  border-radius: 0 0 12px 12px; /* Coincidir con bordes base */
+  padding: 15px 18px; /* Padding ligeramente mayor en modo sticky */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  z-index: 150;
+  margin-bottom: 2rem; /* Mantener el espacio debajo */
+}
+
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Mayor espacio entre links */
+  justify-content: center; /* Centrar los links */
+}
+
+.subnav-link {
+  color: #f8f9fa;
+  text-decoration: none;
+  padding: 8px 16px; /* Mayor padding interno */
+  border-radius: 8px; /* Bordes más redondeados */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  font-weight: 500;
+}
+
+.subnav-link:hover {
+  background-color: rgba(255, 193, 7, 0.25); /* Hover más notable */
+  color: #ffc107;
+  transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+.subnav-link.active {
+  background-color: #ffc107;
+  color: #212529;
+  font-weight: 600; /* Más destacado */
+  transform: translateY(-1px); /* Sutil efecto activo */
+}
+
+/* Skills styles */
+.skill-badge {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  font-size: 0.875rem;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+}
+
+.skill-container {
+  padding: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  height: 100%;
+}
+
+/* Section styles */
+.experience-section {
+  transition: all 0.3s ease;
+  scroll-margin-top: 90px; /* Ajustado para el nuevo tamaño del subnav sticky */
+}
+
+.experience-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Card styling for download section */
@@ -142,44 +159,6 @@
   text-decoration: none;
 }
 
-/* Skill badges */
-.skill-container {
-  background-color: rgba(52, 58, 64, 0.4);
-  border-radius: 8px;
-  padding: 15px;
-  height: 100%;
-  transition: all 0.3s ease;
-}
-
-.skill-container:hover {
-  background-color: rgba(52, 58, 64, 0.6);
-  transform: translateY(-3px);
-}
-
-.skill-badge {
-  background-color: transparent !important;
-  color: rgba(255, 193, 7, 0.9) !important;
-  border: 1px solid rgba(255, 193, 7, 0.5);
-  margin: 3px;
-  transition: all 0.2s ease;
-}
-
-.skill-badge:hover {
-  background-color: rgba(255, 193, 7, 0.1) !important;
-  transform: translateY(-2px);
-}
-
-/* Section styling */
-.experience-section {
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-  scroll-margin-top: 80px; /* Ajustado para tener en cuenta el submenú fijo */
-}
-
-.experience-section:hover {
-  transform: scale(1.01);
-}
-
 /* Timeline date styling */
 .timeline-date {
   color: rgba(255, 193, 7, 0.9);
@@ -194,22 +173,13 @@
   }
   
   .subnav-link {
-    margin: 0 8px;
+    margin: 0 5px; /* Ajustar margen horizontal */
+    padding: 6px 10px; /* Padding ligeramente menor */
     font-size: 0.8rem;
   }
   
-  .subnav.sticky {
-    max-width: 100%;
-    width: 100%;
+  .subnav-container.sticky {
+    /* Mantener el sticky top */
     top: 0;
-    border-radius: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .contentScroller .subnav.sticky {
-    width: 100%;
-    left: 0;
-    right: 0;
   }
 } 

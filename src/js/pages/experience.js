@@ -7,7 +7,6 @@ import "../styles/experience.css";
 import { 
   Briefcase, 
   PersonBadge, 
-  BuildingFill, 
   Calendar, 
   Download, 
   GeoAlt, 
@@ -17,113 +16,114 @@ import {
   Tools,
   CodeSquare,
   Building,
-  ChevronRight
 } from "react-bootstrap-icons";
 
 export const Experience = () => {
-  // References for each section for smooth scrolling
-  const profileRef = useRef(null);
-  const careerDevRef = useRef(null);
-  const careerAdminRef = useRef(null);
-  const educationRef = useRef(null);
-  const skillsRef = useRef(null);
-  const downloadRef = useRef(null);
-  
-  // State for sticky subnav
   const [activeSection, setActiveSection] = useState('profile');
   const [isSticky, setIsSticky] = useState(false);
+  const contentScrollerRef = useRef(null);
   const subnavRef = useRef(null);
-  const subnavContainerRef = useRef(null);
+  const headerRef = useRef(null);
   
-  // Handle scroll for sticky subnav and active section
   useEffect(() => {
+    const contentScroller = contentScrollerRef.current;
+    const subnavElement = subnavRef.current;
+    const headerElement = headerRef.current;
+
+    if (!contentScroller || !subnavElement || !headerElement) return;
+
+    const subnavOriginalOffsetTop = subnavElement.offsetTop;
+    const headerHeight = headerElement.offsetHeight;
+    const stickyPoint = subnavOriginalOffsetTop - headerHeight - 20;
+    
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      const scrollPosition = contentScroller.scrollTop;
+
+      setIsSticky(scrollPosition >= stickyPoint);
       
-      // Handle sticky subnav
-      if (subnavContainerRef.current) {
-        const { top } = subnavContainerRef.current.getBoundingClientRect();
-        setIsSticky(top <= 100);
+      const sections = ['profile', 'careerDev', 'careerAdmin', 'education', 'skills', 'download'];
+      let currentSection = 'profile';
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (!element) continue;
+        
+        const rect = element.getBoundingClientRect();
+        const scrollerRect = contentScroller.getBoundingClientRect();
+
+        const offsetTopRelativeToScroller = rect.top - scrollerRect.top;
+        
+        const detectionOffset = 150;
+
+        if (offsetTopRelativeToScroller < detectionOffset) {
+          currentSection = sectionId;
+        }
       }
-      
-      // Handle active section based on scroll position
-      if (profileRef.current && scrollPosition < profileRef.current.offsetTop + profileRef.current.offsetHeight - 200) {
-        setActiveSection('profile');
-      } else if (careerDevRef.current && scrollPosition < careerDevRef.current.offsetTop + careerDevRef.current.offsetHeight - 200) {
-        setActiveSection('careerDev');
-      } else if (careerAdminRef.current && scrollPosition < careerAdminRef.current.offsetTop + careerAdminRef.current.offsetHeight - 200) {
-        setActiveSection('careerAdmin');
-      } else if (educationRef.current && scrollPosition < educationRef.current.offsetTop + educationRef.current.offsetHeight - 200) {
-        setActiveSection('education');
-      } else if (skillsRef.current && scrollPosition < skillsRef.current.offsetTop + skillsRef.current.offsetHeight - 200) {
-        setActiveSection('skills');
-      } else {
-        setActiveSection('download');
-      }
+      setActiveSection(currentSection);
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    contentScroller.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => {
+      contentScroller.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-  
-  // Function for smooth scrolling to sections
-  const scrollToSection = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <>
       <div className="bodyFrame">
-        <div className="container contentScroller">
-          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+        <div className="container contentScroller" ref={contentScrollerRef}>
+          <div className="container px-4 py-4 bg-dark card inner-content-card">
             {/* Header Section */}
-            <div className="row mb-3">
+            <div className="row mb-3" ref={headerRef}>
               <div className="col-12 text-center">
-                <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
+                <h1 className="text-center text-warning mb-4 experience-title">
                   <Briefcase className="me-2" /> Experiencia
                 </h1>
-                <p className="lead text-light">
-                  Un recorrido por mi trayectoria profesional en desarrollo y administración.
-                </p>
               </div>
             </div>
             
-            {/* Subnav Menu */}
-            <div className="subnav-container" ref={subnavContainerRef}>
-              <div className={`subnav ${isSticky ? 'sticky' : ''}`} ref={subnavRef}>
+            {/* Subnav Menu Container - Este es el que se hará sticky */}
+            <div 
+              className={`subnav-container ${isSticky ? 'sticky' : ''}`}
+              ref={subnavRef} 
+              style={isSticky ? { top: '0' } : {}}
+            >
+              <div className="subnav">
                 <a 
+                  href="#profile"
                   className={`subnav-link ${activeSection === 'profile' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(profileRef)}
                 >
                   Perfil
                 </a>
                 <a 
+                  href="#careerDev"
                   className={`subnav-link ${activeSection === 'careerDev' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(careerDevRef)}
                 >
                   Desarrollo TI
                 </a>
                 <a 
+                  href="#careerAdmin" 
                   className={`subnav-link ${activeSection === 'careerAdmin' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(careerAdminRef)}
                 >
                   Administración
                 </a>
                 <a 
+                  href="#education"
                   className={`subnav-link ${activeSection === 'education' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(educationRef)}
                 >
                   Educación
                 </a>
                 <a 
+                  href="#skills"
                   className={`subnav-link ${activeSection === 'skills' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(skillsRef)}
                 >
                   Habilidades
                 </a>
                 <a 
+                  href="#download"
                   className={`subnav-link ${activeSection === 'download' ? 'active' : ''}`}
-                  onClick={() => scrollToSection(downloadRef)}
                 >
                   CV
                 </a>
@@ -134,7 +134,6 @@ export const Experience = () => {
             <div 
               className="p-4 mb-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={profileRef}
               id="profile"
             >
               <div className="d-flex align-items-center mb-3">
@@ -158,7 +157,6 @@ export const Experience = () => {
             <div 
               className="p-4 mb-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={careerDevRef}
               id="careerDev"
             >
               <div className="d-flex align-items-center mb-4">
@@ -257,10 +255,6 @@ export const Experience = () => {
                     </div>
                   </div>
                 </div>
-
-             
-
-
               </div>
             </div>
 
@@ -268,7 +262,6 @@ export const Experience = () => {
             <div 
               className="p-4 mb-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={careerAdminRef}
               id="careerAdmin"
             >
               <div className="d-flex align-items-center mb-4">
@@ -361,7 +354,6 @@ export const Experience = () => {
             <div 
               className="p-4 mb-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={educationRef}
               id="education"
             >
               <div className="d-flex align-items-center mb-4">
@@ -421,7 +413,6 @@ export const Experience = () => {
             <div 
               className="p-4 mb-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={skillsRef}
               id="skills"
             >
               <div className="d-flex align-items-center mb-4">
@@ -533,7 +524,6 @@ export const Experience = () => {
             <div 
               className="p-4 rounded experience-section" 
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              ref={downloadRef}
               id="download"
             >
               <div className="d-flex align-items-center justify-content-center mb-4">

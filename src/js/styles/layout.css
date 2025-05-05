@@ -6,14 +6,14 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1030;
+  z-index: 1050;
   padding: 10px 20px;
   width: 100%;
 }
 
 /* Spacer to prevent content from being hidden under fixed navbar */
 .navbar-spacer {
-  height: 80px;
+  height: 90px;
 }
 
 /* Main layout container */
@@ -28,10 +28,10 @@
 .app-layout-row {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 30px;
-  min-height: 90vh;
-  margin-top: 10px;
+  min-height: calc(100vh - 90px);
+  margin-top: 15px;
 }
 
 /* Sidebar column */
@@ -39,14 +39,14 @@
   flex: 0 0 auto;
   max-width: 350px;
   min-width: 300px;
-  height: 100%;
 }
 
 /* Content column */
 .content-column {
   flex: 1;
   overflow-x: hidden;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Full width content when no sidebar */
@@ -58,6 +58,8 @@
 @media (max-width: 992px) {
   .app-layout-row {
     flex-direction: column;
+    min-height: auto;
+    margin-top: 10px;
   }
   
   .sidebar-column {
@@ -74,7 +76,7 @@
   
   /* Increase spacer height for mobile */
   .navbar-spacer {
-    height: 100px;
+    height: 110px;
   }
 }
 
