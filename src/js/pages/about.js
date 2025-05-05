@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { 
   FileEarmarkPerson, 
   LaptopFill, 
@@ -15,14 +15,12 @@ import profile from "../../assets/img/profile.jpg";
 import "../styles/common.css"; // Import common styles
 
 export const About = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
   
   return (
     <>
-      <div className="bodyFrame" style={{ maxWidth: isHomePage ? "100%" : "" }}>
-        <div className="container contentScroller">
-          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+      <div className="bodyFrame">
+        <div className="contentScroller">
+          <div className="px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
             {/* Hero Section */}
             <div className="row align-items-center mb-4">
               <div className="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">

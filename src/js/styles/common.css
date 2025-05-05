@@ -1,10 +1,21 @@
 /* Common styles for all main components */
 
-/* Reset default padding/margin if necessary */
-body, html {
+/* Reset default padding/margin and control global scroll */
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow-x: hidden; /* Prevenir scroll horizontal siempre */
+  /* overflow-y: hidden; /* Revertir: No ocultar scroll global por defecto, puede causar problemas con fixed elements */ 
+}
+
+body {
+  /* overflow-y: hidden; /* Eliminado de aquí también */ 
+  display: flex;
+  min-height: 100vh;
+  background-color: #212529;
+  color: #f8f9fa;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* Reduce spacing at the top of content containers */
@@ -55,39 +66,33 @@ body, html {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 991px) { 
+  /* body {
+    overflow-y: auto; /* Ya no es necesario si el scroll global está permitido por defecto */
+  /* } */
   .container.px-4 {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 }
 
-/* Body */
-body {
-    display: flex;
-    min-height: 100vh;
-    background-color: #212529;
-    color: #f8f9fa;
-    font-family: 'Roboto', Arial, sans-serif;
-}
-
 /* Main content frame */
 .bodyFrame {
-    display: flex; /* Utilizar flexbox */
-    flex-direction: column; /* Apilar contenido y footer */
-    flex-grow: 1; /* Hacer que ocupe el espacio disponible en content-column */
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
     width: 100%;
-    overflow: hidden; /* Ocultar overflow general */
+    overflow: hidden; 
     background-color: #212529;
     border-radius: 10px;
 }
 
 .contentScroller {
-    flex-grow: 1; /* Permitir que crezca para llenar el espacio antes del footer */
-    overflow-y: auto; /* Habilitar scroll vertical solo aquí */
+    flex-grow: 1; 
+    overflow-y: auto; /* ESTE es el scroll que queremos */
     overflow-x: hidden;
     padding: 2rem 1rem;
-    position: relative; /* Necesario para el posicionamiento sticky del subnav */
+    position: relative; 
     scroll-behavior: smooth;
 }
 

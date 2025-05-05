@@ -30,7 +30,7 @@ export const NavigationBar = () => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark navigationBar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container-fluid py-2 px-3">
+      <div className="container-fluid py-2">
         <Link className="navbar-brand" to="/">
           <div className="brand-wrapper d-flex align-items-center">
             <div className="brand-container">

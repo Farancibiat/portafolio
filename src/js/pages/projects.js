@@ -1,9 +1,9 @@
 import React from "react";
 import BodyFooter from "../component/bodyFooter";
 import { Github, Folder } from "react-bootstrap-icons";
-import "../styles/projects.css";
-import "../styles/common.css"; // Import common styles
 import projects from "../store/projectsData";
+import "../styles/common.css"; 
+import "../styles/projects.css";
 
 export const Projects = () => {
   // Function to render project cards in rows of 3
@@ -48,8 +48,8 @@ export const Projects = () => {
   return (
     <>
       <div className="bodyFrame">
-        <div className="container contentScroller">
-          <div className="container px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+        <div className="contentScroller">
+          <div className="px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
             <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
               <Folder className="me-2" /> Proyectos
             </h1>

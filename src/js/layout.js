@@ -84,7 +84,7 @@ const AppLayout = () => {
         <NavigationBar />
       </div>
       <div className="navbar-spacer"></div>
-      <div className="container">
+      <div className="container-fluid">
         <div className="app-layout-row">
           {/* Sidebar con animación de expansión/contracción */}
           <AnimatePresence mode="wait">
