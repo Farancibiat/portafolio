@@ -59,15 +59,15 @@ export const translations = {
     experiencePage: {
       pageTitle: "Experiencia Profesional",
       navProfile: "Perfil",
-      navDevCareer: "Desarrollo TI",
-      navAdminCareer: "Administración",
+      navDevCareer: "Carrera Desarrollo TI",
+      navAdminCareer: "Carrera Administración",
       navEducation: "Educación",
       navSkills: "Habilidades",
       navCv: "CV",
       profileSectionTitle: "Perfil",
-      profileParagraph1: "Desarrollador web con experiencia en las industrias financiera, turística y acuícola. Su habilidad para conectar aspectos técnicos con objetivos empresariales le permite ofrecer soluciones con una visión integral del desarrollo. Destaca por su trabajo en equipo y comunicación, lo que complementa con un enfoque analítico y meticuloso.",
-      itExperienceSectionTitle: "Trayectoria en Desarrollo TI",
-      adminExperienceSectionTitle: "Trayectoria en Administración",
+      profileParagraph1: "Desarrollador web con experiencia en la industria financiera, turismo y acuicultura. Su capacidad para conectar aspectos técnicos con objetivos de negocio le permite ofrecer soluciones con una visión integral de desarrollo. Destaca por su trabajo en equipo y comunicación, complementado con un enfoque analítico y meticuloso.",
+      itExperienceSectionTitle: "Carrera Desarrollo TI",
+      adminExperienceSectionTitle: "Carrera Administrativa",
       educationSectionTitle: "Educación",
       skillsSectionTitle: "Habilidades Técnicas",
       cvDownloadSectionTitle: "Descargar CV",
@@ -76,29 +76,29 @@ export const translations = {
           title: "Consultor Full Stack",
           company: "SII Group",
           description: "Scotiabank:",
-          resp1: "Migración y mejora de plataforma hipotecaria en base a código VBA6 a React con Typescript, con restricción rigurosa de librerías, en interacción continua con usuarios.",
-          resp2: "Migración incluye testing, utilizando múltiples herramientas de análisis de código: Sonarqube, Fortify, Checkmarx y Blackduck.",
-          resp3: "Desarrollo de conexiones MS/BFF en Java Spring Boot conectando bases de datos Sybase, SQL Server y sistema AS400.",
-          resp4: "Manejo de Build/Deploy en entornos de desarrollo.",
+          resp1: "Migración y mejora de plataforma hipotecaria desde código VBA6 a React con TypeScript, con restricción estricta de librerías, en continua interacción con usuarios.",
+          resp2: "Migración incluye pruebas, usando múltiples herramientas de análisis de código: Sonarqube, Fortify, Checkmarx y Blackduck.",
+          resp3: "Desarrollo de conexiones MS/BFF en Java Spring Boot conectando a bases de datos Sybase, SQL Server y sistema AS400.",
+          resp4: "Manejo de Build/Deploy en ambientes de desarrollo.",
         },
         afpUno: {
-          title: "Desarrollador Front End",
+          title: "Desarrollador Frontend",
           company: "AFP UNO",
           description: "",
-          resp1: "Desarrollo continuo de plataformas pública y de clientes.",
-          resp2: "Implementación completa de Google Tag Manager desde cero en contacto con agencia de marketing externa y Equipo Comercial, optimizando proceso en conjunto.",
-          resp3: "Trabajo continuo con Equipo de QA en base a rutina Scrum Agile rigurosa.",
-          resp4: "Diseños estrictos en base a Figma, trabajando en conjunto con Equipo de Marketing y Comercial."
+          resp1: "Desarrollo continuo de plataformas públicas y de clientes.",
+          resp2: "Implementación completa de Google Tag Manager desde cero en contacto con agencia de marketing externa y Equipo Comercial, optimizando el proceso conjuntamente.",
+          resp3: "Trabajo continuo con Equipo QA en base a una rigurosa rutina Scrum Agile.",
+          resp4: "Diseños estrictos basados en Figma, trabajando conjuntamente con Equipo de Marketing y Comercial."
         },
         moveApps: {
           title: "Desarrollador Full Stack",
           company: "MoveApps",
-          description: "Desarrollo de plataforma web multicliente (Chile Converge / Workafe) y plataforma para traslado de pacientes críticos (Movicare).",
-          resp1: "Desarrollo de plataforma web multicliente para capacitación de clientes, tanto Administrativa como acceso de usuarios.",
+          description: "Desarrollo de plataforma web multicliente (Chile Converge / Workafe) y plataforma para transporte de pacientes críticos (Movicare).",
+          resp1: "Desarrollo de plataforma web multicliente para capacitación de clientes, para accesos tanto Administrativos como de usuarios.",
           resp2: "Incluye vistas informativas, mantenedores, formularios, logins, landings y layouts/componentes reutilizables.",
-          resp3: "Desarrollo de API con ORM SailsJs, con envío de correos masivos.",
-          resp4: "Desarrollo de plataforma para traslado de pacientes críticos.",
-          resp5: "Levantamiento de requerimientos en contacto directo con cliente, optimizando proceso de gestión de traslados."
+          resp3: "Desarrollo de API con ORM SailsJs, con envío masivo de correos.",
+          resp4: "Desarrollo de plataforma para transporte de pacientes críticos.",
+          resp5: "Levantamiento de requerimientos en contacto directo con el cliente, optimizando el proceso de gestión de transportes."
         }
       },
       adminExperience: {
@@ -114,7 +114,7 @@ export const translations = {
         chiloeBureau: {
           title: "Director Ejecutivo",
           company: "Corporación Chiloé Convention Bureau",
-          resp1: "Evaluación de desempeño del proyecto.",
+          resp1: "Evaluación de desempeño de proyectos.",
           resp2: "Regularización de brechas para rendición de Fondos Públicos (PROFO).",
           resp3: "Rendición anual de fondos.",
           resp4: "Coordinación de actividades de promoción turística.",
@@ -122,12 +122,12 @@ export const translations = {
         turismoPehuen: {
           title: "Jefe de Desarrollo y Finanzas",
           company: "Turismo Pehuén",
-          resp1: "Desarrollo, proyección y control de la gestión financiera y contable.",
+          resp1: "Desarrollo, proyección y control de gestión financiera y contable.",
           resp2: "Rediseño de sistema de gestión administrativa.",
-          resp3: "Gestor de proyecto web y digitalización de procesos.",
-          resp4: "Desarrollo y mantención de Manual de operación institucional.",
+          resp3: "Jefe de proyecto web y digitalización de procesos.",
+          resp4: "Elaboración y mantención de manual de operación institucional.",
           resp5: "Estructuración departamental de la empresa.",
-          resp6: "Responsable de gestión de Recursos Humanos.",
+          resp6: "Encargado de gestión de Recursos Humanos.",
         }
       },
       education: {
@@ -137,7 +137,7 @@ export const translations = {
           details: []
         },
         uach: {
-          title: "Administrador de Empresas | Licenciatura en Turismo",
+          title: "Administrador de Empresas | Licenciado en Turismo",
           institution: "Universidad Austral de Chile",
           details: []
         },
@@ -149,68 +149,68 @@ export const translations = {
         }
       },
       cvInfo: {
-        cvEspDescription: "Versión completa en español de mi currículum vitae",
+        cvEspDescription: "Versión completa en español de mi curriculum vitae",
         cvEspButton: "Descargar",
-        cvEngDescription: "Full English version of my curriculum vitae",
-        cvEngButton: "Download",
+        cvEngDescription: "Versión completa en inglés de mi curriculum vitae",
+        cvEngButton: "Descargar",
       }
     },
     projectsPage: {
       pageTitle: "Mis Proyectos",
-      pageDescriptionParagraph1: "Selección de proyectos desarrollados utilizando distintas tecnologías y frameworks.",
-      pageDescriptionParagraph2: "Todos los proyectos están disponibles en", 
+      pageDescriptionParagraph1: "Selección de proyectos desarrollados utilizando diferentes tecnologías y frameworks.",
+      pageDescriptionParagraph2: "Todos los proyectos están disponibles en",
       viewProjectButton: "Ver Proyecto",
       viewRepoButton: "Ver Repositorio",
-      noDemoButton: "Repo Privado", 
-      project1: { 
+      noDemoButton: "Repo Privado",
+      project1: {
         title: "Pichangapp",
-        description: "Aplicación Web en desarrollo para arrendar canchas de futbol en Chile."
+        description: "Aplicación web en desarrollo para arriendo de canchas de fútbol en Chile."
       },
       project2: {
         title: "Swim App MVP",
-        description: "WebApp para natación, ambiente de desarrollo, API en Spring Boot aún no tiene deploy."
+        description: "WebApp para natación, ambiente de desarrollo, API Spring Boot aún no desplegada."
       },
       project3: {
         title: "Club Aguas Abiertas Chiloé",
-        description: "Proyecto de sitio web para el club de aguas abiertas de Chiloé. Solución express para acceso a imágenes de Google Drive."
+        description: "Proyecto de sitio web para el club de aguas abiertas de Chiloé. Solución Express para acceder a imágenes de Google Drive."
       },
       project4: {
         title: "Pokeapi Test",
-        description: "Este sitio es una pokedéx sencilla, usa la API \"pokeapi.co\", tiene un buscador y guarda favoritos, implementada en Netlify"
+        description: "Este sitio es una Pokedex simple, utiliza la API \"pokeapi.co\", tiene función de búsqueda y guarda favoritos, desplegada en Netlify."
       },
       project5: {
         title: "Agenda Dashboard",
-        description: "Este es un dashboard básico realizado con ANT DESIGN, lee informacion de contactos desde una Api falsa gratuita. Implementado en Netlify."
+        description: "Este es un dashboard básico hecho con ANT DESIGN, lee información de contactos desde una API fake gratuita. Desplegado en Netlify."
       },
       project6: {
-        title: "Movie Shopping Cart",
-        description: "Este proyecto es un carrito de compras básico, responsivo realizado con HTML, CSS y Javascript full Vanilla, deploy en Netlify"
+        title: "Carrito de Compras Películas",
+        description: "Este proyecto es un carrito de compras básico y responsivo hecho con HTML, CSS y full Vanilla Javascript, desplegado en Netlify."
       },
       project7: {
-        title: "BattleShip",
-        description: "Este es el clásico juego de Combate Naval, desarrollado para un test laboral. El juego es básico y está implementado en Netlify."
+        title: "Batalla Naval",
+        description: "Este es el clásico juego de Combate Naval, desarrollado para una prueba de trabajo. El juego es básico y está desplegado en Netlify."
       },
       project8: {
-        title: "Star Wars Blog",
-        description: "Blog de ejercicio para practicar manipulación de datos utilizando fetch, react y flux/context."
+        title: "Blog Star Wars",
+        description: "Blog de ejercicio para practicar la manipulación de datos usando fetch, react y flux/context."
       },
       project9: {
-        title: "To Do List",
-        description: "Applicación Web para ejercitar manipulación de datos en React y la modificación de datos en una Api externa (CRUD)."
+        title: "Lista de Tareas",
+        description: "Aplicación web para practicar la manipulación de datos en React y la modificación de datos en una API externa (CRUD)."
       }
     },
-    contactPage: { 
+    contactPage: {
       pageTitle: "Contacto",
       pageSubtitle: "¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a transformar tus ideas en soluciones web.",
       formFullNamePlaceholder: "Tu nombre completo",
-      formEmailPlaceholder: "Tu correo electrónico",
-      formMessagePlaceholder: "Escribe aquí tu mensaje. ¿En qué puedo ayudarte?",
+      formEmailPlaceholder: "Tu dirección de correo electrónico",
+      formMessagePlaceholder: "Escribe aquí tu mensaje. ¿Cómo puedo ayudarte?",
       formSubmitButton: "Enviar mensaje",
       formSubmitNote: "Al enviar este formulario, recibirás una copia en el correo electrónico proporcionado.",
       validation: {
-        nameRequired: "Nombre es requerido.",
-        emailInvalid: "Email inválido.",
-        emailRequired: "Email es requerido.",
+        nameRequired: "El nombre es requerido.",
+        emailInvalid: "Dirección de correo inválida.",
+        emailRequired: "El correo es requerido.",
         messageRequired: "No olvides agregar tu mensaje."
       }
     },
@@ -234,10 +234,13 @@ export const translations = {
       brandSubtitle: "Full Stack Developer"
     },
     sideBar: {
-      title: "Felipe Arancibia",
-      subtitle: "Full Stack Developer",
+      title: "Felipe Arancibia T.",
+      jobTitle: "Full Stack Developer",
+      description: "Full Stack Developer with experience in web application development, specializing in Java, Spring Boot, Python, Flask, JavaScript, React, and Node.js. Proven skills in relational and non-relational databases, version control with Git, and cloud services like Azure.",
       languagesTitle: "Languages",
-      native: "Native",
+      languageSpanish: "Spanish",
+      levelNative: "Native",
+      languageEnglish: "English",
       levelC2: "Level C2",
       techStackTitle: "Tech Stack",
       frontendTitle: "Frontend",
@@ -250,13 +253,13 @@ export const translations = {
     },
     aboutPage: {
       pageTitle: "About Me",
-      heroName: "Felipe Arancibia Torres", 
+      heroName: "Felipe Arancibia Torres",
       heroSubtitle: "Full Stack Developer focused on transforming business needs into modern, cross-platform web solutions.",
       heroViewProjects: "View Projects",
       heroContact: "Contact",
       skillsTitle: "Skills",
       skillsDisclaimer: "* See full technical profile in",
-      skillsDisclaimerLink: "Experience", 
+      skillsDisclaimerLink: "Experience",
       skillsFrontendTitle: "Frontend",
       skillsFrontendDesc: "React, Next.js, TypeScript",
       skillsBackendTitle: "Backend",
@@ -274,8 +277,8 @@ export const translations = {
       cardContactTitle: "Contact",
       cardContactText: "Interested in working together? I am available for freelance projects and new job opportunities.",
       cardContactButton: "Contact Me",
-     },
-    experiencePage: { 
+    },
+    experiencePage: {
       pageTitle: "Professional Experience",
       navProfile: "Profile",
       navDevCareer: "IT Development",
@@ -363,26 +366,26 @@ export const translations = {
         utfsm: {
           title: "Commercial Engineering",
           institution: "Universidad Técnica Federico Santa María",
-          statusIncomplete: "Incomplete", 
+          statusIncomplete: "Incomplete",
           details: []
         }
       },
-      cvInfo: { 
+      cvInfo: {
         cvEspDescription: "Complete Spanish version of my curriculum vitae",
         cvEspButton: "Download",
         cvEngDescription: "Full English version of my curriculum vitae",
         cvEngButton: "Download",
-       }
+      }
     },
-    projectsPage: { 
+    projectsPage: {
       pageTitle: "My Projects",
       pageDescriptionParagraph1: "Selection of projects developed using different technologies and frameworks.",
-      pageDescriptionParagraph2: "All projects are available on", 
+      pageDescriptionParagraph2: "All projects are available on",
       viewProjectButton: "View Project",
       viewRepoButton: "View Repository",
       noDemoButton: "Private Repo",
-      project1: { 
-        title: "Pichangapp", 
+      project1: {
+        title: "Pichangapp",
         description: "Web application under development for renting football pitches in Chile."
       },
       project2: {
@@ -418,9 +421,9 @@ export const translations = {
         description: "Web application to practice data manipulation in React and modifying data in an external API (CRUD)."
       }
     },
-    contactPage: { 
+    contactPage: {
       pageTitle: "Contact",
-      pageSubtitle: "Have a project in mind? Let\'s talk about how I can help you transform your ideas into web solutions.",
+      pageSubtitle: "Have a project in mind? Let's talk about how I can help you transform your ideas into web solutions.",
       formFullNamePlaceholder: "Your full name",
       formEmailPlaceholder: "Your email address",
       formMessagePlaceholder: "Write your message here. How can I help you?",
@@ -430,10 +433,10 @@ export const translations = {
         nameRequired: "Name is required.",
         emailInvalid: "Invalid email address.",
         emailRequired: "Email is required.",
-        messageRequired: "Don\'t forget to add your message."
+        messageRequired: "Don't forget to add your message."
       }
     },
-    footer: { 
+    footer: {
       copyrightText: "Site designed by Felipe Arancibia, 2021."
     },
   },

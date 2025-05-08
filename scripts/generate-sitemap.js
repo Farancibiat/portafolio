@@ -2,7 +2,7 @@ const { SitemapGenerator } = require('react-router-sitemap-generator');
 const path = require('path');
 
 // Define tu URL base
-const baseUrl = 'TU_URL_BASE'; // <--- REEMPLAZA ESTO!
+const baseUrl = 'https://www.farancibiat.cl'; // <--- REEMPLAZA ESTO!
 
 // Define tus rutas
 const paths = [
