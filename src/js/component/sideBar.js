@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga4";
 import "../styles/sideBar.css";
 import { Link } from "react-router-dom";
 import {
@@ -19,6 +20,22 @@ import flagES from "../../assets/img/flag-es.svg";
 import flagGB from "../../assets/img/flag-gb.svg";
 
 export const SideBar = () => {
+  const handleDownloadCV_ES = () => {
+    ReactGA.event({
+      category: "CV Download",
+      action: "Click",
+      label: "Sidebar CV ES"
+    });
+  };
+
+  const handleDownloadCV_EN = () => {
+    ReactGA.event({
+      category: "CV Download",
+      action: "Click",
+      label: "Sidebar CV EN"
+    });
+  };
+
   return (
     <div className="sideBar bg-dark">
       {/* Header Section */}
@@ -165,6 +182,7 @@ export const SideBar = () => {
                   href={cvEsp}
                   download="Felipe_Arancibia_CV_Esp.pdf"
                   className="cv-button d-block text-center p-2"
+                  onClick={handleDownloadCV_ES}
                 >
                   <Download className="me-1" size={12} />
                   Español
@@ -175,6 +193,7 @@ export const SideBar = () => {
                   href={cvEng}
                   download="Felipe_Arancibia_CV_Eng.pdf"
                   className="cv-button d-block text-center p-2"
+                  onClick={handleDownloadCV_EN}
                 >
                   <Download className="me-1" size={12} />
                   English

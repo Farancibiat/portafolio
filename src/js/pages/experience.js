@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactGA from "react-ga4";
 import BodyFooter from "../component/bodyFooter";
 import { 
   itExperienceData,
@@ -39,6 +40,15 @@ export const Experience = () => {
   const MortarboardIcon = sectionIcons.education;
   const ToolsIcon = sectionIcons.skills;
   // Download icon for CV section title is imported directly
+
+  const handleDownloadCV = (language) => {
+    ReactGA.event({
+      category: "CV Download",
+      action: "Click",
+      label: `Experience CV ${language}`
+    });
+    // La descarga es manejada por el href del tag <a>
+  };
 
   useEffect(() => {
     const contentScroller = contentScrollerRef.current;
@@ -264,23 +274,23 @@ export const Experience = () => {
               </div>
             </div>
 
-            {/* Download CV Section - Mapeado */}
+            {/* Download CV Section - Revertir cambios de estilo, mantener GA */}
             <div 
-              className="p-4 rounded experience-section" 
+              className="p-4 rounded experience-section"  // <--- Revertido: quitado mb-4
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
               id="download"
             >
-              <div className="d-flex align-items-center justify-content-center mb-4">
+              <div className="d-flex align-items-center justify-content-center mb-4"> {/* <--- Revertido: añadido justify-content-center */}
                 <div className="bg-warning p-2 rounded-circle me-3">
-                  <Download size={20} className="text-dark" /> {/* Icono específico del título */} 
+                  <Download size={20} className="text-dark" /> {/* Icono del título (ya estaba bien) */}
                 </div>
-                <h2 className="text-warning mb-0">Curriculum Vitae</h2>
+                <h2 className="text-warning mb-0">Curriculum Vitae</h2> {/* <--- Revertido: texto original */}
               </div>
-              {cvData.map((cv) => (
+              {cvData.map((cv) => ( // <--- Revertido: variable a `cv` y estructura original del map
                 <div className="card bg-dark p-3 mb-3 border-0 rounded" key={cv.id}>
                   <div className="row g-0">
                     <div className="col-md-2 col-sm-3 text-center d-flex align-items-center justify-content-center">
-                      {cv.icon} {/* Icono desde data */} 
+                      {cv.icon} {/* Icono desde data */}
                     </div>
                     <div className="col-md-7 col-sm-9">
                       <div className="card-body ps-md-0 py-md-1">
@@ -292,9 +302,10 @@ export const Experience = () => {
                       <a
                         href={cv.downloadLink}
                         download={cv.downloadFilename}
-                        className="btn btn-warning px-4 text-dark"
+                        className="btn btn-warning px-4 text-dark" // <--- Revertido: clases originales del botón
+                        onClick={() => handleDownloadCV(cv.language)} // <--- Mantenido/Reaplicado: Evento GA
                       >
-                        {cv.buttonText} <Download className="ms-2" /> {/* Icono del botón */} 
+                        {cv.buttonText} <Download className="ms-2" /> {/* Icono del botón */}
                       </a>
                     </div>
                   </div>

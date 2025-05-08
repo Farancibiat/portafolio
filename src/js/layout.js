@@ -5,6 +5,7 @@ import {
   Route,
   BrowserRouter
 } from "react-router-dom";
+import ReactGA from "react-ga4";
 import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,8 +45,12 @@ const AppLayout = () => {
     setMounted(true);
     // Scroll to top on route change
     window.scrollTo(0, 0);
+
+    // Enviar pageview a Google Analytics
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: document.title });
+
     return () => setMounted(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
   
   // Variante para la animación del sidebar
   const sidebarVariants = {
