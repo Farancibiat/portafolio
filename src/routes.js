@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+const React = require('react');
+const { Route, Routes } = require('react-router-dom');
 
 // En este archivo, solo necesitamos las definiciones de las rutas (paths)
 // para que el generador de sitemap pueda leerlas.
@@ -14,4 +14,4 @@ const AppRoutes = () => (
   </Routes>
 );
 
-export default AppRoutes; 
+module.exports = AppRoutes; 

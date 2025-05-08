@@ -1,7 +1,7 @@
 const path = require('path');
 // Asegúrate de que la ruta a AppRoutes sea correcta.
 // Si src/routes.js está en el mismo nivel que la carpeta scripts, sería ../src/routes
-const AppRoutes = require('../src/routes').default;
+const AppRoutes = require('../src/routes');
 
 const SitemapGeneratorPackage = require('react-router-sitemap-generator');
 const SitemapGenerator = SitemapGeneratorPackage.default || SitemapGeneratorPackage;
