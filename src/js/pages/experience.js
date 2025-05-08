@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactGA from "react-ga4";
+import { useTranslations } from "../context/LanguageContext";
 import BodyFooter from "../component/bodyFooter";
 import { 
   itExperienceData,
@@ -9,7 +10,7 @@ import {
   cvData,
   sectionIcons,
   detailIcons,
-  profileData,
+  profileDataKey,
 } from "../data/experienceData";
 import { Briefcase, Download } from "react-bootstrap-icons"; // Solo importar los que no vienen de data
 import "../styles/common.css";
@@ -24,7 +25,34 @@ const renderList = (items) => (
   </ul>
 );
 
+// --- NUEVA FUNCIÓN AUXILIAR ---
+const spanishMonthMap = {
+  "Enero": "ene", "Febrero": "feb", "Marzo": "mar", "Abril": "abr", 
+  "Mayo": "may", "Junio": "jun", "Julio": "jul", "Agosto": "ago", 
+  "Septiembre": "sep", "Octubre": "oct", "Noviembre": "nov", "Diciembre": "dic"
+};
+
+const translateDateString = (dateString, t) => {
+  if (!dateString || typeof dateString !== 'string') return dateString; // Manejar casos inválidos
+  const parts = dateString.split(' ');
+  if (parts.length !== 2) return dateString; // Formato inesperado
+
+  const monthNameEs = parts[0];
+  const year = parts[1];
+  const monthKey = spanishMonthMap[monthNameEs];
+
+  if (monthKey) {
+    const translatedMonth = t(`common.months.${monthKey}`);
+    return `${translatedMonth} ${year}`;
+  } else {
+    // Si el mes no se reconoce, devolver el string original
+    return dateString;
+  }
+};
+// --- FIN FUNCIÓN AUXILIAR ---
+
 export const Experience = () => {
+  const { t, language } = useTranslations();
   const [activeSection, setActiveSection] = useState('profile');
   const [isSticky, setIsSticky] = useState(false);
   const contentScrollerRef = useRef(null);
@@ -41,11 +69,15 @@ export const Experience = () => {
   const ToolsIcon = sectionIcons.skills;
   // Download icon for CV section title is imported directly
 
-  const handleDownloadCV = (language) => {
+  React.useEffect(() => {
+    document.title = t('experiencePage.pageTitle') + " - Felipe Arancibia";
+  }, [t, language]);
+
+  const handleDownloadCV = (cvLanguage) => {
     ReactGA.event({
       category: "CV Download",
       action: "Click",
-      label: `Experience CV ${language}`
+      label: `Experience CV ${cvLanguage}`
     });
     // La descarga es manejada por el href del tag <a>
   };
@@ -101,7 +133,7 @@ export const Experience = () => {
             <div className="row mb-3" ref={headerRef}>
               <div className="col-12 text-center">
                 <h1 className="text-center text-warning mb-4 experience-title">
-                  <Briefcase className="me-2" /> Experiencia
+                  <Briefcase className="me-2" /> {t('experiencePage.pageTitle')}
                 </h1>
               </div>
             </div>
@@ -114,12 +146,12 @@ export const Experience = () => {
             >
               <div className="subnav">
                 {/* Links podrían generarse desde un array si se desea más dinamismo */} 
-                <a href="#profile" className={`subnav-link ${activeSection === 'profile' ? 'active' : ''}`}>Perfil</a>
-                <a href="#careerDev" className={`subnav-link ${activeSection === 'careerDev' ? 'active' : ''}`}>Desarrollo TI</a>
-                <a href="#careerAdmin" className={`subnav-link ${activeSection === 'careerAdmin' ? 'active' : ''}`}>Administración</a>
-                <a href="#education" className={`subnav-link ${activeSection === 'education' ? 'active' : ''}`}>Educación</a>
-                <a href="#skills" className={`subnav-link ${activeSection === 'skills' ? 'active' : ''}`}>Habilidades</a>
-                <a href="#download" className={`subnav-link ${activeSection === 'download' ? 'active' : ''}`}>CV</a>
+                <a href="#profile" className={`subnav-link ${activeSection === 'profile' ? 'active' : ''}`}>{t('experiencePage.navProfile')}</a>
+                <a href="#careerDev" className={`subnav-link ${activeSection === 'careerDev' ? 'active' : ''}`}>{t('experiencePage.navDevCareer')}</a>
+                <a href="#careerAdmin" className={`subnav-link ${activeSection === 'careerAdmin' ? 'active' : ''}`}>{t('experiencePage.navAdminCareer')}</a>
+                <a href="#education" className={`subnav-link ${activeSection === 'education' ? 'active' : ''}`}>{t('experiencePage.navEducation')}</a>
+                <a href="#skills" className={`subnav-link ${activeSection === 'skills' ? 'active' : ''}`}>{t('experiencePage.navSkills')}</a>
+                <a href="#download" className={`subnav-link ${activeSection === 'download' ? 'active' : ''}`}>{t('experiencePage.navCv')}</a>
               </div>
             </div>
 
@@ -133,12 +165,10 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <ProfileIcon size={20} className="text-dark" />
                 </div>
-                <h2 className="text-warning mb-0">Perfil</h2>
+                <h2 className="text-warning mb-0">{t('experiencePage.profileSectionTitle')}</h2>
               </div>
               {/* Mapear los párrafos desde profileData */} 
-              {profileData.map((paragraph, index) => (
-                <p className="text-light" key={index}>{paragraph}</p>
-              ))}
+              <p className="text-light">{t(profileDataKey)}</p>
             </div>
 
             {/* IT Career Section - Mapeado */}
@@ -151,7 +181,7 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <CodeSquareIcon size={20} className="text-dark" />
                 </div>
-                <h2 className="text-warning mb-0">Trayectoria en Desarrollo TI</h2>
+                <h2 className="text-warning mb-0">{t('experiencePage.itExperienceSectionTitle')}</h2>
               </div>
               <div className="timeline">
                 {itExperienceData.map((job) => (
@@ -161,16 +191,18 @@ export const Experience = () => {
                         <div className="d-flex">
                           <div className="bg-warning timeline-marker"></div>
                           <div>
-                            <p className="text-light mb-1"><DetailCalendarIcon className="me-2" /> {job.startDate} - {job.endDate}</p>
+                            <p className="text-light mb-1"><DetailCalendarIcon className="me-2" /> {translateDateString(job.startDate, t)} - {translateDateString(job.endDate, t)}</p>
                             <p className="text-light mb-0"><DetailLocationIcon className="me-2" /> {job.location}</p>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-9">
-                        <h4 className="text-warning">{job.title}</h4>
+                        <h4 className="text-warning">{job.titleKey ? t(job.titleKey) : job.title}</h4>
                         <h5 className="text-light mb-3">{job.company}</h5>
-                        {job.description && <p className="text-light mb-2">{job.description}</p>}
-                        {renderList(job.responsibilities)}
+                        { (job.descriptionKey) && 
+                          <p className="text-light mb-2">{t(job.descriptionKey)}</p>
+                        }
+                        {job.responsibilitiesKeys && renderList(job.responsibilitiesKeys.map(key => t(key)))}
                       </div>
                     </div>
                   </div>
@@ -188,7 +220,7 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <BuildingIcon size={20} className="text-dark" />
                 </div>
-                <h2 className="text-warning mb-0">Trayectoria en Administración</h2>
+                <h2 className="text-warning mb-0">{t('experiencePage.adminExperienceSectionTitle')}</h2>
               </div>
               <div className="timeline">
                 {adminExperienceData.map((job) => (
@@ -198,15 +230,15 @@ export const Experience = () => {
                         <div className="d-flex">
                           <div className="bg-warning timeline-marker"></div>
                           <div>
-                            <p className="text-light mb-1"><DetailCalendarIcon className="me-2" /> {job.startDate} - {job.endDate}</p>
+                            <p className="text-light mb-1"><DetailCalendarIcon className="me-2" /> {translateDateString(job.startDate, t)} - {translateDateString(job.endDate, t)}</p>
                             <p className="text-light mb-0"><DetailLocationIcon className="me-2" /> {job.location}</p>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-9">
-                        <h4 className="text-warning">{job.title}</h4>
+                        <h4 className="text-warning">{job.titleKey ? t(job.titleKey) : job.title}</h4>
                         <h5 className="text-light mb-3">{job.company}</h5>
-                        {renderList(job.responsibilities)}
+                        {job.responsibilitiesKeys && renderList(job.responsibilitiesKeys.map(key => t(key)))}
                       </div>
                     </div>
                   </div>
@@ -224,23 +256,23 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <MortarboardIcon size={20} className="text-dark" />
                 </div>
-                <h2 className="text-warning mb-0">Educación</h2>
+                <h2 className="text-warning mb-0">{t('experiencePage.educationSectionTitle')}</h2>
               </div>
               {educationData.map((edu, index) => (
                 <div className={`row ${index < educationData.length - 1 ? 'mb-4' : ''}`} key={edu.id}>
                   <div className="col-md-3">
                     <div className="d-flex align-items-center mb-2">
                       <DetailCalendarIcon className="text-warning me-2" />
-                      <p className="text-light mb-0">{edu.startDate} - {edu.endDate}</p>
+                      <p className="text-light mb-0">{translateDateString(edu.startDate, t)} - {translateDateString(edu.endDate, t)}</p>
                     </div>
                   </div>
                   <div className="col-md-9">
-                    <h4 className="text-warning">{edu.title}</h4>
+                    <h4 className="text-warning">{edu.titleKey ? t(edu.titleKey) : edu.title}</h4>
                     <p className="text-light">
-                        {edu.institution}
-                        {edu.status && <span className="text-warning ms-2">({edu.status})</span>}
+                        {edu.institutionKey ? t(edu.institutionKey) : edu.institution}
+                        {edu.statusKey && <span className="text-warning ms-2">({t(edu.statusKey)})</span>}
                     </p>
-                    {edu.details && edu.details.length > 0 && renderList(edu.details)}
+                    {edu.detailsKeys && edu.detailsKeys.length > 0 && renderList(edu.detailsKeys.map(key => t(key)))}
                   </div>
                 </div>
               ))}
@@ -256,7 +288,7 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <ToolsIcon size={20} className="text-dark" />
                 </div>
-                <h2 className="text-warning mb-0">Habilidades Técnicas</h2>
+                <h2 className="text-warning mb-0">{t('experiencePage.skillsSectionTitle')}</h2>
               </div>
               <div className="row g-3">
                 {Object.entries(skillsData).map(([category, skills]) => (
@@ -284,7 +316,7 @@ export const Experience = () => {
                 <div className="bg-warning p-2 rounded-circle me-3">
                   <Download size={20} className="text-dark" /> {/* Icono del título (ya estaba bien) */}
                 </div>
-                <h2 className="text-warning mb-0">Curriculum Vitae</h2> {/* <--- Revertido: texto original */}
+                <h2 className="text-warning mb-0">{t('experiencePage.cvDownloadSectionTitle')}</h2> {/* <--- Revertido: texto original */}
               </div>
               {cvData.map((cv) => ( // <--- Revertido: variable a `cv` y estructura original del map
                 <div className="card bg-dark p-3 mb-3 border-0 rounded" key={cv.id}>
@@ -295,7 +327,7 @@ export const Experience = () => {
                     <div className="col-md-7 col-sm-9">
                       <div className="card-body ps-md-0 py-md-1">
                         <h4 className="card-title text-warning mb-2">{cv.language}</h4>
-                        <p className="card-text text-light mb-2">{cv.description}</p>
+                        <p className="card-text text-light mb-2">{t(cv.descriptionKey)}</p>
                       </div>
                     </div>
                     <div className="col-md-3 col-12 d-flex align-items-center justify-content-md-end justify-content-center mt-3 mt-md-0">
@@ -305,7 +337,7 @@ export const Experience = () => {
                         className="btn btn-warning px-4 text-dark" // <--- Revertido: clases originales del botón
                         onClick={() => handleDownloadCV(cv.language)} // <--- Mantenido/Reaplicado: Evento GA
                       >
-                        {cv.buttonText} <Download className="ms-2" /> {/* Icono del botón */}
+                        {t(cv.buttonTextKey)} <Download className="ms-2" /> {/* Icono del botón */}
                       </a>
                     </div>
                   </div>

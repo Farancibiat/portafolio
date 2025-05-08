@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useTranslations } from "../context/LanguageContext";
 import { EnvelopeFill, Send, Person, ChatText } from "react-bootstrap-icons";
 import { Context } from "../store/appContext";
 import "../styles/common.css"; // Import common styles
@@ -12,6 +13,11 @@ import BodyFooter from "../component/bodyFooter";
 const Contact = () => {
   const { actions } = useContext(Context);
   const navigate = useNavigate();
+  const { t, language } = useTranslations();
+
+  React.useEffect(() => {
+    document.title = t('contactPage.pageTitle') + " - Felipe Arancibia";
+  }, [t, language]);
   
   const formik = useFormik({
     initialValues: {
@@ -20,11 +26,11 @@ const Contact = () => {
       msg: "",
     },
     validationSchema: Yup.object({
-      full_name: Yup.string().required("Nombre es requerido."),
+      full_name: Yup.string().required('contactPage.validation.nameRequired'),
       email: Yup.string()
-        .email("Email inválido.")
-        .required("Email es requerido."),
-      msg: Yup.string().required("No olvides agregar tu mensaje."),
+        .email('contactPage.validation.emailInvalid')
+        .required('contactPage.validation.emailRequired'),
+      msg: Yup.string().required('contactPage.validation.messageRequired'),
     }),
     onSubmit: (values) => {
       actions.sendMsg(values);
@@ -47,10 +53,10 @@ const Contact = () => {
             <div className="row mb-4">
               <div className="col-lg-8 mx-auto text-center">
                 <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
-                  <EnvelopeFill className="me-2" /> Contacto
+                  <EnvelopeFill className="me-2" /> {t('contactPage.pageTitle')}
                 </h1>
                 <p className="lead text-light mb-4">
-                  ¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a transformar tus ideas en soluciones web.
+                  {t('contactPage.pageSubtitle')}
                 </p>
               </div>
             </div>
@@ -63,7 +69,7 @@ const Contact = () => {
                     <Person />
                   </span>
                   <input
-                    placeholder="Tu nombre completo"
+                    placeholder={t('contactPage.formFullNamePlaceholder')}
                     className="form-control bg-dark text-light border-0"
                     id="full_name"
                     name="full_name"
@@ -76,7 +82,7 @@ const Contact = () => {
                 </div>
                 {formik.errors.full_name && formik.touched.full_name ? (
                   <div className="text-warning mt-2 small">
-                    {formik.errors.full_name}
+                    {t(formik.errors.full_name)}
                   </div>
                 ) : null}
               </div>
@@ -88,7 +94,7 @@ const Contact = () => {
                     <EnvelopeFill />
                   </span>
                   <input
-                    placeholder="Tu correo electrónico"
+                    placeholder={t('contactPage.formEmailPlaceholder')}
                     className="form-control bg-dark text-light border-0"
                     id="email"
                     name="email"
@@ -101,7 +107,7 @@ const Contact = () => {
                 </div>
                 {formik.errors.email && formik.touched.email ? (
                   <div className="text-warning mt-2 small">
-                    {formik.errors.email}
+                    {t(formik.errors.email)}
                   </div>
                 ) : null}
               </div>
@@ -113,7 +119,7 @@ const Contact = () => {
                     <ChatText />
                   </span>
                   <textarea
-                    placeholder="Escribe aquí tu mensaje. ¿En qué puedo ayudarte?"
+                    placeholder={t('contactPage.formMessagePlaceholder')}
                     className="form-control bg-dark text-light border-0"
                     id="msg"
                     name="msg"
@@ -126,7 +132,7 @@ const Contact = () => {
                 </div>
                 {formik.errors.msg && formik.touched.msg ? (
                   <div className="text-warning mt-2 small">
-                    {formik.errors.msg}
+                    {t(formik.errors.msg)}
                   </div>
                 ) : null}
               </div>
@@ -134,10 +140,10 @@ const Contact = () => {
               {/* Submit button */}
               <div className="text-center mt-4">
                 <button className="btn btn-warning px-5 py-2" type="submit">
-                  Enviar mensaje <Send className="ms-2" />
+                  {t('contactPage.formSubmitButton')} <Send className="ms-2" />
                 </button>
                 <p className="text-light mt-3 small">
-                  Al enviar este formulario, recibirás una copia en el correo electrónico proporcionado.
+                  {t('contactPage.formSubmitNote')}
                 </p>
               </div>
             </form>

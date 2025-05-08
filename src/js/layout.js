@@ -9,6 +9,7 @@ import ReactGA from "react-ga4";
 import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
 import { motion, AnimatePresence } from "framer-motion";
+import { LanguageProvider } from "./context/LanguageContext";
 
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
@@ -140,7 +141,9 @@ const AppWithContext = injectContext(AppLayout);
 const App = () => {
   return (
     <BrowserRouter basename={process.env.BASENAME || ""}>
-      <AppWithContext />
+      <LanguageProvider>
+        <AppWithContext />
+      </LanguageProvider>
     </BrowserRouter>
   );
 };

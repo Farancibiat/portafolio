@@ -3,10 +3,8 @@ import { Award, Translate, Tools, PersonBadge, Calendar, Download, GeoAlt, Build
 import cvEsp from "../../assets/Felipe Arancibia Esp.pdf";
 import cvEng from "../../assets/Felipe Arancibia Eng.pdf";
 
-// Texto para la sección Perfil / Sobre Mí
-export const profileData = [
-    "Desarrollador web con experiencia en las industrias financiera, turística y acuícola. Su habilidad para conectar aspectos técnicos con objetivos empresariales le permite ofrecer soluciones con una visión integral del desarrollo. Destaca por su trabajo en equipo y comunicación, lo que complementa con un enfoque analítico y meticuloso."
-];
+// Texto para la sección Perfil / Sobre Mí - ahora una clave de traducción
+export const profileDataKey = "experiencePage.profileParagraph1";
 
 export const itExperienceData = [
   {
@@ -14,14 +12,14 @@ export const itExperienceData = [
     startDate: "Agosto 2022",
     endDate: "Enero 2024",
     location: "Remoto",
-    title: "Consultor Full Stack",
+    titleKey: "experiencePage.itExperience.siiGroup.title",
     company: "SII Group",
-    description: "Scotiabank:",
-    responsibilities: [
-        "Migración y mejora de plataforma hipotecaria en base a código VBA6 a React con Typescript, con restricción rigurosa de librerías, en interacción continua con usuarios.",
-        "Migración incluye testing, utilizando múltiples herramientas de análisis de código: Sonarqube, Fortify, Checkmarx y Blackduck.",
-        "Desarrollo de conexiones MS/BFF en Java Spring Boot conectando bases de datos Sybase, SQL Server y sistema AS400.",
-        "Manejo de Build/Deploy en entornos de desarrollo.",
+    descriptionKey: "experiencePage.itExperience.siiGroup.description",
+    responsibilitiesKeys: [
+        "experiencePage.itExperience.siiGroup.resp1",
+        "experiencePage.itExperience.siiGroup.resp2",
+        "experiencePage.itExperience.siiGroup.resp3",
+        "experiencePage.itExperience.siiGroup.resp4",
     ],
   },
   {
@@ -29,14 +27,14 @@ export const itExperienceData = [
     startDate: "Mayo 2022",
     endDate: "Julio 2022",
     location: "Remoto",
-    title: "Desarrollador Front End",
+    titleKey: "experiencePage.itExperience.afpUno.title",
     company: "AFP UNO",
-    description: "",
-    responsibilities: [
-        "Desarrollo continuo de plataformas pública y de clientes.",
-        "Implementación completa de Google Tag Manager desde cero en contacto con agencia de marketing externa y Equipo Comercial, optimizando proceso en conjunto.",
-        "Trabajo continuo con Equipo de QA en base a rutina Scrum Agile rigurosa.",
-        "Diseños estrictos en base a Figma, trabajando en conjunto con Equipo de Marketing y Comercial."
+    descriptionKey: "experiencePage.itExperience.afpUno.description",
+    responsibilitiesKeys: [
+        "experiencePage.itExperience.afpUno.resp1",
+        "experiencePage.itExperience.afpUno.resp2",
+        "experiencePage.itExperience.afpUno.resp3",
+        "experiencePage.itExperience.afpUno.resp4",
     ],
   },
   {
@@ -44,15 +42,15 @@ export const itExperienceData = [
     startDate: "Mayo 2021",
     endDate: "Abril 2022",
     location: "Remoto",
-    title: "Desarrollador Full Stack",
+    titleKey: "experiencePage.itExperience.moveApps.title",
     company: "MoveApps",
-    description: "Desarrollo de plataforma web multicliente (Chile Converge / Workafe) y plataforma para traslado de pacientes críticos (Movicare).",
-    responsibilities: [
-      "Desarrollo de plataforma web multicliente para capacitación de clientes, tanto Administrativa como acceso de usuarios.",
-      "Incluye vistas informativas, mantenedores, formularios, logins, landings y layouts/componentes reutilizables.",
-      "Desarrollo de API con ORM SailsJs, con envío de correos masivos.",
-      "Desarrollo de plataforma para traslado de pacientes críticos.",
-      "Levantamiento de requerimientos en contacto directo con cliente, optimizando proceso de gestión de traslados."
+    descriptionKey: "experiencePage.itExperience.moveApps.description",
+    responsibilitiesKeys: [
+      "experiencePage.itExperience.moveApps.resp1",
+      "experiencePage.itExperience.moveApps.resp2",
+      "experiencePage.itExperience.moveApps.resp3",
+      "experiencePage.itExperience.moveApps.resp4",
+      "experiencePage.itExperience.moveApps.resp5",
     ],
   },
 ];
@@ -63,14 +61,14 @@ export const adminExperienceData = [
     startDate: "Jun 2020",
     endDate: "Mar 2021",
     location: "Chile",
-    title: "Administrador",
+    titleKey: "experiencePage.adminExperience.wendtfish.title",
     company: "Pesquera Wendtfish",
-    responsibilities: [
-      "Desarrollo y operación de sistema de control financiero.",
-      "Análisis y gestión de brechas administrativas.",
-      "Implementación de sistema G-suite para mejora de procesos.",
-      "Negociación y gestión de proveedores.",
-      "Supervisión de equipos operativos y administrativos.",
+    responsibilitiesKeys: [
+      "experiencePage.adminExperience.wendtfish.resp1",
+      "experiencePage.adminExperience.wendtfish.resp2",
+      "experiencePage.adminExperience.wendtfish.resp3",
+      "experiencePage.adminExperience.wendtfish.resp4",
+      "experiencePage.adminExperience.wendtfish.resp5",
     ],
   },
   {
@@ -78,13 +76,13 @@ export const adminExperienceData = [
     startDate: "Ago 2019",
     endDate: "Nov 2019",
     location: "Chiloé, Chile",
-    title: "Director Ejecutivo",
+    titleKey: "experiencePage.adminExperience.chiloeBureau.title",
     company: "Corporación Chiloé Convention Bureau",
-    responsibilities: [
-      "Evaluación de desempeño del proyecto.",
-      "Regularización de brechas para rendición de Fondos Públicos (PROFO).",
-      "Rendición anual de fondos.",
-      "Coordinación de actividades de promoción turística.",
+    responsibilitiesKeys: [
+      "experiencePage.adminExperience.chiloeBureau.resp1",
+      "experiencePage.adminExperience.chiloeBureau.resp2",
+      "experiencePage.adminExperience.chiloeBureau.resp3",
+      "experiencePage.adminExperience.chiloeBureau.resp4",
     ],
   },
   {
@@ -92,15 +90,15 @@ export const adminExperienceData = [
     startDate: "Oct 2016",
     endDate: "Oct 2018",
     location: "Chile",
-    title: "Jefe de Desarrollo y Finanzas",
+    titleKey: "experiencePage.adminExperience.turismoPehuen.title",
     company: "Turismo Pehuén",
-    responsibilities: [
-      "Desarrollo, proyección y control de la gestión financiera y contable.",
-      "Rediseño de sistema de gestión administrativa.",
-      "Gestor de proyecto web y digitalización de procesos.",
-      "Desarrollo y mantención de Manual de operación institucional.",
-      "Estructuración departamental de la empresa.",
-      "Responsable de gestión de Recursos Humanos.",
+    responsibilitiesKeys: [
+      "experiencePage.adminExperience.turismoPehuen.resp1",
+      "experiencePage.adminExperience.turismoPehuen.resp2",
+      "experiencePage.adminExperience.turismoPehuen.resp3",
+      "experiencePage.adminExperience.turismoPehuen.resp4",
+      "experiencePage.adminExperience.turismoPehuen.resp5",
+      "experiencePage.adminExperience.turismoPehuen.resp6",
     ],
   },
 ];
@@ -110,26 +108,26 @@ export const educationData = [
     id: "4geeks-2020",
     startDate: "Dic 2020",
     endDate: "Mayo 2021",
-    title: "Desarrollador Web Full Stack",
-    institution: "4Geeks Academy",
-    details: [],
+    titleKey: "experiencePage.education.fourGeeks.title",
+    institutionKey: "experiencePage.education.fourGeeks.institution",
+    detailsKeys: []
   },
    {
     id: "uach-2013",
     startDate: "2013",
     endDate: "2016",
-    title: "Administrador de Empresas | Licenciatura en Turismo",
-    institution: "Universidad Austral de Chile",
-    details: [],
+    titleKey: "experiencePage.education.uach.title",
+    institutionKey: "experiencePage.education.uach.institution",
+    detailsKeys: []
   },
   {
     id: "utfsm-2009",
     startDate: "2009",
     endDate: "2013",
-    title: "Ingeniería Comercial",
-    institution: "Universidad Técnica Federico Santa María",
-    details: [],
-    status: "Incompleta",
+    titleKey: "experiencePage.education.utfsm.title",
+    institutionKey: "experiencePage.education.utfsm.institution",
+    statusKey: "experiencePage.education.utfsm.statusIncomplete",
+    detailsKeys: []
   },
 ];
 
@@ -151,20 +149,20 @@ export const cvData = [
   {
     id: "cv-esp",
     language: "Español",
-    description: "Versión completa en español de mi currículum vitae",
+    descriptionKey: "experiencePage.cvInfo.cvEspDescription",
     icon: <Award className="text-warning" size={44} />,
     downloadLink: cvEsp,
     downloadFilename: "Felipe_Arancibia_CV_Esp.pdf",
-    buttonText: "Descargar",
+    buttonTextKey: "experiencePage.cvInfo.cvEspButton",
   },
   {
     id: "cv-eng",
     language: "English",
-    description: "Full English version of my curriculum vitae",
+    descriptionKey: "experiencePage.cvInfo.cvEngDescription",
     icon: <Translate className="text-warning" size={44} />,
     downloadLink: cvEng,
     downloadFilename: "Felipe_Arancibia_CV_Eng.pdf",
-    buttonText: "Download",
+    buttonTextKey: "experiencePage.cvInfo.cvEngButton",
   },
 ];
 

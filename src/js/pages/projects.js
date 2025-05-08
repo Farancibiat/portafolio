@@ -1,11 +1,18 @@
 import React from "react";
+import { useTranslations } from "../context/LanguageContext";
 import BodyFooter from "../component/bodyFooter";
 import { Github, Folder } from "react-bootstrap-icons";
-import projects from "../store/projectsData";
+import projects from "../data/projectsData";
 import "../styles/common.css"; 
 import "../styles/projects.css";
 
 export const Projects = () => {
+  const { t, language } = useTranslations();
+
+  React.useEffect(() => {
+    document.title = t('projectsPage.pageTitle') + " - Felipe Arancibia";
+  }, [t, language]);
+
   // Function to render project cards in rows of 3
   const renderProjectRows = () => {
     const rows = [];
@@ -16,19 +23,31 @@ export const Projects = () => {
           {rowProjects.map((project) => (
             <div className="col-12 col-sm-4 project-col" key={project.id}>
               <div className="styledCard">
-                <h4>{project.title}</h4>
-                <p>{project.description}</p>
+                <h4>{project.titleKey ? t(project.titleKey) : project.title}</h4>
+                <p>{project.descriptionKey ? t(project.descriptionKey) : project.description}</p>
                 <div>
-                  {project.hasLiveDemo && (
+                  {project.hasLiveDemo && project.projectUrl && (
                     <a href={project.projectUrl} target="_blank" rel="noreferrer">
-                      <button>Visitar Proyecto &gt;&gt;</button>
+                      <button>{t('projectsPage.viewProjectButton')} &gt;&gt;</button>
                     </a>
                   )}
-                  <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                    <button className="btn2">
-                      Repositorio <Github />
-                    </button>
-                  </a>
+                  {project.repoUrl && (
+                    <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                      <button className="btn2">
+                        {t('projectsPage.viewRepoButton')} <Github />
+                      </button>
+                    </a>
+                  )}
+                  {!project.hasLiveDemo && !project.projectUrl && project.repoUrl && (
+                     <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                        <button className="btn2">
+                         {t('projectsPage.viewRepoButton')} <Github />
+                        </button>
+                     </a>
+                  )}
+                  {!project.hasLiveDemo && !project.projectUrl && !project.repoUrl && (
+                     <button disabled className="btn2">{t('projectsPage.noDemoButton')}</button>
+                  )}
                 </div>
               </div>
             </div>
@@ -51,12 +70,12 @@ export const Projects = () => {
         <div className="contentScroller">
           <div className="px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
             <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
-              <Folder className="me-2" /> Proyectos
+              <Folder className="me-2" /> {t('projectsPage.pageTitle')}
             </h1>
             <p className="text-light mb-4">
-              Selección de proyectos desarrollados utilizando distintas tecnologías y frameworks.
+              {t('projectsPage.pageDescriptionParagraph1')}
               <br /><br />
-              Todos los proyectos están disponibles en{" "}
+              {t('projectsPage.pageDescriptionParagraph2')}{" "}
               <a href="https://github.com/Farancibiat" className="text-warning" target="_blank" rel="noreferrer">
                 Github <Github />
               </a>

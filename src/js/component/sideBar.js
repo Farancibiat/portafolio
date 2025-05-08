@@ -1,5 +1,6 @@
 import React from "react";
 import ReactGA from "react-ga4";
+import { useTranslations } from "../context/LanguageContext";
 import "../styles/sideBar.css";
 import { Link } from "react-router-dom";
 import {
@@ -20,6 +21,8 @@ import flagES from "../../assets/img/flag-es.svg";
 import flagGB from "../../assets/img/flag-gb.svg";
 
 export const SideBar = () => {
+  const { t } = useTranslations();
+
   const handleDownloadCV_ES = () => {
     ReactGA.event({
       category: "CV Download",
@@ -41,8 +44,8 @@ export const SideBar = () => {
       {/* Header Section */}
       <div className="topSideBar pb-2 pt-3">
         <div className="text-center text-light">
-          <h3 className="fw-bold mb-1">Felipe Arancibia</h3>
-          <p className="mb-1 text-warning">Desarrollador Full Stack</p>
+          <h3 className="fw-bold mb-1">{t('sideBar.title')}</h3>
+          <p className="mb-1 text-warning">{t('sideBar.subtitle')}</p>
         </div>
       </div>
 
@@ -55,22 +58,22 @@ export const SideBar = () => {
               <div className="icon-circle bg-warning me-3">
                 <Globe size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">Idiomas</h5>
+              <h5 className="text-light mb-0">{t('sideBar.languagesTitle')}</h5>
             </div>
             <div className="row">
               <div className="col-6">
                 <div className="d-flex align-items-center justify-content-center mb-1">
                   <img src={flagES} alt="Español" className="flag-icon" />
-                  <span className="fw-bold text-warning">Español</span>
+                  <span className="fw-bold text-warning">{t('sideBar.cvES')}</span>
                 </div>
-                <p className="text-center text-light small mb-0">Nativo</p>
+                <p className="text-center text-light small mb-0">{t('sideBar.native')}</p>
               </div>
               <div className="col-6">
                 <div className="d-flex align-items-center justify-content-center mb-1">
                   <img src={flagGB} alt="Inglés" className="flag-icon" />
-                  <span className="fw-bold text-warning">Inglés</span>
+                  <span className="fw-bold text-warning">{t('sideBar.cvEN')}</span>
                 </div>
-                <p className="text-center text-light small mb-0">Nivel C2</p>
+                <p className="text-center text-light small mb-0">{t('sideBar.levelC2')}</p>
               </div>
             </div>
           </div>
@@ -83,11 +86,11 @@ export const SideBar = () => {
               <div className="icon-circle bg-warning me-3">
                 <Code size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">Stack Tecnológico</h5>
+              <h5 className="text-light mb-0">{t('sideBar.techStackTitle')}</h5>
             </div>
             <div className="row">
               <div className="col-md-6">
-                <h6 className="text-warning mb-2 small text-center">Frontend</h6>
+                <h6 className="text-warning mb-2 small text-center">{t('sideBar.frontendTitle')}</h6>
                 <ul className="tech-list">
                   <li>React JS</li>
                   <li>Next JS</li>
@@ -101,7 +104,7 @@ export const SideBar = () => {
                 </ul>
               </div>
               <div className="col-md-6">
-                <h6 className="text-warning mb-2 small text-center">Backend</h6>
+                <h6 className="text-warning mb-2 small text-center">{t('sideBar.backendTitle')}</h6>
                 <ul className="tech-list">
                   <li>Java / Spring</li>
                   <li>Express / Node.js</li>
@@ -122,7 +125,7 @@ export const SideBar = () => {
               <div className="icon-circle bg-warning me-3">
                 <CloudUpload size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">Despliegue</h5>
+              <h5 className="text-light mb-0">{t('sideBar.deploymentTitle')}</h5>
             </div>
             <ul className="tech-list">
               <li>Azure</li>
@@ -133,7 +136,6 @@ export const SideBar = () => {
           </div>
         </div>
 
-
         {/* Methodology Section */}
         <div className="card bg-dark border-0 shadow-sm mb-3">
           <div className="card-body">
@@ -141,7 +143,7 @@ export const SideBar = () => {
               <div className="icon-circle bg-warning me-3">
                 <Tools size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">Metodologías y Herramientas</h5>
+              <h5 className="text-light mb-0">{t('sideBar.methodologyTitle')}</h5>
             </div>
             <ul className="tech-list">
               <li>
@@ -174,7 +176,7 @@ export const SideBar = () => {
               <div className="icon-circle bg-warning me-3">
                 <FileEarmarkPerson size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">Curriculum Vitae</h5>
+              <h5 className="text-light mb-0">{t('sideBar.cvTitle')}</h5>
             </div>
             <div className="row">
               <div className="col-6 text-center">
@@ -185,7 +187,7 @@ export const SideBar = () => {
                   onClick={handleDownloadCV_ES}
                 >
                   <Download className="me-1" size={12} />
-                  Español
+                  {t('sideBar.cvES')}
                 </a>
               </div>
               <div className="col-6 text-center">
@@ -196,7 +198,7 @@ export const SideBar = () => {
                   onClick={handleDownloadCV_EN}
                 >
                   <Download className="me-1" size={12} />
-                  English
+                  {t('sideBar.cvEN')}
                 </a>
               </div>
             </div>

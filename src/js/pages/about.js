@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslations } from "../context/LanguageContext";
 import { 
   FileEarmarkPerson, 
   LaptopFill, 
@@ -15,7 +16,13 @@ import profile from "../../assets/img/profile.jpg";
 import "../styles/common.css"; // Import common styles
 
 export const About = () => {
+  const { t } = useTranslations();
   
+  // Efecto para cambiar el título del documento (opcional, pero bueno para SEO y UX)
+  React.useEffect(() => {
+    document.title = t('aboutPage.pageTitle') + " - Felipe Arancibia"; // Añade tu nombre o el de tu sitio
+  }, [t]);
+
   return (
     <>
       <div className="bodyFrame">
@@ -27,24 +34,24 @@ export const About = () => {
                 <div className="profile-container">
                   <img 
                     src={profile} 
-                    alt="Felipe Arancibia" 
+                    alt={t('aboutPage.heroName')}
                     className="img-fluid"
                   />
                 </div>
               </div>
               <div className="col-lg-9 col-md-8 text-center text-md-start">
                 <h1 className="display-4 fw-bold text-warning mb-3">
-                  Felipe Arancibia Torres
+                  {t('aboutPage.heroName')}
                 </h1>
                 <p className="lead text-light mb-4">
-                  Desarrollador Full Stack enfocado en transformar las necesidades del negocio en soluciones web modernas y multiplataforma.
+                  {t('aboutPage.heroSubtitle')}
                 </p>
                 <div className="d-flex justify-content-center justify-content-md-start gap-3">
                   <Link to="/projects" className="btn btn-warning px-4 py-2 text-dark">
-                    Ver Proyectos <ArrowRightCircle className="ms-2" />
+                    {t('aboutPage.heroViewProjects')} <ArrowRightCircle className="ms-2" />
                   </Link>
                   <Link to="/contact" className="btn btn-outline-light px-4 py-2">
-                    Contacto
+                    {t('aboutPage.heroContact')}
                   </Link>
                 </div>
               </div>
@@ -55,8 +62,10 @@ export const About = () => {
               <div className="col-12">
                 <div className="p-4 rounded" style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}>
                   <div className="d-flex justify-content-between align-items-center mb-4">
-                    <h2 className="text-warning mb-0">Habilidades</h2>
-                    <small className="text-light opacity-75">* Ver perfil técnico completo en <Link to="/experience" className="text-warning">Experiencia</Link></small>
+                    <h2 className="text-warning mb-0">{t('aboutPage.skillsTitle')}</h2>
+                    <small className="text-light opacity-75">
+                      {t('aboutPage.skillsDisclaimer')} <Link to="/experience" className="text-warning">{t('aboutPage.skillsDisclaimerLink')}</Link>
+                    </small>
                   </div>
                   <div className="row">
                     <div className="col-md-3 mb-3">
@@ -65,8 +74,8 @@ export const About = () => {
                           <LaptopFill size={20} className="text-dark" />
                         </div>
                         <div>
-                          <h5 className="text-light mb-1">Frontend</h5>
-                          <p className="text-light opacity-75 mb-0">React, Next.js, TypeScript</p>
+                          <h5 className="text-light mb-1">{t('aboutPage.skillsFrontendTitle')}</h5>
+                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsFrontendDesc')}</p>
                         </div>
                       </div>
                     </div>
@@ -76,8 +85,8 @@ export const About = () => {
                           <Database size={20} className="text-dark" />
                         </div>
                         <div>
-                          <h5 className="text-light mb-1">Backend</h5>
-                          <p className="text-light opacity-75 mb-0">Java, Spring, Flask</p>
+                          <h5 className="text-light mb-1">{t('aboutPage.skillsBackendTitle')}</h5>
+                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsBackendDesc')}</p>
                         </div>
                       </div>
                     </div>
@@ -87,8 +96,8 @@ export const About = () => {
                           <Tools size={20} className="text-dark" />
                         </div>
                         <div>
-                          <h5 className="text-light mb-1">Herramientas</h5>
-                          <p className="text-light opacity-75 mb-0">Git, CI/CD, Azure</p>
+                          <h5 className="text-light mb-1">{t('aboutPage.skillsToolsTitle')}</h5>
+                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsToolsDesc')}</p>
                         </div>
                       </div>
                     </div>
@@ -98,8 +107,8 @@ export const About = () => {
                           <Kanban size={20} className="text-dark" />
                         </div>
                         <div>
-                          <h5 className="text-light mb-1">Metodologías</h5>
-                          <p className="text-light opacity-75 mb-0">Agile, Scrum, Kanban</p>
+                          <h5 className="text-light mb-1">{t('aboutPage.skillsMethodologiesTitle')}</h5>
+                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsMethodologiesDesc')}</p>
                         </div>
                       </div>
                     </div>
@@ -117,14 +126,14 @@ export const About = () => {
                       <div className="bg-warning p-2 rounded me-3">
                         <FileEarmarkPerson size={24} className="text-dark" />
                       </div>
-                      <h3 className="card-title mb-0">Experiencia</h3>
+                      <h3 className="card-title mb-0">{t('aboutPage.cardExperienceTitle')}</h3>
                     </div>
                     <p className="card-text text-dark">
-                      Amplia experiencia en desarrollo de aplicaciones web, metodologías ágiles y trabajo en equipo. Revisa mi CV completo en inglés y español.
+                      {t('aboutPage.cardExperienceText')}
                     </p>
                     <div className="mt-auto pt-3">
                       <Link to="/experience" className="btn btn-warning px-4 text-dark">
-                        Ver Experiencia <ArrowRightCircle className="ms-2" />
+                        {t('aboutPage.cardExperienceButton')} <ArrowRightCircle className="ms-2" />
                       </Link>
                     </div>
                   </div>
@@ -138,14 +147,14 @@ export const About = () => {
                       <div className="bg-warning p-2 rounded me-3">
                         <Folder size={24} className="text-dark" />
                       </div>
-                      <h3 className="card-title mb-0">Proyectos</h3>
+                      <h3 className="card-title mb-0">{t('aboutPage.cardProjectsTitle')}</h3>
                     </div>
                     <p className="card-text text-dark">
-                      Portfolio de proyectos desarrollados con diversas tecnologías. Incluye creación de APIs, implementación de soluciones y herramientas de código abierto.
+                      {t('aboutPage.cardProjectsText')}
                     </p>
                     <div className="mt-auto pt-3">
                       <Link to="/projects" className="btn btn-warning px-4 text-dark">
-                        Ver Proyectos <ArrowRightCircle className="ms-2" />
+                        {t('aboutPage.cardProjectsButton')} <ArrowRightCircle className="ms-2" />
                       </Link>
                     </div>
                   </div>
@@ -159,14 +168,14 @@ export const About = () => {
                       <div className="bg-warning p-2 rounded me-3">
                         <EnvelopeFill size={24} className="text-dark" />
                       </div>
-                      <h3 className="card-title mb-0">Contacto</h3>
+                      <h3 className="card-title mb-0">{t('aboutPage.cardContactTitle')}</h3>
                     </div>
                     <p className="card-text text-dark">
-                      ¿Interesado en trabajar juntos? Estoy disponible para proyectos freelance y nuevas oportunidades laborales.
+                      {t('aboutPage.cardContactText')}
                     </p>
                     <div className="mt-auto pt-3">
                       <Link to="/contact" className="btn btn-warning px-4 text-dark">
-                        Contáctame <ArrowRightCircle className="ms-2" />
+                        {t('aboutPage.cardContactButton')} <ArrowRightCircle className="ms-2" />
                       </Link>
                     </div>
                   </div>

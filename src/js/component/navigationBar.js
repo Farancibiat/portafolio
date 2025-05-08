@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslations } from "../context/LanguageContext";
+import flagES from "../../assets/img/flag-es.svg";
+import flagGB from "../../assets/img/flag-gb.svg";
 import "../styles/navigationBar.css";
 import { Github, Linkedin, House, Briefcase, Folder, Envelope } from "react-bootstrap-icons";
 
 export const NavigationBar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const { t, setLanguage, language } = useTranslations();
+
+  // Estilos para las banderas (puedes moverlos a tu CSS)
+  const flagStyle = {
+    width: "24px",
+    height: "auto",
+    cursor: "pointer",
+    margin: "0 5px",
+    borderRadius: "3px",
+    border: language === 'es' ? "2px solid #ffc107" : "2px solid transparent", // Ejemplo de resaltado para la bandera activa
+  };
+  const flagStyleEn = {
+    ...flagStyle,
+    border: language === 'en' ? "2px solid #ffc107" : "2px solid transparent",
+  }
 
   // Detectar scroll para cambiar el estilo del navbar
   useEffect(() => {
@@ -37,7 +55,7 @@ export const NavigationBar = () => {
               <h3 className="brandText fw-bold mb-0">
                 <span className="brand-highlight">F</span>arancibiat
               </h3>
-              <div className="brand-subtitle">Desarrollador Full Stack</div>
+              <div className="brand-subtitle">{t('navigationBar.brandSubtitle')}</div>
             </div>
             <div className="brand-separator mx-3"></div>
             <div className="social-brand-icons">
@@ -62,19 +80,33 @@ export const NavigationBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ms-auto">
+          <div className="navbar-nav ms-auto align-items-center">
             <Link className={`nav-link navigationText ${isActive('/')}`} to="/">
-              <House className="nav-icon me-1" /> Inicio
+              <House className="nav-icon me-1" /> {t('navigationBar.home')}
             </Link>
             <Link className={`nav-link navigationText ${isActive('/experience')}`} to="/experience">
-              <Briefcase className="nav-icon me-1" /> Experiencia
+              <Briefcase className="nav-icon me-1" /> {t('navigationBar.experience')}
             </Link>
             <Link className={`nav-link navigationText ${isActive('/projects')}`} to="/projects">
-              <Folder className="nav-icon me-1" /> Proyectos
+              <Folder className="nav-icon me-1" /> {t('navigationBar.projects')}
             </Link>
             <Link className={`nav-link navigationText ${isActive('/contact')}`} to="/contact">
-              <Envelope className="nav-icon me-1" /> Contacto
+              <Envelope className="nav-icon me-1" /> {t('navigationBar.contact')}
             </Link>
+            <div className="d-flex align-items-center ms-lg-3 mt-2 mt-lg-0">
+              <img 
+                src={flagES} 
+                alt="Español" 
+                style={flagStyle} 
+                onClick={() => setLanguage('es')} 
+              />
+              <img 
+                src={flagGB} 
+                alt="English" 
+                style={flagStyleEn} 
+                onClick={() => setLanguage('en')} 
+              />
+            </div>
           </div>
         </div>
       </div>
