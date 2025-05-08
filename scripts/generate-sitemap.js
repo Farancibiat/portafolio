@@ -1,4 +1,3 @@
-const { SitemapGenerator } = require('react-router-sitemap-generator');
 const path = require('path');
 
 // Define tu URL base
@@ -24,6 +23,9 @@ const config = {
 };
 
 // Crear instancia y generar sitemap
+// const { SitemapGenerator } = require('react-router-sitemap-generator'); // Original
+const SitemapGeneratorPackage = require('react-router-sitemap-generator');
+const SitemapGenerator = SitemapGeneratorPackage.default || SitemapGeneratorPackage;
 const generator = new SitemapGenerator(config);
 generator.generate();
 
