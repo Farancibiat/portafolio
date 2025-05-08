@@ -145,6 +145,7 @@ export const Experience = () => {
     return () => {
       contentScroller.removeEventListener('scroll', handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // El array de dependencias vacío asegura que esto se ejecuta solo al montar y desmontar
 
   return (
