@@ -98,31 +98,54 @@ export const Experience = () => {
       setIsSticky(scrollPosition >= stickyPoint);
       
       const sections = ['profile', 'careerDev', 'careerAdmin', 'education', 'skills', 'download'];
-      let currentSection = 'profile'; 
+      let currentVisibleSection = '';
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (!element) continue;
-        
-        const rect = element.getBoundingClientRect();
-        const scrollerRect = contentScroller.getBoundingClientRect();
-        const offsetTopRelativeToScroller = rect.top - scrollerRect.top;
-        const detectionOffset = 150; 
+      const scrollerRect = contentScroller.getBoundingClientRect();
+      const atBottom = Math.abs(contentScroller.scrollHeight - contentScroller.scrollTop - contentScroller.clientHeight) < 1.5; // Umbral pequeño para atBottom
 
-        if (offsetTopRelativeToScroller < detectionOffset) {
-          currentSection = sectionId;
+      if (atBottom) {
+        currentVisibleSection = sections[sections.length - 1];
+      } else {
+        const activationOffset = scrollerRect.top + 120; // 120px desde el tope visible del scroller
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sectionId = sections[i];
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= activationOffset) {
+              currentVisibleSection = sectionId;
+              break; 
+            }
+          }
+        }
+        if (!currentVisibleSection) {
+          // Si después del bucle ninguna sección se marcó (ej. al cargar la página y estar arriba del todo)
+          // verificamos si la primera sección está visible en la parte superior.
+          const firstSectionElement = document.getElementById(sections[0]);
+          if (firstSectionElement) {
+            const firstRect = firstSectionElement.getBoundingClientRect();
+            if (firstRect.top >= scrollerRect.top && firstRect.top < scrollerRect.bottom) {
+              currentVisibleSection = sections[0];
+            }
+          }
         }
       }
-      setActiveSection(currentSection);
+      
+      // Solo actualizar si la sección activa realmente cambió
+      if (activeSection !== currentVisibleSection && currentVisibleSection !== '') {
+        setActiveSection(currentVisibleSection);
+      }
     };
     
     contentScroller.addEventListener('scroll', handleScroll);
-    handleScroll();
+    handleScroll(); // Llamada inicial para establecer el estado correcto al cargar
     
+    // Limpieza del listener
     return () => {
       contentScroller.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, []); // El array de dependencias vacío asegura que esto se ejecuta solo al montar y desmontar
 
   return (
     <>
