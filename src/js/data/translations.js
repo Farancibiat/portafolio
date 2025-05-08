@@ -16,9 +16,12 @@ export const translations = {
     },
     sideBar: {
       title: "Felipe Arancibia",
-      subtitle: "Desarrollador Full Stack",
+      jobTitle: "Desarrollador Full Stack",
+      description: "Desarrollador Full Stack con experiencia en desarrollo de aplicaciones web, especializado en Java, Spring Boot, Python, Flask, JavaScript, React y Node.js. Habilidades comprobadas en bases de datos relacionales y no relacionales, control de versiones con Git y servicios en la nube como Azure.",
       languagesTitle: "Idiomas",
-      native: "Nativo",
+      languageSpanish: "Español",
+      levelNative: "Nativo",
+      languageEnglish: "Inglés",
       levelC2: "Nivel C2",
       techStackTitle: "Stack Tecnológico",
       frontendTitle: "Frontend",
@@ -233,8 +236,8 @@ export const translations = {
       contact: "Contact",
       brandSubtitle: "Full Stack Developer"
     },
-    sideBar: {
-      title: "Felipe Arancibia T.",
+    sideBar: {    
+      title: "Felipe Arancibia Torres",
       jobTitle: "Full Stack Developer",
       description: "Full Stack Developer with experience in web application development, specializing in Java, Spring Boot, Python, Flask, JavaScript, React, and Node.js. Proven skills in relational and non-relational databases, version control with Git, and cloud services like Azure.",
       languagesTitle: "Languages",

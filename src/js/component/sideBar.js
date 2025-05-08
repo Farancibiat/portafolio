@@ -45,7 +45,7 @@ export const SideBar = () => {
       <div className="topSideBar pb-2 pt-3">
         <div className="text-center text-light">
           <h3 className="fw-bold mb-1">{t('sideBar.title')}</h3>
-          <p className="mb-1 text-warning">{t('sideBar.subtitle')}</p>
+          <p className="mb-1 text-warning">{t('sideBar.jobTitle')}</p>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export const SideBar = () => {
                   <img src={flagES} alt="Español" className="flag-icon" />
                   <span className="fw-bold text-warning">{t('sideBar.cvES')}</span>
                 </div>
-                <p className="text-center text-light small mb-0">{t('sideBar.native')}</p>
+                <p className="text-center text-light small mb-0">{t('sideBar.levelNative')}</p>
               </div>
               <div className="col-6">
                 <div className="d-flex align-items-center justify-content-center mb-1">

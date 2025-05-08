@@ -26,11 +26,13 @@ export const Projects = () => {
                 <h4>{project.titleKey ? t(project.titleKey) : project.title}</h4>
                 <p>{project.descriptionKey ? t(project.descriptionKey) : project.description}</p>
                 <div>
+                  {/* Botón para Ver Proyecto (Demo en vivo) */}
                   {project.hasLiveDemo && project.projectUrl && (
                     <a href={project.projectUrl} target="_blank" rel="noreferrer">
                       <button>{t('projectsPage.viewProjectButton')} &gt;&gt;</button>
                     </a>
                   )}
+                  {/* Botón para Ver Repositorio */}
                   {project.repoUrl && (
                     <a href={project.repoUrl} target="_blank" rel="noreferrer">
                       <button className="btn2">
@@ -38,14 +40,8 @@ export const Projects = () => {
                       </button>
                     </a>
                   )}
-                  {!project.hasLiveDemo && !project.projectUrl && project.repoUrl && (
-                     <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                        <button className="btn2">
-                         {t('projectsPage.viewRepoButton')} <Github />
-                        </button>
-                     </a>
-                  )}
-                  {!project.hasLiveDemo && !project.projectUrl && !project.repoUrl && (
+                  {/* Botón para casos sin enlaces (Repo Privado o similar) */}
+                  {!project.projectUrl && !project.repoUrl && (
                      <button disabled className="btn2">{t('projectsPage.noDemoButton')}</button>
                   )}
                 </div>
