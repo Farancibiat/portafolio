@@ -28,7 +28,7 @@ export const Projects = () => {
                 <p>{project.descriptionKey ? t(project.descriptionKey) : project.description}</p>
                 <div>
                   {/* Botón para Ver Proyecto (Demo en vivo) */}
-                  {project.hasLiveDemo && project.projectUrl && (
+                  {project.liveDemo && (
                     <a href={project.projectUrl} target="_blank" rel="noreferrer">
                       <button>{t('projectsPage.viewProjectButton')} &gt;&gt;</button>
                     </a>
@@ -40,10 +40,6 @@ export const Projects = () => {
                         {t('projectsPage.viewRepoButton')} <Github />
                       </button>
                     </a>
-                  )}
-                  {/* Botón para casos sin enlaces (Repo Privado o similar) */}
-                  {!project.projectUrl && !project.repoUrl && (
-                     <button disabled className="btn2">{t('projectsPage.noDemoButton')}</button>
                   )}
                 </div>
               </div>
