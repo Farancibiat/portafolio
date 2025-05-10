@@ -9,7 +9,7 @@ import ReactGA from "react-ga4";
 import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
 import { motion, AnimatePresence } from "framer-motion";
-import { LanguageProvider } from "./context/LanguageContext";
+import { LanguageProvider } from "./store/LanguageContext";
 
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";

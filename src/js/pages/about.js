@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 import { 
   FileEarmarkPerson, 
   LaptopFill, 
@@ -14,9 +14,24 @@ import {
 import BodyFooter from "../component/bodyFooter";
 import profile from "../../assets/img/profile.jpg";
 import "../styles/common.css"; // Import common styles
+import { translations } from "../store/translations";
+
+
+const skillsIcons=[
+  <LaptopFill size={20} className="text-dark" />,
+  <Database size={20} className="text-dark" />,
+  <Tools size={20} className="text-dark" />,
+  <Kanban size={20} className="text-dark" />
+]
+
+const cardsIcons=[
+  <FileEarmarkPerson size={20} className="text-dark" />,
+  <Folder size={20} className="text-dark" />,
+  <EnvelopeFill size={20} className="text-dark" />
+]
 
 export const About = () => {
-  const { t } = useTranslations();
+  const { t, language } = useTranslations();
   
   // Efecto para cambiar el título del documento (opcional, pero bueno para SEO y UX)
   React.useEffect(() => {
@@ -34,17 +49,17 @@ export const About = () => {
                 <div className="profile-container">
                   <img 
                     src={profile} 
-                    alt={t('aboutPage.heroName')}
+                    alt={t('general.name')}
                     className="img-fluid"
                   />
                 </div>
               </div>
               <div className="col-lg-9 col-md-8 text-center text-md-start">
                 <h1 className="display-4 fw-bold text-warning mb-3">
-                  {t('aboutPage.heroName')}
+                  {t('general.name')}
                 </h1>
                 <p className="lead text-light mb-4">
-                  {t('aboutPage.heroSubtitle')}
+                  {t('aboutPage.heroSubtitle')} 
                 </p>
                 <div className="d-flex justify-content-center justify-content-md-start gap-3">
                   <Link to="/projects" className="btn btn-warning px-4 py-2 text-dark">
@@ -68,119 +83,46 @@ export const About = () => {
                     </small>
                   </div>
                   <div className="row">
-                    <div className="col-md-3 mb-3">
-                      <div className="d-flex align-items-center">
-                        <div className="bg-warning p-2 rounded-circle me-3">
-                          <LaptopFill size={20} className="text-dark" />
+                    {translations[language].aboutPage.skills.map((skill, index) => (
+                      <div className="col-md-3 mb-3" key={skill.id}>
+                        <div className="d-flex align-items-center">
+                          <div className="bg-warning p-2 rounded-circle me-3">
+                            {skillsIcons[index]}
                         </div>
                         <div>
-                          <h5 className="text-light mb-1">{t('aboutPage.skillsFrontendTitle')}</h5>
-                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsFrontendDesc')}</p>
+                          <h5 className="text-light mb-1">{skill.title}</h5>
+                          <p className="text-light opacity-75 mb-0">{skill.description}</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                      <div className="d-flex align-items-center">
-                        <div className="bg-warning p-2 rounded-circle me-3">
-                          <Database size={20} className="text-dark" />
-                        </div>
-                        <div>
-                          <h5 className="text-light mb-1">{t('aboutPage.skillsBackendTitle')}</h5>
-                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsBackendDesc')}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                      <div className="d-flex align-items-center">
-                        <div className="bg-warning p-2 rounded-circle me-3">
-                          <Tools size={20} className="text-dark" />
-                        </div>
-                        <div>
-                          <h5 className="text-light mb-1">{t('aboutPage.skillsToolsTitle')}</h5>
-                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsToolsDesc')}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                      <div className="d-flex align-items-center">
-                        <div className="bg-warning p-2 rounded-circle me-3">
-                          <Kanban size={20} className="text-dark" />
-                        </div>
-                        <div>
-                          <h5 className="text-light mb-1">{t('aboutPage.skillsMethodologiesTitle')}</h5>
-                          <p className="text-light opacity-75 mb-0">{t('aboutPage.skillsMethodologiesDesc')}</p>
-                        </div>
-                      </div>
-                    </div>
+                    </div>))}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Featured Sections - Ahora en 3 columnas para mejor aprovechamiento */}
+            {/* Featured Sections */}
             <div className="row g-4">
-              <div className="col-lg-4">
+              {translations[language].aboutPage.cards.map((card, index) => (
+              <div className="col-lg-4" key={card.id}>
                 <div className="card h-100 border-0 shadow-sm">
                   <div className="card-body d-flex flex-column p-4">
                     <div className="d-flex align-items-center mb-3">
                       <div className="bg-warning p-2 rounded me-3">
-                        <FileEarmarkPerson size={24} className="text-dark" />
+                        {cardsIcons[index]}
                       </div>
-                      <h3 className="card-title mb-0">{t('aboutPage.cardExperienceTitle')}</h3>
+                      <h3 className="card-title mb-0">{card.title}</h3>
                     </div>
                     <p className="card-text text-dark">
-                      {t('aboutPage.cardExperienceText')}
+                      {card.text}
                     </p>
                     <div className="mt-auto pt-3">
                       <Link to="/experience" className="btn btn-warning px-4 text-dark">
-                        {t('aboutPage.cardExperienceButton')} <ArrowRightCircle className="ms-2" />
+                        {card.button} <ArrowRightCircle className="ms-2" />
                       </Link>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="col-lg-4">
-                <div className="card h-100 border-0 shadow-sm">
-                  <div className="card-body d-flex flex-column p-4">
-                    <div className="d-flex align-items-center mb-3">
-                      <div className="bg-warning p-2 rounded me-3">
-                        <Folder size={24} className="text-dark" />
-                      </div>
-                      <h3 className="card-title mb-0">{t('aboutPage.cardProjectsTitle')}</h3>
-                    </div>
-                    <p className="card-text text-dark">
-                      {t('aboutPage.cardProjectsText')}
-                    </p>
-                    <div className="mt-auto pt-3">
-                      <Link to="/projects" className="btn btn-warning px-4 text-dark">
-                        {t('aboutPage.cardProjectsButton')} <ArrowRightCircle className="ms-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4">
-                <div className="card h-100 border-0 shadow-sm">
-                  <div className="card-body d-flex flex-column p-4">
-                    <div className="d-flex align-items-center mb-3">
-                      <div className="bg-warning p-2 rounded me-3">
-                        <EnvelopeFill size={24} className="text-dark" />
-                      </div>
-                      <h3 className="card-title mb-0">{t('aboutPage.cardContactTitle')}</h3>
-                    </div>
-                    <p className="card-text text-dark">
-                      {t('aboutPage.cardContactText')}
-                    </p>
-                    <div className="mt-auto pt-3">
-                      <Link to="/contact" className="btn btn-warning px-4 text-dark">
-                        {t('aboutPage.cardContactButton')} <ArrowRightCircle className="ms-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div>))}
             </div>
           </div>
         </div>

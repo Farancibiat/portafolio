@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
-import { translations } from '../data/translations'; // Ajusta la ruta si es necesario
+import { translations } from './translations'; // Ajusta la ruta si es necesario
 
 // Crear el contexto
 export const LanguageContext = createContext();

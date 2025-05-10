@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 import { EnvelopeFill, Send, Person, ChatText } from "react-bootstrap-icons";
 import { Context } from "../store/appContext";
 import "../styles/common.css"; // Import common styles

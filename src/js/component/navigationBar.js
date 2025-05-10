@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 import flagES from "../../assets/img/flag-es.svg";
 import flagGB from "../../assets/img/flag-gb.svg";
 import "../styles/navigationBar.css";
@@ -49,25 +49,27 @@ export const NavigationBar = () => {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark navigationBar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container-fluid py-2">
-        <Link className="navbar-brand" to="/">
-          <div className="brand-wrapper d-flex align-items-center">
-            <div className="brand-container">
-              <h3 className="brandText fw-bold mb-0">
-                <span className="brand-highlight">F</span>arancibiat
-              </h3>
-              <div className="brand-subtitle">{t('navigationBar.brandSubtitle')}</div>
+        <div className="d-flex align-items-center">
+          <Link className="navbar-brand" to="/">
+            <div className="brand-wrapper d-flex align-items-center">
+              <div className="brand-container">
+                <h3 className="brandText fw-bold mb-0">
+                  <span className="brand-highlight">F</span>arancibiat
+                </h3>
+                <div className="brand-subtitle">{t('general.title')}</div>
+              </div>
             </div>
-            <div className="brand-separator mx-3"></div>
-            <div className="social-brand-icons">
-              <a href="https://github.com/Farancibiat" className="social-icon me-2" target="_blank" rel="noreferrer">
-                <Github size={16} />
-              </a>
-              <a href="https://www.linkedin.com/in/farancibiat/" className="social-icon" target="_blank" rel="noreferrer">
-                <Linkedin size={16} />
-              </a>
-            </div>
+          </Link>
+          <div className="brand-separator mx-3"></div>
+          <div className="social-brand-icons">
+            <a href="https://github.com/Farancibiat" className="social-icon me-2" target="_blank" rel="noreferrer">
+              <Github size={16} />
+            </a>
+            <a href="https://www.linkedin.com/in/farancibiat/" className="social-icon" target="_blank" rel="noreferrer">
+              <Linkedin size={16} />
+            </a>
           </div>
-        </Link>
+        </div>
         <button
           className="navbar-toggler border-0"
           type="button"

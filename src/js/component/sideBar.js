@@ -1,9 +1,11 @@
 import React from "react";
 import ReactGA from "react-ga4";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 import "../styles/sideBar.css";
 import { Link } from "react-router-dom";
 import {
+  Award,
+  Translate,
   Check,
   Github,
   Linkedin,
@@ -19,9 +21,12 @@ import cvEsp from "../../assets/Felipe Arancibia Esp.pdf";
 import cvEng from "../../assets/Felipe Arancibia Eng.pdf";
 import flagES from "../../assets/img/flag-es.svg";
 import flagGB from "../../assets/img/flag-gb.svg";
+import { translations } from "../store/translations";
 
 export const SideBar = () => {
-  const { t } = useTranslations();
+  const { t, language } = useTranslations();
+
+  const flags=[flagES, flagGB];
 
   const handleDownloadCV_ES = () => {
     ReactGA.event({
@@ -44,8 +49,8 @@ export const SideBar = () => {
       {/* Header Section */}
       <div className="topSideBar pb-2 pt-3">
         <div className="text-center text-light">
-          <h3 className="fw-bold mb-1">{t('sideBar.title')}</h3>
-          <p className="mb-1 text-warning">{t('sideBar.jobTitle')}</p>
+          <h3 className="fw-bold mb-1">{t('general.name')}</h3>
+          <p className="mb-1 text-warning">{t('general.title')}</p>
         </div>
       </div>
 
@@ -61,20 +66,14 @@ export const SideBar = () => {
               <h5 className="text-light mb-0">{t('sideBar.languagesTitle')}</h5>
             </div>
             <div className="row">
-              <div className="col-6">
-                <div className="d-flex align-items-center justify-content-center mb-1">
-                  <img src={flagES} alt="Español" className="flag-icon" />
-                  <span className="fw-bold text-warning">{t('sideBar.cvES')}</span>
+              {translations[language].general.languages.map((lang, index) => (
+                <div className="col-6">
+                  <div className="d-flex align-items-center justify-content-center mb-1">
+                    <img src={flags[index]} alt={lang.language} className="flag-icon" />
+                    <span className="fw-bold text-warning">{lang.level}</span>
+                  </div>  
                 </div>
-                <p className="text-center text-light small mb-0">{t('sideBar.levelNative')}</p>
-              </div>
-              <div className="col-6">
-                <div className="d-flex align-items-center justify-content-center mb-1">
-                  <img src={flagGB} alt="Inglés" className="flag-icon" />
-                  <span className="fw-bold text-warning">{t('sideBar.cvEN')}</span>
-                </div>
-                <p className="text-center text-light small mb-0">{t('sideBar.levelC2')}</p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -90,82 +89,58 @@ export const SideBar = () => {
             </div>
             <div className="row">
               <div className="col-md-6">
-                <h6 className="text-warning mb-2 small text-center">{t('sideBar.frontendTitle')}</h6>
+                <h6 className="text-warning mb-2 small text-center">{translations[language].sideBar.techStack[0].title}</h6>
                 <ul className="tech-list">
-                  <li>React JS</li>
-                  <li>Next JS</li>
-                  <li>TypeScript</li>
-                  <li>Redux</li>
-                  <li>Tailwind</li>
-                  <li>Ant Design</li>
-                  <li>Bootstrap</li>
-                  <li>Material UI</li>
-                  <li>Shadcn UI</li>
+                  {translations[language].sideBar.techStack[0].description.split(', ').map((tech, index) => (
+                    <li key={index}>{tech}</li>
+                  ))}
                 </ul>
               </div>
               <div className="col-md-6">
-                <h6 className="text-warning mb-2 small text-center">{t('sideBar.backendTitle')}</h6>
+                <h6 className="text-warning mb-2 small text-center">{translations[language].sideBar.techStack[1].title}</h6>
                 <ul className="tech-list">
-                  <li>Java / Spring</li>
-                  <li>Express / Node.js</li>
-                  <li>Flask / Python</li>
-                  <li>REST APIs</li>
-                  <li>PostgreSQL</li>
-                  <li>SQLAlchemy</li>
+                  {translations[language].sideBar.techStack[1].description.split(', ').map((tech, index) => (
+                    <li key={index}>{tech}</li>
+                  ))}
                 </ul>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Deployment Section */}
+        {/* Deploy Section */}
         <div className="card bg-dark border-0 shadow-sm mb-3">
           <div className="card-body">
             <div className="d-flex align-items-center mb-3">
               <div className="icon-circle bg-warning me-3">
                 <CloudUpload size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">{t('sideBar.deploymentTitle')}</h5>
+              <h5 className="text-light mb-0">{translations[language].sideBar.techStack[2].title}</h5>
             </div>
             <ul className="tech-list">
-              <li>Azure</li>
-              <li>CI/CD Pipelines</li>
-              <li>Vercel / Netlify</li>
-              <li>Heroku</li>
+              {translations[language].sideBar.techStack[2].description.split(', ').map((tech, index) => (
+                <li key={index}>{tech}</li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Methodology Section */}
+        {/* Methodologies Section */}
         <div className="card bg-dark border-0 shadow-sm mb-3">
           <div className="card-body">
             <div className="d-flex align-items-center mb-3">
               <div className="icon-circle bg-warning me-3">
                 <Tools size={16} className="text-dark" />
               </div>
-              <h5 className="text-light mb-0">{t('sideBar.methodologyTitle')}</h5>
+              <h5 className="text-light mb-0">{translations[language].sideBar.techStack[3].title}</h5>
             </div>
             <ul className="tech-list">
-              <li>
-                <Check className="text-warning me-2" />
-                Git - Github - Bitbucket
-              </li>
-              <li>
-                <Check className="text-warning me-2" />
-                Agile - Scrum
-              </li>
-              <li>
-                <Check className="text-warning me-2" />
-                Jira - Project Management
-              </li>
-              <li>
-                <Check className="text-warning me-2" />
-                Testing (Jest, React Testing Library)
-              </li>
-              <li>
-                <Check className="text-warning me-2" />
-                Google Workspace Admin
-              </li>
+              {translations[language].sideBar.techStack[3].description.split(', ').map((tech, index) => (
+                <li key={index}>
+                  <Check className="text-warning me-2" />
+                  {tech}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -178,29 +153,47 @@ export const SideBar = () => {
               </div>
               <h5 className="text-light mb-0">{t('sideBar.cvTitle')}</h5>
             </div>
-            <div className="row">
-              <div className="col-6 text-center">
-                <a
-                  href={cvEsp}
-                  download="Felipe_Arancibia_CV_Esp.pdf"
-                  className="cv-button d-block text-center p-2"
-                  onClick={handleDownloadCV_ES}
-                >
-                  <Download className="me-1" size={12} />
-                  {t('sideBar.cvES')}
-                </a>
-              </div>
-              <div className="col-6 text-center">
-                <a
-                  href={cvEng}
-                  download="Felipe_Arancibia_CV_Eng.pdf"
-                  className="cv-button d-block text-center p-2"
-                  onClick={handleDownloadCV_EN}
-                >
-                  <Download className="me-1" size={12} />
-                  {t('sideBar.cvEN')}
-                </a>
-              </div>
+            <div className="row justify-content-center g-4">
+              {translations[language].general.languages.map((cv, index) => (
+                <div className="col-6" key={cv.id}>
+                  <div 
+                    className="p-2 rounded-4 text-center" 
+                    style={{
+                      background: "linear-gradient(45deg, rgba(33,37,41,0.95) 0%, rgba(33,37,41,0.8) 100%)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      transition: "all 0.3s ease"
+                    }}
+                  >
+                    <a
+                      href={index === 0 ? cvEsp : cvEng}
+                      download={cv.filename}
+                      onClick={() => index === 0 ? handleDownloadCV_ES() : handleDownloadCV_EN()}
+                      className="btn w-100 position-relative overflow-hidden py-2 px-3"
+                      style={{
+                        background: "linear-gradient(45deg, #ffc107 0%, #ff9800 100%)",
+                        border: "none",
+                        color: "#000",
+                        fontWeight: "600",
+                        transition: "all 0.3s ease"
+                      }}
+                    >
+                      <span className="d-flex align-items-center justify-content-center gap-2">
+                        {index === 0 ? <Award size={16} /> : <Translate size={16} />}
+                        <span className="fw-bold small">{cv.language}</span>
+                        <Download size={14} />
+                      </span>
+                      <div 
+                        className="position-absolute top-0 start-0 w-100 h-100"
+                        style={{
+                          background: "linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.2) 100%)",
+                          opacity: "0",
+                          transition: "opacity 0.3s ease"
+                        }}
+                      ></div>
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

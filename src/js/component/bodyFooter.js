@@ -1,6 +1,6 @@
 // import { checkPropTypes } from "prop-types";
 import React from "react";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 
 // import { Link } from "react-router-dom";
 // import { Context } from "../store/appContext";

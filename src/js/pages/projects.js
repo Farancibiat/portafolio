@@ -1,10 +1,10 @@
 import React from "react";
-import { useTranslations } from "../context/LanguageContext";
+import { useTranslations } from "../store/LanguageContext";
 import BodyFooter from "../component/bodyFooter";
 import { Github, Folder } from "react-bootstrap-icons";
-import projects from "../data/projectsData";
 import "../styles/common.css"; 
 import "../styles/projects.css";
+import { translations } from "../store/translations";
 
 export const Projects = () => {
   const { t, language } = useTranslations();
@@ -16,6 +16,7 @@ export const Projects = () => {
   // Function to render project cards in rows of 3
   const renderProjectRows = () => {
     const rows = [];
+    const projects = translations[language].projectsPage.projects;
     for (let i = 0; i < projects.length; i += 3) {
       const rowProjects = projects.slice(i, i + 3);
       rows.push(
