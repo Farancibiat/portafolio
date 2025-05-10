@@ -219,9 +219,11 @@ export const Experience = () => {
                       <div className="col-md-9">
                         <h4 className="text-warning">{job.title}</h4>
                         <h5 className="text-light mb-3">{job.company}</h5>
+                        <ul className="text-light">
                         {job.tasks.map((item, index) =>
                               <li key={`${job.id}task${index}`}>{item}</li>
                             )}
+                        </ul>
                       </div>
                     </div>
                   </div>
