@@ -201,7 +201,7 @@ export const SideBar = () => {
 
       {/* Footer Section */}
       <div className="botSideBar">
-        <div className="row px-5 py-3 text-center">
+        <div className="row px-5 text-center">
           <div className="col-4">
             <a href="https://www.linkedin.com/in/farancibiat/" target="_blank" rel="noreferrer">
               <Linkedin />

@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslations } from "../store/LanguageContext";
 import { 
@@ -33,16 +33,15 @@ const cardsIcons=[
 export const About = () => {
   const { t, language } = useTranslations();
   
-  // Efecto para cambiar el título del documento (opcional, pero bueno para SEO y UX)
-  React.useEffect(() => {
-    document.title = t('aboutPage.pageTitle') + " - Felipe Arancibia"; // Añade tu nombre o el de tu sitio
+ useEffect(() => {
+    document.title = t('aboutPage.pageTitle') + " - Felipe Arancibia"; 
   }, [t]);
 
   return (
     <>
       <div className="bodyFrame">
         <div className="contentScroller">
-          <div className="px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+          <div className="px-4 py-4">
             {/* Hero Section */}
             <div className="row align-items-center mb-4">
               <div className="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">

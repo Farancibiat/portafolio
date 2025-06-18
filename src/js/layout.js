@@ -10,6 +10,7 @@ import NavigationBar from "./component/navigationBar";
 import SideBar from "./component/sideBar";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageProvider } from "./store/LanguageContext";
+import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
 
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
@@ -18,9 +19,7 @@ import About from "./pages/about";
 import injectContext from "./store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./styles/layout.css"; // Importamos un nuevo CSS específico para el layout
-
-// Componente de transición para cada página individual
+import "./styles/layout.css";
 const AnimatedPage = ({ children }) => {
   return (
     <motion.div
@@ -28,40 +27,67 @@ const AnimatedPage = ({ children }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      style={{ width: '100%', height: '100%' }}
+      style={{ 
+        width: '100%', 
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
     >
       {children}
     </motion.div>
   );
 };
 
-// Componente de layout que se utilizará en las rutas
+
 const AppLayout = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const showSidebar = location.pathname === "/projects" || location.pathname === "/contact";
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   
-  // Aseguramos que los componentes se monten correctamente
   useEffect(() => {
     setMounted(true);
-    // Scroll to top on route change
     window.scrollTo(0, 0);
-
-    // Enviar pageview a Google Analytics
     ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: document.title });
-
     return () => setMounted(false);
   }, [location.pathname, location.search]);
+
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+
+  useEffect(() => {
+    setMobileSidebarOpen(false);
+  }, [location.pathname]);
   
-  // Variante para la animación del sidebar
+
   const sidebarVariants = {
-    hidden: { 
+    hidden: isMobile ? {
+      x: "-100%",
+      opacity: 0,
+    } : {
       width: 0,
       opacity: 0,
       scaleX: 0,
       originX: 0,
     },
-    visible: { 
+    visible: isMobile ? {
+      x: 0,
+      opacity: 1,
+      transition: { 
+        duration: 0.3,
+        ease: "easeOut",
+      }
+    } : {
       width: "auto",
       opacity: 1,
       scaleX: 1,
@@ -70,7 +96,14 @@ const AppLayout = () => {
         ease: "easeOut",
       }
     },
-    exit: { 
+    exit: isMobile ? {
+      x: "-100%",
+      opacity: 0,
+      transition: { 
+        duration: 0.2,
+        ease: "easeIn",
+      }
+    } : {
       width: 0,
       opacity: 0,
       scaleX: 0,
@@ -82,7 +115,7 @@ const AppLayout = () => {
     }
   };
 
-  if (!mounted) return null; // Evita renderizados antes de que el componente esté listo
+  if (!mounted) return null;
 
   return (
     <>
@@ -90,12 +123,28 @@ const AppLayout = () => {
         <NavigationBar />
       </div>
       <div className="navbar-spacer"></div>
-      <div className="container-fluid">
+      
+
+      {isMobile && mobileSidebarOpen && (
+        <div 
+          className="mobile-sidebar-overlay"
+          onClick={() => setMobileSidebarOpen(false)}
+        />
+      )}
+      <div className="container-fluid" style={{ position: 'relative' }}>
+
+        {isMobile && showSidebar && (
+          <button
+            className="mobile-sidebar-toggle"
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+            aria-label="Toggle sidebar"
+          >
+            {mobileSidebarOpen ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+          </button>
+        )}
         <div className="app-layout-row">
-          {/* Sidebar con animación de expansión/contracción */}
           <AnimatePresence mode="wait">
-            {/* Hide sidebar on home AND experience page */}
-            {!isHomePage && location.pathname !== "/experience" && (
+            {showSidebar && (!isMobile || mobileSidebarOpen) && (
               <motion.div 
                 className="sidebar-column"
                 key="sidebar"
@@ -103,16 +152,30 @@ const AppLayout = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                style={{ overflow: 'hidden' }}
+                style={{ 
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  ...(isMobile && {
+                    position: 'fixed',
+                    top: '110px',
+                    left: 0,
+                    zIndex: 50,
+                    width: '100%',
+                    maxWidth: '350px',
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    backdropFilter: 'blur(10px)'
+                  })
+                }}
               >
                 <SideBar />
               </motion.div>
             )}
           </AnimatePresence>
           
-          {/* Contenido principal con transición mejorada */}
           <motion.div 
-            className={`content-column ${isHomePage ? 'full-width' : ''}`}
+            className={`content-column ${!showSidebar || (isMobile && showSidebar) ? 'full-width' : ''}`}
             layout="position"
             transition={{ 
               type: "tween",
@@ -134,10 +197,10 @@ const AppLayout = () => {
   );
 };
 
-// Componente principal con contexto inyectado
+
 const AppWithContext = injectContext(AppLayout);
 
-// Componente App con BrowserRouter que contiene el contexto
+
 const App = () => {
   return (
     <BrowserRouter basename={process.env.BASENAME || ""}>
@@ -148,7 +211,7 @@ const App = () => {
   );
 };
 
-// Exportar componentes y rutas para que se usen en index.js
+
 export const routes = [
   {
     path: "*",

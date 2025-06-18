@@ -1,4 +1,4 @@
-/* Sidebar Container */
+/* Sidebar Container - Legacy styles (not used in current implementation) */
 .sidebar-container {
   display: flex;
   flex-direction: column;
@@ -7,24 +7,24 @@
   max-height: calc(100vh - 120px);
 }
 
-/* Scrollbar Styles */
-.sidebar-container::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* Scrollbar Styles for Sidebar Content */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.sidebar-container::-webkit-scrollbar-thumb {
+.sidebar-content::-webkit-scrollbar-thumb {
   background: #ffc107;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
-.sidebar-container::-webkit-scrollbar-thumb:hover {
-  background: #e0a800;
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: #e4ac06;
 }
 
-.sidebar-container::-webkit-scrollbar-track {
+.sidebar-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 /* Profile Section */
@@ -174,72 +174,40 @@
   }
 }
 
-/* General Body Frame */
-.bodyFrame {
-  background-color: #212529;
-  border-radius: 10px;
-  margin: 15px 0;
-  height: calc(100vh - 120px);
-  overflow: hidden;
-}
+/* Removed duplicate .bodyFrame definition - now managed in common.css */
 
-.contentScroller {
-  height: calc(100% - 57px);
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* Move scrollbar styles for body to fix inconsistencies */
-body *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-body *::-webkit-scrollbar-thumb {
-  background: #ffc107;
-  border-radius: 15px;
-}
-
-body *::-webkit-scrollbar-thumb:hover {
-  background: #e0a800;
-}
-
-body *::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-}
+/* Removed duplicate global scrollbar styles - now managed in common.css */
 
 .sideBar {
   background-color: rgb(41, 43, 44, 9);
-  border-radius: 10px;
-  margin: 15px 0;
+  border-radius: 15px; /* Bordes más suaves */
+  margin: 15px 0; /* Mantener margin igual a bodyFrame */
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 120px);
+  height: 100%; /* Usar toda la altura del contenedor padre */
   width: 100%;
-  float: left;
 }
 
 .topSideBar {
   background-color: rgb(71, 70, 70);
   padding: 0.5rem 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .sidebar-content {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 5px;
+  padding: 0 5px 1rem 0; /* Padding bottom para airear */
 }
 
 .botSideBar {
   background-color: rgb(71, 70, 70);
-  padding: 0;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  padding: 1rem 0; /* Matching padding with content-footer */
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   margin-top: auto;
 }
 
@@ -340,41 +308,9 @@ body *::-webkit-scrollbar-track {
   transform: translateY(-2px);
 }
 
-/* Preserving the scrollbar style from the original */
-body *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
+/* Removed duplicate scrollbar styles - now managed in common.css */
 
-body *::-webkit-scrollbar-thumb {
-  background: #bd8f06;
-  border-radius: 15px;
-}
-
-body *::-webkit-scrollbar-thumb:hover {
-  background: #d9534f;
-}
-
-body *::-webkit-scrollbar-track {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: inset 7px 10px 12px #f0f0f0;
-}
-
-/* General Body Frame */
-.bodyFrame {
-  background-color: #212529;
-  border-radius: 10px;
-  margin: 15px 0;
-  height: calc(100vh - 120px);
-  overflow: hidden;
-}
-
-.contentScroller {
-  height: calc(100% - 57px);
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+/* Removed second duplicate .bodyFrame definition - now managed in common.css */
 
 /* Estilo para el contenedor de foto de perfil en About */
 .profile-container {

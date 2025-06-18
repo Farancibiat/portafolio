@@ -10,13 +10,13 @@ export const translations = {
           id: "es",
           language: "Español",
           level: "Nativo",
-          filename: "Felipe_Arancibia_CV_Esp.pdf"	
+          filename: "Felipe Arancibia Esp.pdf"	
         },
         {
           id: "en",
           language: "Inglés",
           level: "C2",
-          filename: "Felipe_Arancibia_CV_Eng.pdf"
+          filename: "Felipe Arancibia Eng.pdf"
         }
       ],  
       descarga: "Descargar"
@@ -34,12 +34,12 @@ export const translations = {
         {
           id: "frontend",
           title: "Frontend",
-          description: "HTML, CSS, Javascript, React, Next.js, TypeScript, Tanstack, Redux, Tailwind, Ant Design, Material UI, Bootstrap, Shadcn, Jest, React Testing Library, SonarQube"
+          description: "HTML, CSS, Javascript, React, Next.js, TypeScript, Tanstack, Redux, Tailwind, Ant Design, Material UI, Bootstrap, Shadcn, Jest, React Testing Library"
         },
         {
           id: "backend",
           title: "Backend",
-          description: "Java, Spring Boot, Express, Python, Flask, SQLAlchemy, REST API's, PostgresSQL"
+          description: "Java, Spring Boot, Express.js, Prisma, Node.js, Python, Flask, SQLAlchemy, REST API's, PostgresSQL"
         },
         {
           id: "deploys",
@@ -69,7 +69,7 @@ export const translations = {
         },
         {
           title: "Backend",
-          description: "Java, Spring, PostgresSQL"
+          description: "Spring, Express.js, PostgresSQL"
         },
         {
           title: "Herramientas",
@@ -271,24 +271,18 @@ export const translations = {
       noDemoButton: "Repo Privado",
       projects:[
         {
-          id: "pichangapp",
-          title: "Pichangapp",
-          description: "Aplicación web en desarrollo para arriendo de canchas de fútbol en Chile.",
-          repoUrl: "https://github.com/farancibiat/pichangapp",
-        },
-       {
-        id: "swim-app",
-        title: "Swim App MVP",
-        description: "WebApp para natación, ambiente de desarrollo, API Spring Boot aún no desplegada.",
-        liveDemo: "https://swim.farancibiat.cl/",
-        repoUrl: "https://github.com/farancibiat/swimmate-app",
-        },
-        {
           id: "caac",
           title: "Club Aguas Abiertas Chiloé",
-          description: "Proyecto de sitio web para el club de aguas abiertas de Chiloé. Solución Express para acceder a imágenes de Google Drive.",
+          description: "Proyecto de sitio web para el club de aguas abiertas de Chiloé. Monorepo con API REST, Manejo de BD con Prisma y Frontend con Next.js.",
           liveDemo: "https://www.aguasabiertaschiloe.cl/",
           repoUrl: "https://github.com/farancibiat/desafio-quinched",
+        },
+        {
+          id: "swim-app",
+          title: "Swim App MVP",
+          description: "WebApp para natación, ambiente de desarrollo, API Spring Boot aún no desplegada.",
+          liveDemo: "https://swim.farancibiat.cl/",
+          repoUrl: "https://github.com/farancibiat/swimmate-app",
         },
         {
           id: "pokeapi-test",
@@ -298,25 +292,11 @@ export const translations = {
           repoUrl: "https://github.com/Farancibiat/pokemon-site",
         },
         {
-          id: "agenda-dashboard",
-          title: "Agenda Dashboard",
-          description: "Este es un dashboard básico hecho con ANT DESIGN, lee información de contactos desde una API fake gratuita. Desplegado en Netlify.",
-          liveDemo: "https://agenda-dashboard.farancibiat.cl/",
-          repoUrl: "https://github.com/farancibiat/agenda-dashboard",
-        },
-        {
           id: "shopping-cart",
           title: "Carrito de Compras Películas",
           description: "Este proyecto es un carrito de compras básico y responsivo hecho con HTML, CSS y full Vanilla Javascript, desplegado en Netlify.",
           liveDemo: "https://shoppingcart.farancibiat.cl/",
           repoUrl: "https://github.com/Farancibiat/ShopingCart-FullVanilla",
-        },
-        {
-          id: "battleship",
-          title: "Batalla Naval",
-          description: "Este es el clásico juego de Combate Naval, desarrollado para una prueba de trabajo. El juego es básico y está desplegado en Netlify.",
-          projectUrl: "http://battlefield.farancibiat.cl",
-          repoUrl: "https://github.com/farancibiat/battlefield-game",
         },
         {
           id: "star-wars-blog",
@@ -329,7 +309,22 @@ export const translations = {
           title: "Lista de Tareas",
           description: "Aplicación web para practicar la manipulación de datos en React y la modificación de datos en una API externa (CRUD).",
           repoUrl: "https://github.com/farancibiat/todolist-fetch",
-        }
+        },
+        {
+          id: "pichangapp",
+          title: "Pichangapp",
+          description: "Aplicación web en desarrollo para arriendo de canchas de fútbol en Chile.",
+          repoUrl: "https://github.com/farancibiat/pichangapp",
+        },
+      
+      
+        {
+          id: "user-dashboard",
+          title: "Agenda Dashboard",
+          description: "Este es un dashboard básico hecho con ANT DESIGN, lee información de contactos desde una API fake gratuita. Desplegado en Netlify.",
+          liveDemo: "https://user-dashboard.farancibiat.cl/",
+          repoUrl: "https://github.com/farancibiat/agenda-dashboard",
+        }       
       ],
     },
     contactPage: {
@@ -348,7 +343,7 @@ export const translations = {
       }
     },
     footer: {
-      copyrightText: "Sitio desarrollado por Felipe Arancibia, 2021."
+      copyrightText: "Desarrollado por Felipe Arancibia, 2025."
     },
   },
   en: {
@@ -359,12 +354,14 @@ export const translations = {
         {
           id: "es",
           language: "Spanish",
-          level: "Native"
+          level: "Native",
+          filename: "Felipe Arancibia Esp.pdf"	
         },
         {
           id: "en",
           language: "English",
-          level: "C2"
+          level: "C2",
+          filename: "Felipe Arancibia Eng.pdf"
         }
       ],  
       descarga: "Download"
@@ -382,12 +379,12 @@ export const translations = {
         {
           id: "frontend",
           title: "Frontend",
-          description: "HTML, CSS, Javascript, React, Next.js, TypeScript, Tanstack, Redux, Tailwind, Ant Design, Material UI, Bootstrap, Shadcn, Jest, React Testing Library, SonarQube"
+          description: "HTML, CSS, Javascript, React, Next.js, TypeScript, Tanstack, Redux, Tailwind, Ant Design, Material UI, Bootstrap, Shadcn, Jest, React Testing Library"
         },
         {
           id: "backend",
           title: "Backend",
-          description: "Java, Spring Boot, Express, Python, Flask, SQLAlchemy, REST API's, PostgresSQL"
+          description: "Java, Spring Boot, Express.js, Prisma, Node.js, Python, Flask, SQLAlchemy, REST API's, PostgresSQL"
         },
         {
           id: "deploys",
@@ -417,7 +414,7 @@ export const translations = {
         },
         {
           title: "Backend",
-          description: "Java, Spring, PostgresSQL"
+          description: "Spring, Express.js, PostgresSQL"
         },
         {
           title: "Tools",
@@ -615,10 +612,11 @@ export const translations = {
       noDemoButton: "Private Repo",
       projects:[
         {
-          id: "pichangapp",
-          title: "Pichangapp",
-          description: "Web application under development for renting football pitches in Chile.",
-          repoUrl: "https://github.com/farancibiat/pichangapp",
+          id: "caac",
+          title: "Chiloé Open Water Club",
+          description: "Website project for the Chiloé open water club. Monorepo with API REST, handle DB using Prisma and  Next.js frontend.",
+          liveDemo: "https://www.aguasabiertaschiloe.cl/",
+          repoUrl: "https://github.com/farancibiat/desafio-quinched",
         },
         {
           id: "swim-app",
@@ -628,25 +626,11 @@ export const translations = {
           repoUrl: "https://github.com/farancibiat/swimmate-app",
         },
         {
-          id: "caac",
-          title: "Chiloé Open Water Club",
-          description: "Website project for the Chiloé open water club. Express solution for accessing Google Drive images.",
-          liveDemo: "https://www.aguasabiertaschiloe.cl/",
-          repoUrl: "https://github.com/farancibiat/desafio-quinched",
-        },
-        {
           id: "pokeapi-test",
           title: "Pokeapi Test",
           description: "This site is a simple Pokedex, it uses the \"pokeapi.co\" API, has a search function and saves favorites, deployed on Netlify.",
           liveDemo: "https://pokemon.farancibiat.cl/",
           repoUrl: "https://github.com/farancibiat/pokemon-site",
-        },
-        {
-          id: "agenda-dashboard",
-          title: "Agenda Dashboard",
-          description: "This is a basic dashboard made with ANT DESIGN, it reads contact information from a free fake API. Deployed on Netlify.",
-          liveDemo: "https://agenda-dashboard.farancibiat.cl/",
-          repoUrl: "https://github.com/farancibiat/agenda-dashboard",
         },
         {
           id: "shopping-cart",
@@ -656,11 +640,11 @@ export const translations = {
           repoUrl: "https://github.com/Farancibiat/ShopingCart-FullVanilla",
         },
         {
-          id: "battleship",
-          title: "BattleShip",
-          description: "This is the classic Naval Combat game, developed for a work test. Deployed on Netlify.",
-          projectUrl: "http://battlefield.farancibiat.cl",
-          repoUrl: "https://github.com/farancibiat/battlefield-game",
+          id: "user-dashboard",
+          title: "Agenda Dashboard",
+          description: "This is a basic dashboard made with ANT DESIGN, it reads contact information from a free fake API. Deployed on Netlify.",
+          liveDemo: "https://user-dashboard.farancibiat.cl/",
+          repoUrl: "https://github.com/farancibiat/agenda-dashboard",
         },
         {
           id: "star-wars-blog",
@@ -673,7 +657,12 @@ export const translations = {
           title: "To Do List",
           description: "This is a simple to-do list made with HTML, CSS, and full Vanilla Javascript, deployed on Netlify.",
           repoUrl: "https://github.com/farancibiat/todolist-fetch",
-        }
+        },    {
+          id: "pichangapp",
+          title: "Pichangapp",
+          description: "Web application under development for renting football pitches in Chile.",
+          repoUrl: "https://github.com/farancibiat/pichangapp",
+        },
       ]
     },
     contactPage: {
@@ -692,7 +681,7 @@ export const translations = {
       }
     },
     footer: {
-      copyrightText: "Site developed by Felipe Arancibia, 2021."
+      copyrightText: "Developed by Felipe Arancibia, 2025."
     },
   },
 }; 

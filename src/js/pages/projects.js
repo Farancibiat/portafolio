@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useTranslations } from "../store/LanguageContext";
 import BodyFooter from "../component/bodyFooter";
 import { Github, Folder } from "react-bootstrap-icons";
@@ -9,11 +9,10 @@ import { translations } from "../store/translations";
 export const Projects = () => {
   const { t, language } = useTranslations();
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = t('projectsPage.pageTitle') + " - Felipe Arancibia";
   }, [t, language]);
 
-  // Function to render project cards in rows of 3
   const renderProjectRows = () => {
     const rows = [];
     const projects = translations[language].projectsPage.projects;
@@ -27,13 +26,11 @@ export const Projects = () => {
                 <h4>{project.titleKey ? t(project.titleKey) : project.title}</h4>
                 <p>{project.descriptionKey ? t(project.descriptionKey) : project.description}</p>
                 <div>
-                  {/* Botón para Ver Proyecto (Demo en vivo) */}
                   {project.liveDemo && (
-                    <a href={project.projectUrl} target="_blank" rel="noreferrer">
+                    <a href={project.liveDemo} target="_blank" rel="noreferrer">
                       <button>{t('projectsPage.viewProjectButton')} &gt;&gt;</button>
                     </a>
                   )}
-                  {/* Botón para Ver Repositorio */}
                   {project.repoUrl && (
                     <a href={project.repoUrl} target="_blank" rel="noreferrer">
                       <button className="btn2">
@@ -45,7 +42,6 @@ export const Projects = () => {
               </div>
             </div>
           ))}
-          {/* Fill empty spots in the last row if needed */}
           {rowProjects.length < 3 && 
             Array(3 - rowProjects.length).fill().map((_, index) => (
               <div className="col-12 col-sm-4" key={`empty-${index}`}></div>
@@ -61,7 +57,7 @@ export const Projects = () => {
     <>
       <div className="bodyFrame">
         <div className="contentScroller">
-          <div className="px-4 py-4 bg-dark card" style={{ border: "none", borderRadius: "15px" }}>
+          <div className="px-4 py-4">
             <h1 className="text-center text-warning mb-4" style={{ fontSize: "2rem", fontWeight: "500" }}>
               <Folder className="me-2" /> {t('projectsPage.pageTitle')}
             </h1>

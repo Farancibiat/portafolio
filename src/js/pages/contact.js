@@ -5,9 +5,8 @@ import * as Yup from "yup";
 import { useTranslations } from "../store/LanguageContext";
 import { EnvelopeFill, Send, Person, ChatText } from "react-bootstrap-icons";
 import { Context } from "../store/appContext";
-import "../styles/common.css"; // Import common styles
-import "../styles/experience.css"; // Importar para usar .inner-content-card y otros estilos si aplican
-
+import "../styles/common.css"; 
+import "../styles/experience.css";
 import BodyFooter from "../component/bodyFooter";
 
 const Contact = () => {
@@ -48,7 +47,7 @@ const Contact = () => {
     <>
       <div className="bodyFrame">
         <div className="contentScroller">
-          <div className="px-4 py-4 bg-dark card">
+          <div className="px-4 py-4">
             {/* Hero Section */}
             <div className="row mb-4">
               <div className="col-lg-8 mx-auto text-center">

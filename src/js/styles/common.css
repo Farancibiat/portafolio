@@ -1,16 +1,12 @@
-/* Common styles for all main components */
 
-/* Reset default padding/margin and control global scroll */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden; /* Prevenir scroll horizontal siempre */
-  /* overflow-y: hidden; /* Revertir: No ocultar scroll global por defecto, puede causar problemas con fixed elements */ 
+  overflow-x: hidden; 
+  overflow-y: hidden; 
 }
-
 body {
-  /* overflow-y: hidden; /* Eliminado de aquí también */ 
   display: flex;
   min-height: 100vh;
   background-color: #212529;
@@ -18,7 +14,6 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* Reduce spacing at the top of content containers */
 .bodyFrame {
   padding-top: 0;
 }
@@ -27,76 +22,71 @@ body {
   padding-top: 0;
 }
 
-/* Adjust container spacing */
 .container.my-4 {
   margin-top: 0 !important;
 }
 
-/* Ensure proper text contrast */
+
 .text-muted {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Ensure proper contrast for form inputs */
+
 .form-control.bg-dark {
   background-color: rgba(33, 37, 41, 0.95) !important;
   color: rgba(255, 255, 255, 0.9) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Yellow placeholders for better visibility */
+
 .form-control::placeholder {
   color: rgba(255, 193, 7, 0.7) !important;
   opacity: 1;
 }
 
-/* Darker backgrounds for better contrast */
+
 .bg-dark.card {
   background-color: rgba(33, 37, 41, 0.95) !important;
 }
 
-/* Improve contrast for lighter text elements */
+
 .opacity-75 {
   opacity: 0.85 !important; 
 }
-
-/* Card text should be dark */
 .card .text-muted {
   color: #343a40 !important;
 }
 
-/* Responsive adjustments */
 @media (max-width: 991px) { 
-  /* body {
-    overflow-y: auto; /* Ya no es necesario si el scroll global está permitido por defecto */
-  /* } */
   .container.px-4 {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 }
 
-/* Main content frame */
+
 .bodyFrame {
     display: flex; 
     flex-direction: column; 
     flex-grow: 1; 
     width: 100%;
+    height: 100%;
     overflow: hidden; 
     background-color: #212529;
-    border-radius: 10px;
+    border-radius: 15px;
+    margin: 15px 0;
 }
 
 .contentScroller {
     flex-grow: 1; 
-    overflow-y: auto; /* ESTE es el scroll que queremos */
+    overflow-y: auto; 
     overflow-x: hidden;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 2rem 1rem; 
     position: relative; 
     scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+
 .contentScroller::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -116,17 +106,14 @@ body {
     background: #e4ac06;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
-/* Background colors */
 .bg-dark-subtle {
     background-color: rgba(33, 37, 41, 0.85) !important;
 }
 
-/* Button styles */
 .btn-outline-warning {
     transition: all 0.3s ease;
 }
@@ -136,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
 }
 
-/* Card styles */
+
 .card {
     transition: all 0.3s ease;
 }
@@ -146,12 +133,12 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Links */
+
 a {
     transition: color 0.3s ease;
 }
 
-/* Animations */
+
 .fade-in {
     animation: fadeIn 0.5s ease-in;
 }
@@ -167,11 +154,19 @@ a {
     }
 }
 
-/* Bootstrap adjustments */
 .text-warning {
     color: #ffc107 !important;
 }
 
 .bg-warning {
     background-color: #ffc107 !important;
+}
+
+
+.content-footer {
+    background-color: rgba(71, 70, 70, 0.8);
+    border-radius: 0 0 15px 15px;
+    margin: 0; 
+    padding: 1rem !important;
+    flex-shrink: 0;
 } 

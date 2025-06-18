@@ -1,20 +1,18 @@
-/* Layout Styles for Portfolio Site */
 
-/* Navbar container - fixed at the top */
 .navbar-container {
   position: fixed;
   top: 0;
   z-index: 100;
-  padding: 20px 30px 20px 10px;
+  padding: 15px var(--bs-gutter-x, 0.75rem);
   width: 100%;
 }
 
-/* Spacer to prevent content from being hidden under fixed navbar */
+
 .navbar-spacer {
   height: 110px;
 }
 
-/* Main layout container */
+
 .container {
   width: 100%;
   max-width: 100%;
@@ -22,42 +20,44 @@
   padding: 10px 20px;
 }
 
-/* Row for sidebar and content */
+
 .app-layout-row {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   gap: 30px;
-  min-height: calc(100vh - 90px);
-  margin-top: 15px;
+  height: calc(100vh - 145px);
+  margin: 15px 0;
 }
 
-/* Sidebar column */
+
 .sidebar-column {
   flex: 0 0 auto;
   max-width: 350px;
   min-width: 300px;
+  height: 100%;
 }
 
-/* Content column */
+
 .content-column {
   flex: 1;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-/* Full width content when no sidebar */
+
 .content-column.full-width {
   max-width: 100%;
 }
 
-/* Media queries for responsive layout */
+
 @media (max-width: 992px) {
   .app-layout-row {
     flex-direction: column;
-    min-height: auto;
-    margin-top: 10px;
+    height: calc(100vh - 145px);
+    margin: 10px 0 15px 0;
   }
   
   .sidebar-column {
@@ -70,24 +70,66 @@
   .content-column {
     width: 100%;
     max-width: 100%;
+    overflow: hidden;
   }
   
-  /* Increase spacer height for mobile */
+
   .navbar-spacer {
     height: 110px;
   }
 }
 
-/* Make sure navigation bar is always at the top */
+
 nav.navbar {
   width: 100%;
   border-radius: 10px;
 }
 
-/* Larger screens */
+
+.mobile-sidebar-toggle {
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  z-index: 60;
+  background: linear-gradient(45deg, #ffc107 0%, #ff9800 100%);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.mobile-sidebar-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+}
+
+.mobile-sidebar-toggle:active {
+  transform: translateY(0);
+}
+
+
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  cursor: pointer;
+}
+
+
 @media (min-width: 1800px) {
   .navbar-container {
-    padding: 20px 30px 20px 10px;
+    padding: 15px var(--bs-gutter-x, 0.75rem);
   }
   
   .container {
