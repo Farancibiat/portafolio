@@ -81,9 +81,10 @@ body {
     flex-grow: 1; 
     overflow-y: auto; 
     overflow-x: hidden;
-    padding: 2rem 1rem 2rem 1rem; 
+    padding: 0 1rem 2rem 1rem; /* Eliminado padding-top */
     position: relative; 
     scroll-behavior: smooth;
+    height: 0; /* Fuerza el contenedor a usar flex-grow */
 }
 
 
